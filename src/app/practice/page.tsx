@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import {  FaLayerGroup, FaChevronRight, FaHome } from 'react-icons/fa';
+import {  FaLayerGroup, FaChevronRight, FaHome, FaClipboardCheck } from 'react-icons/fa';
 import { PracticeMode } from '../types';
 
 export default function PracticeSelectionPage() {
@@ -67,7 +67,7 @@ export default function PracticeSelectionPage() {
               Special Practice
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* <button
+              <button
                 className={`p-6 rounded-lg transition duration-300 transform hover:scale-105 ${
                   selectedMode === 'assignment'
                     ? 'bg-gradient-to-br from-purple-500 to-purple-600 text-white shadow-lg ring-2 ring-purple-300'
@@ -84,11 +84,11 @@ export default function PracticeSelectionPage() {
                   <div>
                     <h3 className="font-semibold text-lg mb-2">Assignment Questions</h3>
                     <p className="text-sm opacity-80">
-                      Practice all questions from every week and Assignment
+                      Practice all questions from every module and Assignment
                     </p>
                   </div>
                 </div>
-              </button> */}
+              </button>
 
               <button
                 className={`p-6 rounded-lg transition duration-300 transform hover:scale-105 ${
@@ -107,7 +107,7 @@ export default function PracticeSelectionPage() {
                   <div>
                     <h3 className="font-semibold text-lg mb-2">All Questions</h3>
                     <p className="text-sm opacity-80">
-                      Practice all questions from every week and Miscellaneous question in one session.
+                      Practice all questions from every module and Miscellaneous question in one session.
                     </p>
                   </div>
                 </div>

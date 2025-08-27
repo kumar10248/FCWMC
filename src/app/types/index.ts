@@ -17,7 +17,7 @@ export interface WeekQuestions {
   [key: string]: Question[];
 }
 
-export type PracticeMode = 'module1' | 'module2' | 'module3' | 'module4' | 'module5' | 'module6' | 'all';
+export type PracticeMode = 'module1' | 'module2' | 'module3' | 'module4' | 'module5' | 'module6' | 'all' | 'assignment';
 
 export interface PracticeOption {
   id: PracticeMode;

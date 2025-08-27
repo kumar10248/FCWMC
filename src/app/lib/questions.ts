@@ -660,8 +660,673 @@ export function getAllQuestions(mode: PracticeMode): Question[] {
     "explanation": "The correct sentence should read: 'The main targets for 5G (by 2020) are spectral efficiency, peak connectivity, massive mobility, high reliability support, and low transmission delay.' Therefore, 'time' is the incorrect keyword as it doesn't fit in any of the blanks (a), (b), (c), or (d) in the context of 5G system targets.",
     "correctAnswer": [0]
   }
+],
+    assignment:[
+  {
+    "question": "Which technology is primarily used for wireless local area networks?",
+    "options": [
+      "WiFi",
+      "Bluetooth", 
+      "NFC",
+      "Infrared"
+    ],
+    "explanation": "WiFi (Wireless Fidelity) is the primary technology used for wireless local area networks (WLANs). It allows devices to connect to a network and access the internet wirelessly within a certain range of a router or access point.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "What does 1G primarily support?",
+    "options": [
+      "Digital voice",
+      "Analog voice",
+      "High-speed data",
+      "Video streaming"
+    ],
+    "explanation": "1G networks were the first generation of cellular systems and they supported analog voice communication only.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which generation introduced SMS (Short Message Service)?",
+    "options": [
+      "1G",
+      "2G",
+      "3G",
+      "4G"
+    ],
+    "explanation": "2G networks introduced digital communication and supported SMS (text messaging) as a new service.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which of the following is NOT a multiple access technique?",
+    "options": [
+      "FDMA",
+      "TDMA",
+      "CDMA",
+      "HDMI"
+    ],
+    "explanation": "FDMA, TDMA, and CDMA are multiple access techniques, while HDMI is a wired display interface, not used in wireless communication.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "Which modulation technique is most resistant to noise?",
+    "options": [
+      "Amplitude Shift Keying (ASK)",
+      "Frequency Shift Keying (FSK)",
+      "Phase Shift Keying (PSK)",
+      "Quadrature Amplitude Modulation (QAM)"
+    ],
+    "explanation": "Frequency Shift Keying (FSK) is generally more resistant to noise compared to ASK and PSK because frequency variations are less affected by amplitude noise.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What does LTE stand for?",
+    "options": [
+      "Long Term Evolution",
+      "Low Transmission Efficiency",
+      "Local Telecommunication Exchange",
+      "Linear Technology Enhancement"
+    ],
+    "explanation": "LTE stands for Long Term Evolution and is the standard for 4G wireless broadband technology.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "What is the key technology that makes 5G ultra-reliable and low-latency?",
+    "options": [
+      "Beamforming",
+      "URLLC",
+      "MIMO",
+      "HARQ"
+    ],
+    "explanation": "Ultra-Reliable Low Latency Communication (URLLC) is one of the main features of 5G that enables applications like autonomous driving and remote surgery.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which frequency band is commonly used for WiFi?",
+    "options": [
+      "900 MHz",
+      "1.8 GHz",
+      "2.4 GHz",
+      "700 MHz"
+    ],
+    "explanation": "WiFi commonly operates in the 2.4 GHz and 5 GHz bands.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "What does OFDM stand for?",
+    "options": [
+      "Orthogonal Frequency Division Multiplexing",
+      "Optical Frequency Data Management",
+      "Online Frequency Division Model",
+      "Orthogonal Frame Data Modulation"
+    ],
+    "explanation": "OFDM stands for Orthogonal Frequency Division Multiplexing, a modulation scheme used in LTE and 5G.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Which cellular generation first introduced mobile internet browsing?",
+    "options": [
+      "1G",
+      "2G",
+      "3G",
+      "4G"
+    ],
+    "explanation": "3G networks introduced mobile internet browsing and video calling features.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which of the following is a coding technique used in LTE?",
+    "options": [
+      "Turbo Codes",
+      "Huffman Coding",
+      "Run-Length Encoding",
+      "Shannon Coding"
+    ],
+    "explanation": "LTE uses Turbo Codes (and LDPC in later versions) for error correction.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Which multiple access technology is used in LTE?",
+    "options": [
+      "TDMA",
+      "OFDMA",
+      "FDMA",
+      "CDMA"
+    ],
+    "explanation": "LTE uses Orthogonal Frequency Division Multiple Access (OFDMA) for downlink transmission.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which term refers to the reuse of the same frequency in non-adjacent cells?",
+    "options": [
+      "Frequency Hopping",
+      "Frequency Reuse",
+      "Frequency Modulation",
+      "Frequency Allocation"
+    ],
+    "explanation": "Frequency Reuse allows efficient use of spectrum by assigning the same frequencies to different cells that are far enough apart.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which antenna technology improves reliability by reducing fading?",
+    "options": [
+      "Beamforming",
+      "Diversity",
+      "Array Gain",
+      "Spatial Multiplexing"
+    ],
+    "explanation": "Diversity techniques use multiple antennas to receive signals over different paths, reducing the impact of fading.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What is the main role of HARQ in LTE?",
+    "options": [
+      "Scheduling",
+      "Error correction with retransmission",
+      "Handover",
+      "Modulation adaptation"
+    ],
+    "explanation": "HARQ (Hybrid Automatic Repeat reQuest) combines error correction with retransmission to ensure reliable communication.",
+    "correctAnswer": [1]
+  },
+  
+  {
+    "question": "Which cellular generation is based entirely on IP (Internet Protocol) networks?",
+    "options": [
+      "2G",
+      "3G",
+      "4G",
+      "5G"
+    ],
+    "explanation": "4G LTE is the first generation of mobile networks designed entirely for IP-based communication, supporting VoIP and high-speed data.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which of the following is an example of a short-range wireless communication technology?",
+    "options": [
+      "WiMAX",
+      "Bluetooth",
+      "LTE",
+      "5G NR"
+    ],
+    "explanation": "Bluetooth is designed for short-range wireless communication, typically within 10 meters.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What is the main advantage of MIMO technology?",
+    "options": [
+      "Lower frequency usage",
+      "Higher data rate and reliability",
+      "Reduced power consumption",
+      "Simpler antenna design"
+    ],
+    "explanation": "MIMO (Multiple Input Multiple Output) increases throughput and reliability by using multiple antennas for spatial multiplexing and diversity.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which frequency band is mostly used for 5G mmWave communication?",
+    "options": [
+      "Sub-1 GHz",
+      "2.4 GHz",
+      "24–100 GHz",
+      "700 MHz"
+    ],
+    "explanation": "5G mmWave operates in very high-frequency bands, typically 24–100 GHz, to achieve extremely high data rates.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which modulation is commonly used in LTE?",
+    "options": [
+      "BPSK",
+      "QPSK, 16QAM, 64QAM",
+      "FSK",
+      "ASK"
+    ],
+    "explanation": "LTE uses adaptive modulation such as QPSK, 16QAM, and 64QAM depending on channel quality.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What does 'handover' mean in wireless networks?",
+    "options": [
+      "Switching from one device to another",
+      "Changing frequency bands",
+      "Transferring an active call/data session between cells",
+      "Allocating spectrum dynamically"
+    ],
+    "explanation": "Handover is the process of transferring an ongoing call or data session from one cell to another to maintain connectivity.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which multiple access scheme is used in 5G?",
+    "options": [
+      "OFDMA",
+      "TDMA",
+      "FDMA",
+      "SDMA"
+    ],
+    "explanation": "5G uses OFDMA (Orthogonal Frequency Division Multiple Access) for both uplink and downlink, enabling flexible resource allocation.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Which of the following is an advantage of frequency reuse?",
+    "options": [
+      "Reduced latency",
+      "Increased capacity",
+      "Improved modulation",
+      "Reduced antenna cost"
+    ],
+    "explanation": "Frequency reuse allows the same frequencies to be used in different cells, thereby increasing overall network capacity.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What is the main function of error-correcting codes?",
+    "options": [
+      "Increase transmission power",
+      "Reduce transmission delay",
+      "Detect and correct errors",
+      "Enhance antenna gain"
+    ],
+    "explanation": "Error-correcting codes improve reliability by detecting and correcting bit errors caused by noise and interference.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which type of antenna is commonly used in mobile phones?",
+    "options": [
+      "Parabolic dish",
+      "Monopole",
+      "Yagi-Uda",
+      "Horn antenna"
+    ],
+    "explanation": "Mobile phones typically use compact monopole or patch antennas that are small and efficient.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which term refers to allocating time slots to users?",
+    "options": [
+      "FDMA",
+      "TDMA",
+      "CDMA",
+      "OFDMA"
+    ],
+    "explanation": "TDMA (Time Division Multiple Access) divides a channel into time slots allocated to different users.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which of the following is NOT a service provided by LTE?",
+    "options": [
+      "VoLTE",
+      "Video Streaming",
+      "Online Gaming",
+      "Analog Voice Calls"
+    ],
+    "explanation": "LTE is a fully digital network and does not support analog voice calls.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "Which 3G technology was widely used in Europe and Asia?",
+    "options": [
+      "CDMA2000",
+      "UMTS (WCDMA)",
+      "WiMAX",
+      "GSM"
+    ],
+    "explanation": "UMTS (Universal Mobile Telecommunications System) based on WCDMA was the standard 3G technology in Europe and Asia.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What does 'spectrum efficiency' mean?",
+    "options": [
+      "Power saving in base stations",
+      "Efficient use of frequency spectrum to maximize data rate per Hz",
+      "Reducing antenna size",
+      "Minimizing delay"
+    ],
+    "explanation": "Spectrum efficiency refers to the ability to transmit the maximum possible data rate within a given bandwidth.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What does QoS stand for in wireless networks?",
+    "options": [
+      "Quality of Security",
+      "Quality of Service",
+      "Quantity of Spectrum",
+      "Queue of Signals"
+    ],
+    "explanation": "QoS (Quality of Service) refers to network performance guarantees like bandwidth, delay, and jitter for different applications.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which technology introduced packet switching in mobile networks?",
+    "options": [
+      "2G",
+      "2.5G (GPRS)",
+      "3G",
+      "4G"
+    ],
+    "explanation": "2.5G (GPRS) introduced packet-switched data services on top of 2G networks.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which antenna technique is used to direct signals toward specific users?",
+    "options": [
+      "Diversity",
+      "Beamforming",
+      "MIMO",
+      "HARQ"
+    ],
+    "explanation": "Beamforming directs signals toward a user to improve signal strength and reduce interference.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which of the following is NOT an application of 5G?",
+    "options": [
+      "Autonomous Vehicles",
+      "IoT (Internet of Things)",
+      "Remote Surgery",
+      "Analog TV Broadcasting"
+    ],
+    "explanation": "5G supports advanced applications like IoT, autonomous driving, and remote surgery but not analog TV broadcasting.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "What is the purpose of adaptive modulation in LTE?",
+    "options": [
+      "Increase antenna gain",
+      "Adjust data rate based on channel quality",
+      "Reduce handover delay",
+      "Improve voice clarity"
+    ],
+    "explanation": "Adaptive modulation adjusts the modulation scheme depending on channel quality, balancing speed and reliability.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which of the following is true about 3G networks?",
+    "options": [
+      "They only support analog voice",
+      "They introduced broadband internet",
+      "They are IP-only networks",
+      "They use mmWave frequencies"
+    ],
+    "explanation": "3G networks introduced broadband mobile internet and video calling, but were not fully IP-based.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which component of LTE handles mobility management and IP connectivity?",
+    "options": [
+      "E-UTRAN",
+      "eNodeB",
+      "EPC",
+      "HARQ"
+    ],
+    "explanation": "The EPC (Evolved Packet Core) handles mobility management, IP connectivity, and authentication in LTE networks.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "What is the typical latency target of 5G URLLC?",
+    "options": [
+      "100 ms",
+      "10 ms",
+      "1 ms",
+      "50 ms"
+    ],
+    "explanation": "5G URLLC (Ultra Reliable Low Latency Communication) aims for latency as low as 1 ms.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which of these technologies is backward-compatible with GSM networks?",
+    "options": [
+      "UMTS",
+      "WiMAX",
+      "5G NR",
+      "LoRa"
+    ],
+    "explanation": "UMTS (3G) was designed to be backward-compatible with GSM networks for easier migration.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Which type of multiplexing is used in OFDM?",
+    "options": [
+      "Time Division",
+      "Frequency Division",
+      "Orthogonal Frequency Division",
+      "Code Division"
+    ],
+    "explanation": "OFDM uses orthogonal frequency division, splitting the bandwidth into many orthogonal subcarriers.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which of the following is a limitation of mmWave communication?",
+    "options": [
+      "Low capacity",
+      "High latency",
+      "Poor penetration through obstacles",
+      "Lack of modulation schemes"
+    ],
+    "explanation": "mmWave signals cannot easily penetrate obstacles like walls or trees, limiting coverage.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which coding method is being adopted in 5G NR for error correction?",
+    "options": [
+      "Turbo Codes",
+      "Reed-Solomon",
+      "LDPC and Polar Codes",
+      "Hamming Codes"
+    ],
+    "explanation": "5G NR adopts LDPC for data channels and Polar Codes for control channels.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which multiple access technique allows all users to transmit simultaneously using different codes?",
+    "options": [
+      "FDMA",
+      "TDMA",
+      "CDMA",
+      "OFDMA"
+    ],
+    "explanation": "CDMA allows multiple users to share the same spectrum simultaneously by assigning unique codes.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which of the following is the main challenge in wireless communication?",
+    "options": [
+      "Multipath fading",
+      "High bandwidth",
+      "Mobility",
+      "Large coverage area"
+    ],
+    "explanation": "Multipath fading causes signal distortion due to reflections, making reliable wireless communication challenging.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "What is the main benefit of cell splitting in wireless networks?",
+    "options": [
+      "Increased coverage",
+      "Increased capacity",
+      "Reduced interference",
+      "Lower frequency usage"
+    ],
+    "explanation": "Cell splitting increases capacity by creating smaller cells that can handle more users.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which access technique divides spectrum into frequency bands?",
+    "options": [
+      "FDMA",
+      "TDMA",
+      "CDMA",
+      "OFDMA"
+    ],
+    "explanation": "FDMA (Frequency Division Multiple Access) assigns distinct frequency bands to different users.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Which part of LTE handles radio communication with mobile devices?",
+    "options": [
+      "EPC",
+      "MME",
+      "E-UTRAN",
+      "SGW"
+    ],
+    "explanation": "E-UTRAN (Evolved Universal Terrestrial Radio Access Network) manages the radio interface between user devices and the LTE network.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "What is the main limitation of 2G networks?",
+    "options": [
+      "No support for voice",
+      "Low data rates",
+      "High latency",
+      "No mobility"
+    ],
+    "explanation": "2G networks had very low data rates and were mainly designed for voice and SMS services.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which technique improves coverage by combining signals from multiple antennas?",
+    "options": [
+      "Spatial Multiplexing",
+      "Diversity",
+      "OFDMA",
+      "Beamforming"
+    ],
+    "explanation": "Diversity techniques improve coverage and reliability by combining signals from multiple antennas.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What is the maximum modulation scheme used in standard LTE?",
+    "options": [
+      "QPSK",
+      "16QAM",
+      "64QAM",
+      "256QAM"
+    ],
+    "explanation": "Standard LTE supports up to 64QAM modulation, while LTE-Advanced introduced 256QAM.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which service requires the lowest latency?",
+    "options": [
+      "File downloads",
+      "Email",
+      "Remote surgery",
+      "Video streaming"
+    ],
+    "explanation": "Remote surgery requires ultra-low latency to ensure immediate response and precision.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "What is the main function of a base station in a cellular system?",
+    "options": [
+      "Provide internet backbone",
+      "Manage user mobility and radio access",
+      "Generate modulation schemes",
+      "Allocate IP addresses"
+    ],
+    "explanation": "The base station (eNodeB in LTE) handles radio communication, user mobility, and resource allocation.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which of the following is the key feature of 5G massive MIMO?",
+    "options": [
+      "High latency",
+      "Multiple antennas serving many users",
+      "Analog-only signals",
+      "Reduced frequency reuse"
+    ],
+    "explanation": "Massive MIMO in 5G uses many antennas to serve multiple users simultaneously with high efficiency.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which network parameter is measured in bits per second per Hz?",
+    "options": [
+      "Latency",
+      "Throughput",
+      "Spectral efficiency",
+      "Bandwidth"
+    ],
+    "explanation": "Spectral efficiency measures how efficiently bandwidth is used, in bps/Hz.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which 5G service type supports IoT devices with low power and massive connectivity?",
+    "options": [
+      "eMBB",
+      "URLLC",
+      "mMTC",
+      "VoLTE"
+    ],
+    "explanation": "mMTC (Massive Machine-Type Communication) enables connectivity for billions of IoT devices.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which wireless standard is often called WiMAX?",
+    "options": [
+      "IEEE 802.11",
+      "IEEE 802.15",
+      "IEEE 802.16",
+      "IEEE 802.3"
+    ],
+    "explanation": "WiMAX is based on the IEEE 802.16 standard for broadband wireless access.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which cellular generation first introduced video calling?",
+    "options": [
+      "2G",
+      "3G",
+      "4G",
+      "5G"
+    ],
+    "explanation": "3G networks introduced video calling and mobile internet browsing.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which wireless channel phenomenon causes signal copies to arrive at different times?",
+    "options": [
+      "Interference",
+      "Multipath",
+      "Fading",
+      "Diversity"
+    ],
+    "explanation": "Multipath occurs when signal copies reflect off obstacles and arrive at the receiver at slightly different times.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which of these is NOT a core feature of 5G?",
+    "options": [
+      "Enhanced Mobile Broadband",
+      "Ultra-Reliable Low Latency Communication",
+      "Massive Machine-Type Communication",
+      "Analog Voice Transmission"
+    ],
+    "explanation": "5G focuses on eMBB, URLLC, and mMTC. Analog voice is not part of 5G.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "Which part of the electromagnetic spectrum is typically used for mobile communication?",
+    "options": [
+      "Gamma rays",
+      "Microwave and radio frequencies",
+      "Infrared",
+      "X-rays"
+    ],
+    "explanation": "Mobile communication mainly uses radio and microwave frequencies ranging from hundreds of MHz to a few GHz.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which multiple access technique divides users into orthogonal subcarriers?",
+    "options": [
+      "CDMA",
+      "FDMA",
+      "TDMA",
+      "OFDMA"
+    ],
+    "explanation": "OFDMA divides spectrum into orthogonal subcarriers, each assigned to different users.",
+    "correctAnswer": [3]
+  }
 ]
-          
+
+
+      
     
   }
 
@@ -703,7 +1368,17 @@ export function getAllQuestions(mode: PracticeMode): Question[] {
   // Function to get questions based on mode
   const getQuestionsByMode = (mode: PracticeMode, weekQuestions: WeekQuestions): Question[] => {
     // For the "ultimate" challenge mode, combine and randomize questions from all weeks
-   
+   if (mode === "assignment") {
+    let allQuestions: Question[] = [];
+    // Gather questions from all weeks (excluding assignment)
+    for (const week in weekQuestions) {
+      if (week !== "assignment") {
+        allQuestions = [...allQuestions, ...weekQuestions[week]];
+      }
+    }
+    // Shuffle all questions and their options
+    return shuffleArray(allQuestions).map((q) => shuffleOptions(q));
+  }
   
     // For the "all" mode, combine questions from all weeks
     if (mode === "all") {
