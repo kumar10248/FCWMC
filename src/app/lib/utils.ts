@@ -17,3 +17,33 @@ export function formatTime(seconds: number): string {
 export function calculateSessionTime(questionCount: number): number {
   return questionCount * 60; // 120 seconds (2 minutes) per question
 }
+
+// Helper function to validate image file paths
+export function validateImagePath(imagePath: string): boolean {
+  if (!imagePath) return false;
+  
+  // Check if path starts with /images/
+  if (!imagePath.startsWith('/images/')) return false;
+  
+  // Check for supported file extensions
+  const supportedExtensions = ['.png', '.jpg', '.jpeg', '.svg', '.webp'];
+  const hasValidExtension = supportedExtensions.some(ext => 
+    imagePath.toLowerCase().endsWith(ext)
+  );
+  
+  return hasValidExtension;
+}
+
+// Helper function to get image display name from path
+export function getImageDisplayName(imagePath: string): string {
+  if (!imagePath) return '';
+  
+  const filename = imagePath.split('/').pop() || '';
+  const nameWithoutExtension = filename.split('.').slice(0, -1).join('.');
+  
+  // Convert kebab-case to readable format
+  return nameWithoutExtension
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}

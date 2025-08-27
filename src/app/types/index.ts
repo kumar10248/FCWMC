@@ -1,8 +1,16 @@
+export interface OptionItem {
+  text: string;
+  image?: string;
+  imageSize?: 'small' | 'medium' | 'large';
+}
+
 export interface Question {
   question: string;
-  options: string[];
+  options: (string | OptionItem)[]; // Support both simple strings and enhanced options with images
   correctAnswer: number[]; // Now all questions use an array for correctAnswers
   explanation: string;
+  image?: string; // Optional image URL for questions that need visual aids
+  imageSize?: 'small' | 'medium' | 'large' | 'full'; // Optional image size control
 }
 
 export interface WeekQuestions {

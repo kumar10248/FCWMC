@@ -115,6 +115,46 @@ export function getAllQuestions(mode: PracticeMode): Question[] {
     ],
     "explanation": "A firewall is a network securing software that prevents unauthorized users and dangerous elements from accessing the network. Software firewall acts as a filter for our network which prevents harmful information.",
     "correctAnswer": [0]
+  },
+  {
+    "question": "Which of the following is incorrect?",
+    "options": [
+      "A: Transmit diversity (TM2)",
+      "B: Closed loop spatial multiplexing (TM3)",
+      "C: CL rank = 1 (TM6)",
+      "D: Open loop spatial multiplexing (TM4)"
+    ],
+    "explanation": "Based on the MIMO decision tree shown in the diagram, all the transmission modes are correctly described. TM2 refers to transmit diversity, TM3 is closed loop spatial multiplexing, TM6 is closed loop rank-1 precoding, and TM4 is open loop spatial multiplexing. The question asks which is incorrect, but all options are actually correct descriptions of their respective transmission modes.",
+    "correctAnswer": [2],
+    "image": "/images/mimo-decision-tree.svg",
+    "imageSize": "large"
+  },
+  {
+    "question": "Which network topology node would be most suitable for a central hub in a star network configuration?",
+    "options": [
+      {
+        "text": "Circular node with high connectivity",
+        "image": "/images/option-a.svg",
+        "imageSize": "small"
+      },
+      {
+        "text": "Square node with moderate processing power",
+        "image": "/images/option-b.svg",
+        "imageSize": "small"
+      },
+      {
+        "text": "Triangular node with edge computing capabilities",
+        "image": "/images/option-c.svg",
+        "imageSize": "small"
+      },
+      {
+        "text": "Diamond node with specialized routing functions",
+        "image": "/images/option-d.svg",
+        "imageSize": "small"
+      }
+    ],
+    "explanation": "In a star network topology, the central hub requires high connectivity and processing capabilities to manage all network traffic. The circular node (Option A) represents a design optimized for maximum connectivity with multiple connection points, making it the ideal choice for a central hub that needs to handle traffic from all connected devices efficiently.",
+    "correctAnswer": [0]
   }
 ],
       
@@ -339,9 +379,114 @@ export function getAllQuestions(mode: PracticeMode): Question[] {
       ],
     
        module5:[
-    
-       
+  
+  {
+    "question": "Which of the following statements is not correct about LTE OFDM?",
+    "options": [
+      "OFDM is a parallel transmission method using multiple subcarriers.",
+      "1200 subcarriers with 15KHz subcarrier spacing are used when the system bandwidth is 20MHz.",
+      "The OFDM symbol length, which is the inverse of the system bandwidth, is 50ns when the system bandwidth is 20MHz.",
+      "The cyclic prefix helps to keep the orthogonality among the multiple subcarriers in most typical practical cellular environments."
     ],
+    "explanation": "The statement about OFDM symbol length is incorrect. The OFDM symbol length is not the inverse of the system bandwidth. In LTE, the OFDM symbol length is approximately 66.7μs (microseconds), not 50ns (nanoseconds). The symbol length is related to the subcarrier spacing (15 kHz), not the system bandwidth.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which of the following statements is not correct about LTE MCS?",
+    "options": [
+      "BPSK, QPSK, 16QAM, and 64QAM can be used for each subcarrier in an OFDM symbol.",
+      "Turbo code with various code rates is used as the channel code in LTE.",
+      "Each LTE MCS is mapped to its own channel quality information index.",
+      "The data rate of an LTE MCS is determined by the modulation order."
+    ],
+    "explanation": "The statement that 'The data rate of an LTE MCS is determined by the modulation order' is incorrect. The data rate of an LTE MCS (Modulation and Coding Scheme) is determined by both the modulation order AND the coding rate, not just the modulation order alone. Higher modulation orders allow more bits per symbol, but the coding rate also affects the effective data rate.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "Select the most appropriate one for the procedure of LTE H-ARQ.",
+    "options": [
+      "(CQI report) → (Scheduling) → (Data transmission) → (ACK or NACK) → (Retransmission if NACK)",
+      "(Data transmission) → (Scheduling) → (CQI report) → (ACK or NACK) → (Retransmission if NACK)",
+      "(Scheduling) → (CQI report) → (Data transmission) → (ACK or NACK) → (Retransmission if NACK)",
+      "(CQI report) → (Data transmission) → (Scheduling) → (ACK or NACK) → (Retransmission if NACK)"
+    ],
+    "explanation": "The correct H-ARQ (Hybrid Automatic Repeat Request) procedure in LTE starts with CQI (Channel Quality Indicator) report from the UE, followed by scheduling decision by the base station, then data transmission, then ACK/NACK feedback, and finally retransmission if NACK is received. This sequence ensures proper channel assessment, resource allocation, and error recovery.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Which of following statements is not correct about LTE frame structure and multiple access?",
+    "options": [
+      "The basic resource unit is 1ms in time and 12 subcarriers in frequency.",
+      "In downlink, orthogonal frequency division multiple access is used.",
+      "In uplink, every user transmits with the same transmission power.",
+      "In uplink, single carrier frequency division multiple access is used."
+    ],
+    "explanation": "The statement 'In uplink, every user transmits with the same transmission power' is incorrect. In LTE uplink, users do not transmit with the same power. Power control is used to optimize system performance, manage interference, and compensate for different path losses. Users closer to the base station typically transmit with lower power than users farther away.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which of the Tx structure is appropriate for the following scheme of SFBC (Space-Frequency-Block-Coding)?",
+    "options": [
+       {
+        "text": "1",
+        "image": "/images/op1.png",
+        "imageSize": "small"
+      },
+      {
+        "text": "2",
+        "image": "/images/op2.png",
+        "imageSize": "small"
+      },
+    ],
+    "explanation": "Based on the diagram showing Antenna 1 and Antenna 2 with subcarrier allocation patterns (S0, S1, -S1*, S0*), this represents a 2x2 SFBC (Space-Frequency Block Coding) transmission structure where signals are transmitted across two antennas and two subcarriers with Alamouti-type coding.",
+    "correctAnswer": [0],
+    "image":"/images/m5-1.png",
+    "imageSize":"large"
+  },
+  {
+    "question": "Which of the following statements does not correspond to LTE-Advanced key items?",
+    "options": [
+      "Uplink diversity utilizing up to 4 antennas.",
+      "Peak spectrum efficiency of 20 bps / Hz for downlink, and 30 bps / Hz for uplink.",
+      "Coordinated multipoint transmission/reception, called CoMP.",
+      "Extension of downlink diversity to 8 antennas.",
+      "Further enhancement of downlink MU-MIMO (R10 main issue)."
+    ],
+    "explanation": "The statement about 'Peak spectrum efficiency of 20 bps / Hz for downlink, and 30 bps / Hz for uplink' is incorrect for LTE-Advanced. The actual peak spectrum efficiency targets for LTE-Advanced are typically 30 bps/Hz for downlink and 15 bps/Hz for uplink, not the values stated in the option.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which of the following is incorrect?",
+    "options": [
+      "A: Transmit diversity (TM2)",
+      "B: Closed loop spatial multiplexing (TM3)", 
+      "C: CL rank = 1 (TM6)",
+      "D: Open loop spatial multiplexing (TM4)"
+    ],
+    "explanation": "Based on the diagram and your note, option D is incorrect. The diagram shows that position D corresponds to 'Multi-Stream Rank 2-4' under 'Closed Loop' operation with 'High SINR and rich scattering' conditions, which would be closed loop spatial multiplexing, not open loop spatial multiplexing (TM4).",
+    "correctAnswer": [3],
+    "image":"/images/m5-2.png",
+    "imageSize":"large"
+  },
+  {
+    "question": "What is the main reason to have open loop power control?",
+    "options": [
+      "Fast set-up for initial power level.",
+      "Fast support of moving users."
+    ],
+    "explanation": "The main reason for open loop power control is fast set-up for initial power level. Open loop power control allows quick initial power estimation based on downlink measurements without requiring feedback from the base station, enabling rapid power level establishment when a user first connects or during handovers.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Why is PF scheduler \"proportionally\" fair?",
+    "options": [
+      "It prioritizes less received users.",
+      "It always gives more chances to users closer to the base station."
+    ],
+    "explanation": "PF (Proportional Fair) scheduler is 'proportionally' fair because it prioritizes users who have received less service relative to their channel conditions. It balances between maximizing total system throughput and providing fair access to all users by giving higher priority to users with relatively poor recent service history, thus achieving proportional fairness.",
+    "correctAnswer": [0]
+  }
+],
      module1:[
   {
     "question": "What does BW stand for in communication field?",

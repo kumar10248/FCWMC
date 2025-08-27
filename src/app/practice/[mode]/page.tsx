@@ -2,13 +2,14 @@
 import { useState, useEffect, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FaArrowLeft, FaArrowRight, FaClock, FaTimes, FaBars, FaCheck, 
   FaTrophy, FaExclamationCircle, FaLightbulb, 
   FaChevronRight, FaBrain, FaCheckCircle, FaTimesCircle, FaHistory,
   FaInfoCircle, FaSquare, FaCheckSquare } from 'react-icons/fa';
 import { getAllQuestions } from '../../lib/questions';
-import { Question, PracticeMode } from '../../types';
-import { formatTime, calculateSessionTime } from '@/app/lib/utils';
+import { Question, PracticeMode, OptionItem } from '../../types';
+import { formatTime, calculateSessionTime, validateImagePath, getImageDisplayName } from '@/app/lib/utils';
 
 export default function QuestionPracticePage() {
   const router = useRouter();
@@ -33,6 +34,19 @@ export default function QuestionPracticePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [loadingError, setLoadingError] = useState<string | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  
+  // Helper functions for option handling
+  const getOptionText = (option: string | OptionItem): string => {
+    return typeof option === 'string' ? option : option.text;
+  };
+  
+  const getOptionImage = (option: string | OptionItem): string | undefined => {
+    return typeof option === 'string' ? undefined : option.image;
+  };
+  
+  const getOptionImageSize = (option: string | OptionItem): 'small' | 'medium' | 'large' => {
+    return typeof option === 'string' ? 'medium' : (option.imageSize || 'medium');
+  };
   
   // Load questions based on the mode
   useEffect(() => {
@@ -554,14 +568,59 @@ const handleSingleOptionSelect = (optionIndex: number) => {
                 </div>
               </div>
               
-              <h2 className="text-xl md:text-2xl mb-10 font-medium leading-relaxed">
+              <h2 className="text-xl md:text-2xl mb-6 font-medium leading-relaxed">
                 <pre className="bg-clip-text text-transparent bg-gradient-to-r from-amber-200 to-amber-400 whitespace-pre-wrap">
                   {currentQuestion?.question || "Question not available"}
                 </pre>
               </h2>
               
+              {/* Question image - displayed if image URL is provided */}
+              {currentQuestion?.image && validateImagePath(currentQuestion.image) && (
+                <div className="mb-8 flex justify-center">
+                  <div className={`bg-white p-4 rounded-lg shadow-lg w-full ${
+                    currentQuestion.imageSize === 'small' ? 'max-w-md' :
+                    currentQuestion.imageSize === 'medium' ? 'max-w-lg' :
+                    currentQuestion.imageSize === 'large' ? 'max-w-2xl' :
+                    currentQuestion.imageSize === 'full' ? 'max-w-full' :
+                    'max-w-2xl' // default
+                  }`}>
+                    <div className="mb-2 text-center">
+                      <span className="text-sm text-gray-600 font-medium">
+                        {getImageDisplayName(currentQuestion.image)}
+                      </span>
+                    </div>
+                    {currentQuestion.image.endsWith('.svg') ? (
+                      <img 
+                        src={currentQuestion.image} 
+                        alt={`Diagram: ${getImageDisplayName(currentQuestion.image)}`}
+                        className="w-full h-auto rounded"
+                        onError={(e) => {
+                          console.error('Failed to load image:', currentQuestion.image);
+                          (e.target as HTMLImageElement).style.display = 'none';
+                        }}
+                      />
+                    ) : (
+                      <Image
+                        src={currentQuestion.image}
+                        alt={`Diagram: ${getImageDisplayName(currentQuestion.image)}`}
+                        width={800}
+                        height={600}
+                        className="w-full h-auto rounded"
+                        onError={() => {
+                          console.error('Failed to load image:', currentQuestion.image);
+                        }}
+                      />
+                    )}
+                  </div>
+                </div>
+              )}
+              
               <div className="space-y-4">
                 {currentQuestion?.options?.map((option, index) => {
+                  const optionText = getOptionText(option);
+                  const optionImage = getOptionImage(option);
+                  const optionImageSize = getOptionImageSize(option);
+                  
                   // Define the styling based on the state and question type
                   const baseStyle = "w-full text-left p-5 rounded-lg transition-all duration-300 flex items-start border";
                   let dynamicStyle = "bg-gray-800/80 hover:bg-gray-700/90 hover:border-gray-500 border-transparent";
@@ -637,7 +696,41 @@ const handleSingleOptionSelect = (optionIndex: number) => {
                       disabled={isCurrentQuestionAnswered}
                     >
                       {iconComponent}
-                      <span className="ml-4 text-lg text-left">{option}</span>
+                      <div className="ml-4 flex-1">
+                        <div className="text-lg text-left">{optionText}</div>
+                        {optionImage && validateImagePath(optionImage) && (
+                          <div className={`mt-3 ${
+                            optionImageSize === 'small' ? 'max-w-xs' :
+                            optionImageSize === 'medium' ? 'max-w-sm' :
+                            'max-w-md'
+                          }`}>
+                            <div className="bg-white p-2 rounded shadow-md">
+                              {optionImage.endsWith('.svg') ? (
+                                <img 
+                                  src={optionImage} 
+                                  alt={`Option ${String.fromCharCode(65 + index)} image`}
+                                  className="w-full h-auto rounded"
+                                  onError={(e) => {
+                                    console.error('Failed to load option image:', optionImage);
+                                    (e.target as HTMLImageElement).style.display = 'none';
+                                  }}
+                                />
+                              ) : (
+                                <Image
+                                  src={optionImage}
+                                  alt={`Option ${String.fromCharCode(65 + index)} image`}
+                                  width={400}
+                                  height={300}
+                                  className="w-full h-auto rounded"
+                                  onError={() => {
+                                    console.error('Failed to load option image:', optionImage);
+                                  }}
+                                />
+                              )}
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     </button>
                   );
                 })}
@@ -705,7 +798,7 @@ const handleSingleOptionSelect = (optionIndex: number) => {
                       <ul className="list-disc list-inside pl-4 text-gray-300 space-y-1">
                         {currentQuestion.correctAnswer.map((index) => (
                           <li key={index} className="text-green-300">
-                            {currentQuestion.options[index]}
+                            {getOptionText(currentQuestion.options[index])}
                           </li>
                         ))}
                       </ul>
