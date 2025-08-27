@@ -115,47 +115,8 @@ export function getAllQuestions(mode: PracticeMode): Question[] {
     ],
     "explanation": "A firewall is a network securing software that prevents unauthorized users and dangerous elements from accessing the network. Software firewall acts as a filter for our network which prevents harmful information.",
     "correctAnswer": [0]
-  },
-  {
-    "question": "Which of the following is incorrect?",
-    "options": [
-      "A: Transmit diversity (TM2)",
-      "B: Closed loop spatial multiplexing (TM3)",
-      "C: CL rank = 1 (TM6)",
-      "D: Open loop spatial multiplexing (TM4)"
-    ],
-    "explanation": "Based on the MIMO decision tree shown in the diagram, all the transmission modes are correctly described. TM2 refers to transmit diversity, TM3 is closed loop spatial multiplexing, TM6 is closed loop rank-1 precoding, and TM4 is open loop spatial multiplexing. The question asks which is incorrect, but all options are actually correct descriptions of their respective transmission modes.",
-    "correctAnswer": [2],
-    "image": "/images/mimo-decision-tree.svg",
-    "imageSize": "large"
-  },
-  {
-    "question": "Which network topology node would be most suitable for a central hub in a star network configuration?",
-    "options": [
-      {
-        "text": "Circular node with high connectivity",
-        "image": "/images/option-a.svg",
-        "imageSize": "small"
-      },
-      {
-        "text": "Square node with moderate processing power",
-        "image": "/images/option-b.svg",
-        "imageSize": "small"
-      },
-      {
-        "text": "Triangular node with edge computing capabilities",
-        "image": "/images/option-c.svg",
-        "imageSize": "small"
-      },
-      {
-        "text": "Diamond node with specialized routing functions",
-        "image": "/images/option-d.svg",
-        "imageSize": "small"
-      }
-    ],
-    "explanation": "In a star network topology, the central hub requires high connectivity and processing capabilities to manage all network traffic. The circular node (Option A) represents a design optimized for maximum connectivity with multiple connection points, making it the ideal choice for a central hub that needs to handle traffic from all connected devices efficiently.",
-    "correctAnswer": [0]
   }
+
 ],
       
       module2:[
