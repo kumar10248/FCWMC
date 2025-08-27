@@ -388,9 +388,9 @@ export function getAllQuestions(mode: PracticeMode): Question[] {
     "question": "Given the antenna configuration shown below, if we want to send the signal from the Tx to the Rx, which of the following should have high value for good performance (S is the S parameter)? (Choose two)",
     "options": [
       "S11",
-      "S21", 
-      "S12",
-      "S31"
+      "S31", 
+      "S32",
+      "S21"
     ],
     "explanation": "For good transmission performance from Tx to Rx through a duplexer system, S21 and S12 should have high values. S21 represents the forward transmission coefficient (Tx to Rx path), and S12 represents the reverse transmission coefficient. High values for these parameters indicate good signal transmission through the duplexer with minimal loss.",
     "correctAnswer": [1, 2],
@@ -400,7 +400,7 @@ export function getAllQuestions(mode: PracticeMode): Question[] {
   {
     "question": "If antenna gain of 10 dBi was achieved using a single antenna, what would be the ideal gain of an array of antennas under identical conditions if the signal power was boosted by 100 times?",
     "options": [
-      "30 dB",
+      "50 dBi",
       "100 dBi",
       "20 dBi", 
       "30 dBi",
