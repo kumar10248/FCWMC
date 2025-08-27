@@ -336,7 +336,130 @@ export function getAllQuestions(mode: PracticeMode): Question[] {
   }
 ],
       module4:[
-
+        {
+    "question": "For a perfectly uncorrelated (multipath) channel with 2 Tx antennas and 2 Rx antennas, how many paths can we exploit at maximum?",
+    "options": [
+      "2",
+      "1",
+      "8", 
+      "4",
+      "6"
+    ],
+    "explanation": "In a perfectly uncorrelated multipath channel with 2 Tx antennas and 2 Rx antennas, the maximum number of exploitable paths is 4. This is because each transmit antenna can have independent multipath channels to each receive antenna, creating 2×2 = 4 independent spatial paths that can be exploited for spatial multiplexing or diversity.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "If we have a 2 by 2 MIMO system with modulation scheme of 2 bps/Hz per symbol, what is the achievable maximum spectral efficiency?",
+    "options": [
+      "8 bps/Hz",
+      "2 bps/Hz",
+      "1 bps/Hz",
+      "4 bps/Hz"
+    ],
+    "explanation": "For a 2×2 MIMO system with 2 bps/Hz per symbol modulation, the maximum spectral efficiency is 4 bps/Hz. This is calculated as: 2 spatial streams × 2 bps/Hz per symbol = 4 bps/Hz total. Each spatial stream can carry 2 bps/Hz, and with 2 independent streams, the total achievable spectral efficiency is doubled.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "Which of the statements is erroneous? (Choose two)",
+    "options": [
+      "Diversity can be achieved in space, time, and frequency.",
+      "Tx diversity can be the same as Rx diversity.",
+      "Multi-user MIMO can only be formed when a base station and a user both have multiple antennas at their sides.",
+      "Diversity gain can be made by antenna selection.",
+      "Alamouti coding is a type of antenna selection."
+    ],
+    "explanation": "The two erroneous statements are: 1) 'Multi-user MIMO can only be formed when a base station and a user both have multiple antennas at their sides' - Multi-user MIMO only requires multiple antennas at the base station, not necessarily at each user. 2) 'Alamouti coding is a type of antenna selection' - Alamouti coding is a space-time block coding technique, not antenna selection. It uses space-time coding across multiple antennas simultaneously.",
+    "correctAnswer": [2, 4]
+  },
+  {
+    "question": "Which of the following does not achieve maximum sum rate?",
+    "options": [
+      "A",
+      "B", 
+      "C",
+      "D"
+    ],
+    "explanation": "Based on the water-filling algorithm diagrams shown, option D does not achieve maximum sum rate. The water-filling algorithm allocates power optimally across subcarriers based on channel conditions. Option D shows a suboptimal power allocation that doesn't follow the water-filling principle, resulting in lower sum rate compared to the optimal allocation.",
+    "correctAnswer": [3],
+    "image":"/images/m4-4.png",
+    "imageSize":"large"
+  },
+  {
+    "question": "Given the antenna configuration shown below, if we want to send the signal from the Tx to the Rx, which of the following should have high value for good performance (S is the S parameter)? (Choose two)",
+    "options": [
+      "S11",
+      "S21", 
+      "S12",
+      "S31"
+    ],
+    "explanation": "For good transmission performance from Tx to Rx through a duplexer system, S21 and S12 should have high values. S21 represents the forward transmission coefficient (Tx to Rx path), and S12 represents the reverse transmission coefficient. High values for these parameters indicate good signal transmission through the duplexer with minimal loss.",
+    "correctAnswer": [1, 2],
+    "image":"/images/m4-3.png",
+    "imageSize":"large"
+  },
+  {
+    "question": "If antenna gain of 10 dBi was achieved using a single antenna, what would be the ideal gain of an array of antennas under identical conditions if the signal power was boosted by 100 times?",
+    "options": [
+      "30 dB",
+      "100 dBi",
+      "20 dBi", 
+      "30 dBi",
+      "11 dBi"
+    ],
+    "explanation": "If the signal power is boosted by 100 times, this represents a 20 dB increase (10 × log10(100) = 20 dB). Adding this to the original antenna gain: 10 dBi + 20 dB = 30 dBi. Therefore, the ideal gain of the antenna array would be 30 dBi.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "Which of the statements is erroneous? (Choose two)",
+    "options": [
+      "The directivity of an antenna is determined by the beamwidth.",
+      "Circular array and linear array generate identical radiation patterns.",
+      "Radiation pattern can be only controlled by amplitude control.",
+      "With very closely spaced receiver antennas (specifically correlated channels for SIMO single-input-multiple-output), an array gain of ≈dB can be achieved.",
+      "Array gain can be used to reduce spatial interference for other users."
+    ],
+    "explanation": "The two erroneous statements are: 1) 'Circular array and linear array generate identical radiation patterns' - Different array geometries produce different radiation patterns due to their spatial configurations. 2) 'Radiation pattern can be only controlled by amplitude control' - Radiation patterns can be controlled by both amplitude and phase control of individual antenna elements, not just amplitude alone.",
+    "correctAnswer": [1, 2]
+  },
+  {
+    "question": "Which correctly names the types of antennas shown below?",
+    "options": [
+      "A: Whip, B: PCB, C: Feedhorn, D: Monopole, E: Dipole",
+      "A: Chip, B: Dipole, C: Microstrip, D: Cassegrain, E: Monopole", 
+      "A: Monopole, B: Dipole, C: PCB, D: Feedhorn, E: Cassegrain",
+      "A: Whip, B: Monopole, C: PCB, D: Dipole, E: Cassegrain"
+    ],
+    "explanation": "Based on the antenna images shown: A appears to be a monopole antenna (single vertical element), B appears to be a dipole antenna (two-element design), C appears to be a PCB antenna (printed circuit board antenna), D appears to be a feedhorn antenna (horn-shaped), and E appears to be a Cassegrain antenna (parabolic dish with secondary reflector).",
+    "correctAnswer": [2],
+    "image":"/images/m4-1.png",
+    "imageSize":"large"
+  },
+  {
+    "question": "What cannot be the antenna gain for the directed antenna below in dBi?",
+    "options": [
+      "5 dBi",
+      "3 dBi", 
+      "6 dBi",
+      "12 dBi"
+    ],
+    "explanation": "For the directional antenna shown with its radiation pattern, 3 dBi would be too low for a directed antenna of this type. Directional antennas typically have gains higher than 3 dBi due to their focusing effect. The other values (5, 6, and 12 dBi) are more realistic for directional antennas depending on their specific design and beamwidth.",
+    "correctAnswer": [1],
+    "image":"/images/m4-2.png",
+    "imageSize":"large"
+  },
+  {
+    "question": "Which of the following is a non-degraded channel?",
+    "options": [
+      "A",
+      "B",
+      "C", 
+      "D"
+    ],
+    "explanation": "Based on the channel response diagrams, option C represents a non-degraded channel. A non-degraded channel maintains relatively flat frequency response across the bandwidth without significant attenuation or distortion, while the other options show various forms of channel degradation such as frequency-selective fading or significant attenuation.",
+    "correctAnswer": [2],
+    "image":"/images/m4-5.png",
+    "imageSize":"large"
+  }
       ],
     
        module5:[
