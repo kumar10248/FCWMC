@@ -2292,7 +2292,568 @@ const allQuestionsData: AllQuestionsData = {
       ],
       "explanation": "5G achieves ultra-high data rates through wider bandwidth, advanced modulation, massive MIMO, and higher frequency bands.",
       "correctAnswer": [1]
-    }
+    },
+    {
+"question": "Which category of transmission media uses a physical path like cables or wires?",
+"options": [
+"Guided media",
+"Unguided media",
+"Satellite media",
+"Quantum media"
+],
+"explanation": "Guided (wired/bounded) media transmit signals through a physical path such as cables or wires. ",
+"correctAnswer": [0]
+},
+{
+"question": "Unshielded Twisted Pair (UTP) cables are typically used for:",
+"options": [
+"Long-haul submarine links",
+"LANs with up to ~100 m runs",
+"Deep-space communication",
+"High-power RF transmission"
+],
+"explanation": "UTP is cheaper, commonly used in LANs, and typically supports 1–10 Gbps up to about 100 meters. ",
+"correctAnswer": [1]
+},
+{
+"question": "Shielded Twisted Pair (STP) differs from UTP primarily because STP:",
+"options": [
+"Uses fiber instead of copper",
+"Has additional shielding to reduce noise",
+"Cannot support Gigabit speeds",
+"Is wireless"
+],
+"explanation": "STP includes an additional shield that reduces noise and can improve data security/speed relative to UTP. ",
+"correctAnswer": [1]
+},
+{
+"question": "Which transmission medium provides better shielding and higher bandwidth than twisted pair?",
+"options": [
+"Coaxial cable",
+"Infrared link",
+"Microwave link",
+"UTP cable"
+],
+"explanation": "Coaxial cable has a central conductor, insulation, and metal shielding, offering better shielding and higher bandwidth than twisted pair. ",
+"correctAnswer": [0]
+},
+{
+"question": "Which is the fastest data-transferring wired medium and is immune to electromagnetic interference?",
+"options": [
+"UTP",
+"STP",
+"Coaxial cable",
+"Optical fiber"
+],
+"explanation": "Optical fiber uses light, supports very high bandwidth, long distances, and is immune to electromagnetic interference. ",
+"correctAnswer": [3]
+},
+{
+"question": "Single Mode Fiber (SMF) is primarily used for:",
+"options": [
+"Short-distance links only",
+"Long-distance transmission",
+"Analog TV distribution only",
+"Wireless backhaul only"
+],
+"explanation": "SMF is designed for long-distance transmission, while MMF is used for shorter distances. ",
+"correctAnswer": [1]
+},
+{
+"question": "Which category of transmission media uses electromagnetic waves without a physical conductor?",
+"options": [
+"Wired media",
+"Guided media",
+"Unguided (wireless) media",
+"Shielded media"
+],
+"explanation": "Unguided media transmit data through free space using electromagnetic waves and are also called unbounded media. ",
+"correctAnswer": [2]
+},
+{
+"question": "Microwave links typically require which condition for reliable communication?",
+"options": [
+"Underwater conduits",
+"Line-of-sight alignment between endpoints",
+"High humidity environments",
+"Noisy urban corridors"
+],
+"explanation": "Microwave communication generally requires line-of-sight between transmitter and receiver, often with directional antennas. ",
+"correctAnswer": [1]
+},
+{
+"question": "Infrared communication is best characterized by:",
+"options": [
+"Long-range and penetrates walls",
+"Short-range and blocked by obstacles",
+"Global coverage via satellites",
+"Undersea cable replacement"
+],
+"explanation": "Infrared is short-range and cannot pass through walls; obstacles hinder the signal (e.g., TV remote). ",
+"correctAnswer": [1]
+},
+{
+"question": "Radio waves are described as:",
+"options": [
+"Highly directional only",
+"Omni-directional and easy to generate/use",
+"Confined to optical fibers",
+"Ineffective for mobile phones"
+],
+"explanation": "Radio waves are electromagnetic waves that can travel in all directions and are easy to generate; used in FM radio, TV, and mobiles. ",
+"correctAnswer": [1]
+},
+{
+"question": "Which wireless technology provides global coverage using orbiting platforms?",
+"options": [
+"Infrared",
+"Bluetooth",
+"Satellite communication",
+"Wi-Fi only"
+],
+"explanation": "Satellite communication uses satellites to cover very large areas (global), supporting GPS, weather, and international broadcasting. ",
+"correctAnswer": [2]
+},
+{
+"question": "In the electromagnetic spectrum, as frequency increases, wavelength:",
+"options": [
+"Increases",
+"Decreases",
+"Stays constant",
+"Becomes negative"
+],
+"explanation": "Frequency and wavelength are inversely related: moving left to right, frequency increases and wavelength decreases. ",
+"correctAnswer": [1]
+},
+{
+"question": "Digital electronics primarily deals with signals that:",
+"options": [
+"Continuously vary over time",
+"Have two discrete states 0 and 1",
+"Are only analog",
+"Are only optical"
+],
+"explanation": "Digital electronics uses digital signals with two states: 0 (Low/OFF) and 1 (High/ON). ",
+"correctAnswer": [1]
+},
+{
+"question": "Which is NOT an advantage of digital electronics over analog according to the notes?",
+"options": [
+"High noise immunity",
+"Easy storage and processing",
+"More reliable and flexible",
+"Requires large antennas"
+],
+"explanation": "Advantages include noise immunity, easy storage/processing, reliability, encryption; large antennas relate to low-frequency baseband, not a digital advantage. ",
+"correctAnswer": [3]
+},
+{
+"question": "Which gates are universal and can implement any logic circuit?",
+"options": [
+"AND and OR",
+"XOR and XNOR",
+"NAND and NOR",
+"NOT and XOR"
+],
+"explanation": "NAND and NOR are universal gates; any logic circuit can be constructed using only one of them. ",
+"correctAnswer": [2]
+},
+{
+"question": "Combinational circuits' outputs depend on:",
+"options": [
+"Present inputs only",
+"Past inputs only",
+"Clock history only",
+"Noise levels only"
+],
+"explanation": "Combinational circuits produce outputs based solely on current inputs; sequential circuits depend on inputs plus past state. ",
+"correctAnswer": [0]
+},
+{
+"question": "Which is a basic memory element used in sequential circuits?",
+"options": [
+"Multiplexer",
+"Decoder",
+"Flip-flop",
+"Adder"
+],
+"explanation": "Flip-flops (SR, JK, D, T) are the fundamental memory elements in sequential circuits; registers are groups of flip-flops. ",
+"correctAnswer": [2]
+},
+{
+"question": "Which number system uses digits 0–9 and A–F?",
+"options": [
+"Octal",
+"Binary",
+"Decimal",
+"Hexadecimal"
+],
+"explanation": "Hexadecimal (base 16) uses digits 0–9 and letters A–F to represent values 10–15. ",
+"correctAnswer": [3]
+},
+{
+"question": "Frequency (in Hz) is defined as:",
+"options": [
+"Cycles per minute",
+"Cycles per second",
+"Voltage per ampere",
+"Distance per time"
+],
+"explanation": "Frequency is the number of signal cycles per second, measured in Hertz (Hz); f = 1/T. ",
+"correctAnswer": [1]
+},
+{
+"question": "Bandwidth (BW) of a channel is computed as:",
+"options": [
+"BW = f_low − f_high",
+"BW = f_high − f_low",
+"BW = f_high × f_low",
+"BW = f_high / f_low"
+],
+"explanation": "Bandwidth equals the difference between the highest and lowest frequencies passed by the channel: BW = f_high − f_low. ",
+"correctAnswer": [1]
+},
+{
+"question": "Common power supply frequency in India is:",
+"options": [
+"60 Hz",
+"50 Hz",
+"100 Hz",
+"25 Hz"
+],
+"explanation": "The notes state 50 Hz for India and 60 Hz for the USA. ",
+"correctAnswer": [1]
+},
+{
+"question": "One main reason for using modulation instead of baseband transmission is:",
+"options": [
+"To increase antenna size",
+"To reduce required antenna size",
+"To make signals purely analog",
+"To eliminate carriers entirely"
+],
+"explanation": "Modulation reduces required antenna size (λ/4 rule), enables long-distance transmission, multiplexing, and noise reduction. ",
+"correctAnswer": [1]
+},
+{
+"question": "In Amplitude Modulation (AM), which parameter varies with the message signal?",
+"options": [
+"Carrier frequency",
+"Carrier phase",
+"Carrier amplitude",
+"Sampling rate"
+],
+"explanation": "AM varies the carrier's amplitude according to the message, keeping frequency and phase constant; AM bandwidth ≈ 2f_m. ",
+"correctAnswer": [2]
+},
+{
+"question": "Carson's Rule for FM bandwidth is approximately:",
+"options": [
+"BW ≈ 2(Δf + f_m)",
+"BW ≈ Δf / f_m",
+"BW ≈ 2πΔf",
+"BW ≈ f_c − f_m"
+],
+"explanation": "For Frequency Modulation, Carson's Rule gives approximate bandwidth: BW ≈ 2(Δf + f_m). ",
+"correctAnswer": [0]
+},
+{
+"question": "Phase Modulation (PM) is most similar to:",
+"options": [
+"ASK",
+"FSK",
+"FM (both are angular modulation)",
+"PAM"
+],
+"explanation": "PM and FM are both forms of angular modulation; PM varies phase with the message signal. ",
+"correctAnswer": [2]
+},
+{
+"question": "A typical AM broadcast band given in the notes is:",
+"options": [
+"88–108 MHz",
+"535–1605 kHz",
+"2.4–2.5 GHz",
+"300 GHz–400 THz"
+],
+"explanation": "AM radio band is cited as 535 kHz to 1605 kHz; FM radio is 88–108 MHz. ",
+"correctAnswer": [1]
+},
+{
+"question": "Which digital modulation changes the carrier's amplitude with binary data?",
+"options": [
+"ASK",
+"FSK",
+"PSK",
+"QAM only"
+],
+"explanation": "Amplitude Shift Keying (ASK) maps bit values to different carrier amplitudes (e.g., 1 = high amplitude, 0 = low). ",
+"correctAnswer": [0]
+},
+{
+"question": "In Frequency Shift Keying (FSK), bit '1' and '0' are represented by:",
+"options": [
+"Two different phases",
+"Two different frequencies",
+"Two different amplitudes",
+"Two different time slots"
+],
+"explanation": "FSK uses two distinct frequencies (f1, f0) to represent binary 1 and 0. ",
+"correctAnswer": [1]
+},
+{
+"question": "Which modulation varies the phase of the carrier according to data bits?",
+"options": [
+"PSK",
+"ASK",
+"FSK",
+"PWM"
+],
+"explanation": "Phase Shift Keying (PSK) alters the carrier's phase based on the digital input; variants include BPSK and QPSK. ",
+"correctAnswer": [0]
+},
+{
+"question": "QAM combines which two modulation dimensions to increase data rate?",
+"options": [
+"Frequency and time",
+"Space and code",
+"Amplitude and phase",
+"Time and code"
+],
+"explanation": "Quadrature Amplitude Modulation varies both amplitude and phase using I/Q components to convey multiple bits per symbol. ",
+"correctAnswer": [2]
+},
+{
+"question": "How many bits per symbol does 16-QAM carry (as described)?",
+"options": [
+"2 bits",
+"3 bits",
+"4 bits",
+"6 bits"
+],
+"explanation": "16-QAM has 16 constellation points, representing 4 bits per symbol; 64-QAM uses 6 bits per symbol. ",
+"correctAnswer": [2]
+},
+{
+"question": "A key trade-off of higher-order QAM (e.g., 256-QAM) is that it:",
+"options": [
+"Requires lower SNR",
+"Is more noise-sensitive and needs better SNR",
+"Uses less complex receivers",
+"Cannot be used in Wi-Fi or LTE"
+],
+"explanation": "Higher-order QAM packs more bits per symbol but is more sensitive to noise and demands higher SNR and more complex receivers. ",
+"correctAnswer": [1]
+},
+{
+"question": "Pulse Amplitude Modulation (PAM) varies which attribute of the pulse?",
+"options": [
+"Width",
+"Position",
+"Amplitude",
+"Phase"
+],
+"explanation": "In PAM, the amplitude (height) of regularly spaced pulses is varied with the message signal; used as a step in PCM. ",
+"correctAnswer": [2]
+},
+{
+"question": "Pulse Width Modulation (PWM) changes a pulse's:",
+"options": [
+"Amplitude only",
+"Width (duration)",
+"Center frequency",
+"Phase angle"
+],
+"explanation": "PWM varies the pulse width in proportion to the modulating signal while amplitude remains constant. ",
+"correctAnswer": [1]
+},
+{
+"question": "Pulse Position Modulation (PPM) encodes information in:",
+"options": [
+"Pulse amplitude",
+"Pulse width",
+"Pulse time position",
+"Pulse frequency"
+],
+"explanation": "PPM shifts the time position of each pulse according to the message, with amplitude and width held constant. ",
+"correctAnswer": [2]
+},
+{
+"question": "Which pulse technique is DIGITAL and involves sampling, quantization, and encoding?",
+"options": [
+"PAM",
+"PWM",
+"PPM",
+"PCM"
+],
+"explanation": "Pulse Code Modulation (PCM) is a digital method with steps: sampling, quantization, and encoding; used in telephony and audio. ",
+"correctAnswer": [3]
+},
+{
+"question": "Which is a reason listed for the need for modulation?",
+"options": [
+"To avoid multiplexing",
+"To increase noise susceptibility",
+"To support long-distance transmission",
+"To remove carriers from signals"
+],
+"explanation": "Motivations include smaller antennas, long-distance transmission, multiplexing, noise reduction, and better signal quality. ",
+"correctAnswer": [2]
+},
+{
+"question": "Which multiple access technique assigns separate frequency bands to each user?",
+"options": [
+"FDMA",
+"TDMA",
+"CDMA",
+"SDMA"
+],
+"explanation": "FDMA allocates distinct frequency bands to users; simple but can waste bandwidth if a user is idle. ",
+"correctAnswer": [0]
+},
+{
+"question": "Time Division Multiple Access (TDMA) works by:",
+"options": [
+"Giving each user a unique code simultaneously",
+"Allowing users to transmit in different time slots on the same frequency",
+"Providing separate spatial beams per user",
+"Assigning multiple orthogonal subcarriers per user"
+],
+"explanation": "TDMA shares the same frequency channel among users by dividing transmission into distinct time slots; requires precise timing. ",
+"correctAnswer": [1]
+},
+{
+"question": "CDMA separates users primarily by:",
+"options": [
+"Time slots",
+"Unique spreading codes",
+"Geographic cells only",
+"Antenna polarization"
+],
+"explanation": "CDMA lets all users share the same time and frequency but separates them via unique codes; it is relatively interference-resistant. ",
+"correctAnswer": [1]
+},
+{
+"question": "OFDMA improves spectral efficiency using:",
+"options": [
+"Single wideband carrier only",
+"Orthogonal subcarriers allocated to users",
+"Only time slotting",
+"Only space division"
+],
+"explanation": "OFDMA assigns multiple orthogonal subcarriers to users, offering high efficiency and lower interference; used in LTE/ Wi-Fi 6/5G. ",
+"correctAnswer": [1]
+},
+{
+"question": "SDMA (Space Division Multiple Access) leverages:",
+"options": [
+"Unique codes only",
+"Different time slots",
+"Multiple antennas and beamforming",
+"Separate optical fibers"
+],
+"explanation": "SDMA uses spatial separation via multiple antennas (MIMO) and beamforming to serve users simultaneously. ",
+"correctAnswer": [2]
+},
+{
+"question": "In a cellular system, the Mobile Station (MS) consists of:",
+"options": [
+"Only the battery pack",
+"Base Transceiver Station and antennas",
+"Mobile Equipment and SIM card",
+"Only the Mobile Switching Center"
+],
+"explanation": "MS includes the Mobile Equipment (hardware) and the SIM, which holds identity/authentication data (IMSI, services). ",
+"correctAnswer": [2]
+},
+{
+"question": "Which component controls multiple BTSs and manages handovers and channel allocation?",
+"options": [
+"HLR",
+"BSC (Base Station Controller)",
+"VLR",
+"MSC (Mobile Switching Center)"
+],
+"explanation": "Within the base station subsystem, the BSC controls multiple BTSs, handling functions like handover and channel allocation. ",
+"correctAnswer": [1]
+},
+{
+"question": "Frequency reuse in cellular networks aims to:",
+"options": [
+"Eliminate co-channel interference completely",
+"Reuse the same channels in sufficiently separated cells for capacity",
+"Use each frequency only once in the network",
+"Avoid hexagonal cell planning"
+],
+"explanation": "Frequency reuse assigns the same set of channels to cells spaced far enough apart to limit interference, improving capacity with limited spectrum. ",
+"correctAnswer": [1]
+},
+{
+"question": "In GSM-style hard handover, the connection behavior is best described as:",
+"options": [
+"Make-before-break",
+"Break-before-make",
+"Simultaneous dual connection indefinitely",
+"No change in serving base station"
+],
+"explanation": "Hard handover is 'break before make' (old connection is released before the new one is established). Soft handover is the reverse and used in CDMA. ",
+"correctAnswer": [1]
+},
+{
+"question": "Which of the following is a combinational circuit example from the notes?",
+"options": [
+"Register",
+"Counter",
+"Multiplexer (MUX)",
+"Flip-flop"
+],
+"explanation": "Multiplexers, adders, encoders/decoders are combinational; registers and counters are sequential (memory involved). ",
+"correctAnswer": [2]
+},
+{
+"question": "Which statement about AM and FM in the notes is correct?",
+"options": [
+"AM varies frequency; FM varies amplitude",
+"AM and FM both vary phase",
+"AM varies amplitude; FM varies frequency",
+"Neither use a carrier"
+],
+"explanation": "AM changes carrier amplitude; FM changes carrier frequency. Phases remain constant in these simplified descriptions. ",
+"correctAnswer": [2]
+},
+{
+"question": "According to the notes, FM is favored for audio because it offers:",
+"options": [
+"Lowest bandwidth at any quality",
+"High noise immunity and better sound quality",
+"No need for carrier synchronization ever",
+"Compatibility only with analog receivers"
+],
+"explanation": "FM provides higher noise immunity and better sound quality relative to AM; bandwidth estimated via Carson's Rule. ",
+"correctAnswer": [1]
+},
+{
+"question": "Which wireless band from the notes corresponds to typical FM radio broadcasts?",
+"options": [
+"88–108 MHz",
+"535–1605 kHz",
+"1–10 GHz",
+"300 GHz–400 THz"
+],
+"explanation": "FM radio band is 88–108 MHz; AM is 535–1605 kHz. ",
+"correctAnswer": [0]
+},
+{
+"question": "Which statement best matches PCM's application area?",
+"options": [
+"Only motor control and power regulation",
+"Digital telephony and computer audio/video",
+"Only short-range remote controls",
+"Analog cable TV transmission"
+],
+"explanation": "PCM is used in digital telephony and digital audio/video formats (e.g., CDs/MP3 workflows). ",
+"correctAnswer": [1]
+}
 ],
     passage_based_questions: {
      "passage_1": {
