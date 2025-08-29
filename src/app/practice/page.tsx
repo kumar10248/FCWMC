@@ -66,7 +66,7 @@ export default function PracticeSelectionPage() {
               <span className="bg-amber-400 text-black rounded-full p-1 mr-2 text-xs flex items-center justify-center w-6 h-6 font-bold">S</span> 
               Special Practice
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <button
                 className={`p-6 rounded-lg transition duration-300 transform hover:scale-105 ${
                   selectedMode === 'assignment'
@@ -85,6 +85,29 @@ export default function PracticeSelectionPage() {
                     <h3 className="font-semibold text-lg mb-2">Assignment Questions</h3>
                     <p className="text-sm opacity-80">
                       Practice all questions from every module and Assignment
+                    </p>
+                  </div>
+                </div>
+              </button>
+
+              <button
+                className={`p-6 rounded-lg transition duration-300 transform hover:scale-105 ${
+                  selectedMode === 'passage'
+                    ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg ring-2 ring-blue-300'
+                    : 'bg-gray-800/80 hover:bg-gray-700 border border-gray-700'
+                }`}
+                onClick={() => setSelectedMode('passage')}
+              >
+                <div className="flex flex-col items-center md:items-start md:flex-row md:space-x-4">
+                  <div className="flex-shrink-0 mb-4 md:mb-0">
+                    <div className="bg-blue-800/60 p-3 rounded-lg">
+                      <FaClipboardCheck className="text-3xl text-blue-300" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2">Passage Based Questions</h3>
+                    <p className="text-sm opacity-80">
+                      Sequential passage-based questions - not shuffled
                     </p>
                   </div>
                 </div>

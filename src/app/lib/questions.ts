@@ -1,7 +1,9 @@
-import { Question, WeekQuestions, PracticeMode } from "../types";
+import { Question, WeekQuestions, PracticeMode, PassageQuestion, AllQuestionsData } from "../types";
 
-export function getAllQuestions(mode: PracticeMode): Question[] {
-  const weekQuestions: WeekQuestions = {
+// Module-level debug - this will run when the module is loaded
+console.log('=== questions.ts module loaded ===');
+
+const allQuestionsData: AllQuestionsData = {
     module6:[
   {
     "question": "Which of the following best describes the advantage of circuit switching?",
@@ -1322,13 +1324,1639 @@ export function getAllQuestions(mode: PracticeMode): Question[] {
     ],
     "explanation": "OFDMA divides spectrum into orthogonal subcarriers, each assigned to different users.",
     "correctAnswer": [3]
+  },
+  {
+      "question": "What is the fundamental purpose of modulation in communication systems?",
+      "options": [
+        "To increase signal power",
+        "To adapt information signal for transmission",
+        "To reduce noise",
+        "To compress data"
+      ],
+      "explanation": "Modulation adapts the information signal to make it suitable for transmission over the communication channel by varying carrier wave properties.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which type of cable uses light pulses for data transmission?",
+      "options": [
+        "Coaxial cable",
+        "Twisted pair",
+        "Optical fiber",
+        "HDMI cable"
+      ],
+      "explanation": "Optical fiber cables transmit data using light pulses, providing high bandwidth and immunity to electromagnetic interference.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "In which frequency band is FM radio primarily transmitted?",
+      "options": [
+        "LF (Low Frequency)",
+        "VHF (Very High Frequency)",
+        "UHF (Ultra High Frequency)",
+        "SHF (Super High Frequency)"
+      ],
+      "explanation": "FM radio broadcasting primarily uses the VHF band, typically between 88-108 MHz.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "What does BPSK stand for?",
+      "options": [
+        "Binary Phase Shift Keying",
+        "Broadband Phase Shift Keying",
+        "Basic Phase Shift Keying",
+        "Balanced Phase Shift Keying"
+      ],
+      "explanation": "BPSK stands for Binary Phase Shift Keying, a digital modulation technique using two phase states.",
+      "correctAnswer": [0]
+    },
+    {
+      "question": "Which multiple access technique uses unique codes for each user?",
+      "options": [
+        "FDMA",
+        "TDMA",
+        "CDMA",
+        "OFDMA"
+      ],
+      "explanation": "CDMA (Code Division Multiple Access) assigns unique spreading codes to each user for simultaneous transmission.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "What is the main advantage of digital signals over analog signals?",
+      "options": [
+        "Simpler circuits",
+        "Lower bandwidth requirement",
+        "Better noise immunity",
+        "Cheaper implementation"
+      ],
+      "explanation": "Digital signals offer better noise immunity and can be regenerated without cumulative degradation.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "Which component is responsible for mobility management in 5G core?",
+      "options": [
+        "SMF",
+        "UPF",
+        "AMF",
+        "gNodeB"
+      ],
+      "explanation": "AMF (Access and Mobility Management Function) handles mobility management in 5G core networks.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "What does QAM modulation vary to encode data?",
+      "options": [
+        "Only amplitude",
+        "Only phase",
+        "Both amplitude and phase",
+        "Only frequency"
+      ],
+      "explanation": "QAM (Quadrature Amplitude Modulation) varies both amplitude and phase of the carrier to encode multiple bits per symbol.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "In cellular systems, what is the purpose of handoff?",
+      "options": [
+        "To increase signal strength",
+        "To maintain connection as user moves between cells",
+        "To reduce interference",
+        "To save battery power"
+      ],
+      "explanation": "Handoff ensures seamless connectivity as mobile users move from one cell coverage area to another.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which 5G use case requires ultra-low latency?",
+      "options": [
+        "eMBB",
+        "URLLC",
+        "mMTC",
+        "All of the above"
+      ],
+      "explanation": "URLLC (Ultra-Reliable Low-Latency Communication) is specifically designed for applications requiring very low latency.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "What is the bandwidth of an AM signal compared to the modulating frequency?",
+      "options": [
+        "Equal to modulating frequency",
+        "Twice the modulating frequency",
+        "Half the modulating frequency",
+        "Four times the modulating frequency"
+      ],
+      "explanation": "The bandwidth of an AM signal is twice the highest modulating frequency due to upper and lower sidebands.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which electromagnetic waves have the lowest frequency?",
+      "options": [
+        "Radio waves",
+        "Microwaves",
+        "Infrared",
+        "Visible light"
+      ],
+      "explanation": "Radio waves have the lowest frequency in the electromagnetic spectrum used for communication.",
+      "correctAnswer": [0]
+    },
+    {
+      "question": "What does sectoring achieve in cellular systems?",
+      "options": [
+        "Reduces cell size",
+        "Increases capacity and reduces interference",
+        "Eliminates handoffs",
+        "Increases transmission power"
+      ],
+      "explanation": "Sectoring divides cells into sectors using directional antennas to increase capacity and reduce interference.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which is NOT a basic component of a communication system?",
+      "options": [
+        "Transmitter",
+        "Receiver",
+        "Channel",
+        "Modulator"
+      ],
+      "explanation": "While modulators are important, the three basic components are transmitter, channel, and receiver.",
+      "correctAnswer": [3]
+    },
+    {
+      "question": "What type of modulation is least affected by noise?",
+      "options": [
+        "AM",
+        "FM",
+        "PM",
+        "All are equally affected"
+      ],
+      "explanation": "FM is less affected by noise because noise typically affects amplitude rather than frequency.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "In QPSK, how many bits are transmitted per symbol?",
+      "options": [
+        "1",
+        "2",
+        "4",
+        "8"
+      ],
+      "explanation": "QPSK (Quadrature Phase Shift Keying) uses four phase states to transmit 2 bits per symbol.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which access technique allows frequency reuse?",
+      "options": [
+        "FDMA only",
+        "TDMA only",
+        "CDMA only",
+        "All multiple access techniques"
+      ],
+      "explanation": "All multiple access techniques can implement frequency reuse in cellular systems to increase spectrum efficiency.",
+      "correctAnswer": [3]
+    },
+    {
+      "question": "What is the primary advantage of optical fiber communication?",
+      "options": [
+        "Low cost",
+        "Easy installation",
+        "High bandwidth and low loss",
+        "No need for repeaters"
+      ],
+      "explanation": "Optical fiber provides very high bandwidth, low transmission loss, and immunity to electromagnetic interference.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "Which generation introduced packet-switched networks for mobile communication?",
+      "options": [
+        "2G",
+        "3G",
+        "4G",
+        "5G"
+      ],
+      "explanation": "3G was the first generation to introduce packet-switched networks for mobile data communication.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "What does NSA stand for in 5G deployment?",
+      "options": [
+        "New Service Architecture",
+        "Non-Standalone",
+        "Network Service Access",
+        "Next Stage Architecture"
+      ],
+      "explanation": "NSA stands for Non-Standalone, referring to 5G deployment that relies on existing 4G infrastructure.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which component handles user data routing in 5G core?",
+      "options": [
+        "AMF",
+        "SMF",
+        "UPF",
+        "gNodeB"
+      ],
+      "explanation": "UPF (User Plane Function) handles user data packet routing and forwarding in 5G core networks.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "What is the main characteristic of analog signals?",
+      "options": [
+        "Discrete values",
+        "Continuous variation",
+        "Binary representation",
+        "Digital encoding"
+      ],
+      "explanation": "Analog signals are characterized by continuous variation in both time and amplitude.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which wireless technology is best for short-range communication?",
+      "options": [
+        "Wi-Fi",
+        "Bluetooth",
+        "LTE",
+        "Satellite"
+      ],
+      "explanation": "Bluetooth is designed for short-range, low-power device-to-device communication.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "What does mMTC primarily support?",
+      "options": [
+        "High-speed internet",
+        "Voice calls",
+        "IoT devices",
+        "Video streaming"
+      ],
+      "explanation": "mMTC (Massive Machine-Type Communication) is designed to support massive numbers of IoT devices.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "Which modulation parameter remains constant in AM?",
+      "options": [
+        "Amplitude",
+        "Frequency",
+        "Phase",
+        "Power"
+      ],
+      "explanation": "In AM (Amplitude Modulation), the frequency of the carrier wave remains constant while amplitude varies.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "What is the speed of light in vacuum?",
+      "options": [
+        "3 × 10^6 m/s",
+        "3 × 10^8 m/s",
+        "3 × 10^10 m/s",
+        "3 × 10^12 m/s"
+      ],
+      "explanation": "The speed of light (and all electromagnetic waves) in vacuum is approximately 3 × 10^8 meters per second.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which technique increases cellular network capacity by dividing large cells?",
+      "options": [
+        "Sectoring",
+        "Cell splitting",
+        "Handoff",
+        "Frequency reuse"
+      ],
+      "explanation": "Cell splitting increases capacity by dividing large cells into smaller ones, allowing more users per area.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "What type of antenna is used in SDMA?",
+      "options": [
+        "Omnidirectional",
+        "Directional",
+        "Loop",
+        "Monopole"
+      ],
+      "explanation": "SDMA (Space Division Multiple Access) uses directional antennas or beamforming to separate users spatially.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which digital modulation offers the highest spectral efficiency?",
+      "options": [
+        "BPSK",
+        "QPSK",
+        "16-QAM",
+        "256-QAM"
+      ],
+      "explanation": "256-QAM offers the highest spectral efficiency among the options, transmitting 8 bits per symbol.",
+      "correctAnswer": [3]
+    },
+    {
+      "question": "What is the main disadvantage of higher-order QAM?",
+      "options": [
+        "Lower data rate",
+        "Increased noise sensitivity",
+        "Simpler implementation",
+        "Reduced bandwidth efficiency"
+      ],
+      "explanation": "Higher-order QAM modulations are more sensitive to noise and interference despite offering higher data rates.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which network element connects to the core network in LTE?",
+      "options": [
+        "NodeB",
+        "eNodeB",
+        "gNodeB",
+        "Base Station Controller"
+      ],
+      "explanation": "In LTE networks, the eNodeB (evolved NodeB) connects directly to the core network (EPC).",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "What does EPC stand for in LTE networks?",
+      "options": [
+        "Enhanced Packet Core",
+        "Evolved Packet Core",
+        "Extended Packet Core",
+        "Efficient Packet Core"
+      ],
+      "explanation": "EPC stands for Evolved Packet Core, the core network architecture used in LTE systems.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which frequency range is typically used for microwave communication?",
+      "options": [
+        "3 kHz - 30 kHz",
+        "30 MHz - 300 MHz",
+        "300 MHz - 300 GHz",
+        "Above 300 GHz"
+      ],
+      "explanation": "Microwave frequencies typically range from 300 MHz to 300 GHz, used for satellite and point-to-point communications.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "What is the primary benefit of using twisted pair cables?",
+      "options": [
+        "High bandwidth",
+        "Noise reduction through twisting",
+        "Light transmission",
+        "Wireless capability"
+      ],
+      "explanation": "Twisted pair cables reduce electromagnetic interference and crosstalk through the twisting of wire pairs.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which modulation type is used in traditional AM radio broadcasting?",
+      "options": [
+        "DSB-SC",
+        "DSB-FC",
+        "SSB",
+        "VSB"
+      ],
+      "explanation": "Traditional AM radio uses DSB-FC (Double Sideband Full Carrier) modulation for simple demodulation.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "What does MIMO stand for?",
+      "options": [
+        "Multiple Input Multiple Output",
+        "Maximum Input Maximum Output",
+        "Multi-Interface Multi-Operation",
+        "Mobile Input Mobile Output"
+      ],
+      "explanation": "MIMO stands for Multiple Input Multiple Output, a technology using multiple antennas for improved performance.",
+      "correctAnswer": [0]
+    },
+    {
+      "question": "Which parameter determines the energy of electromagnetic waves?",
+      "options": [
+        "Amplitude only",
+        "Frequency only",
+        "Both amplitude and frequency",
+        "Wavelength only"
+      ],
+      "explanation": "The energy of electromagnetic waves is directly proportional to their frequency (E = hf).",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "What is the main purpose of channel coding?",
+      "options": [
+        "Increase data rate",
+        "Reduce bandwidth",
+        "Error detection and correction",
+        "Signal amplification"
+      ],
+      "explanation": "Channel coding adds redundancy to detect and correct errors introduced during transmission.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "Which access method is used in GSM networks?",
+      "options": [
+        "FDMA only",
+        "TDMA only",
+        "CDMA only",
+        "FDMA + TDMA"
+      ],
+      "explanation": "GSM networks use a combination of FDMA (for different carriers) and TDMA (for time slots within each carrier).",
+      "correctAnswer": [3]
+    },
+    {
+      "question": "What is beamforming in wireless communication?",
+      "options": [
+        "Creating multiple beams of light",
+        "Directing radio signals in specific directions",
+        "Splitting frequency bands",
+        "Time division of signals"
+      ],
+      "explanation": "Beamforming is a technique that directs radio frequency signals in specific directions to improve signal quality and reduce interference.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which component manages session establishment in 5G?",
+      "options": [
+        "AMF",
+        "SMF",
+        "UPF",
+        "NSSF"
+      ],
+      "explanation": "SMF (Session Management Function) handles session establishment, modification, and termination in 5G networks.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "What is the typical frequency range for 5G millimeter wave?",
+      "options": [
+        "1-6 GHz",
+        "6-24 GHz",
+        "24-100 GHz",
+        "Above 100 GHz"
+      ],
+      "explanation": "5G millimeter wave typically operates in the 24-100 GHz frequency range for ultra-high speed applications.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "Which duplexing method allows simultaneous transmission and reception?",
+      "options": [
+        "TDD (Time Division Duplex)",
+        "FDD (Frequency Division Duplex)",
+        "Both TDD and FDD",
+        "Neither"
+      ],
+      "explanation": "FDD (Frequency Division Duplex) uses separate frequency bands for uplink and downlink, allowing simultaneous transmission and reception.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "What is network slicing in 5G?",
+      "options": [
+        "Physical division of network",
+        "Virtual division of network resources",
+        "Time-based resource allocation",
+        "Frequency band separation"
+      ],
+      "explanation": "Network slicing creates virtual, dedicated networks on shared physical infrastructure to serve different service requirements.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which modulation is most robust against noise?",
+      "options": [
+        "BPSK",
+        "QPSK",
+        "16-QAM",
+        "64-QAM"
+      ],
+      "explanation": "BPSK (Binary Phase Shift Keying) is most robust against noise due to maximum distance between constellation points.",
+      "correctAnswer": [0]
+    },
+    {
+      "question": "What does OFDM stand for?",
+      "options": [
+        "Orthogonal Frequency Division Multiplexing",
+        "Optimal Frequency Distribution Method",
+        "Open Frequency Data Modulation",
+        "Organized Frequency Duplex Mode"
+      ],
+      "explanation": "OFDM stands for Orthogonal Frequency Division Multiplexing, a technique using multiple orthogonal subcarriers.",
+      "correctAnswer": [0]
+    },
+    {
+      "question": "Which technology enables massive connectivity in 5G?",
+      "options": [
+        "eMBB",
+        "URLLC",
+        "mMTC",
+        "FWA"
+      ],
+      "explanation": "mMTC (Massive Machine-Type Communication) enables massive connectivity for IoT and M2M applications in 5G.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "What is the main advantage of digital over analog communication?",
+      "options": [
+        "Simpler equipment",
+        "Natural signal representation",
+        "Regeneration without degradation",
+        "Lower bandwidth requirement"
+      ],
+      "explanation": "Digital signals can be regenerated at repeaters without cumulative degradation, unlike analog signals.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "Which cellular generation first introduced IP-based networks?",
+      "options": [
+        "2G",
+        "3G",
+        "4G",
+        "5G"
+      ],
+      "explanation": "4G LTE was the first generation to use a fully IP-based network architecture (All-IP network).",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "What is the purpose of cyclic prefix in OFDM?",
+      "options": [
+        "Increase data rate",
+        "Combat inter-symbol interference",
+        "Reduce power consumption",
+        "Improve modulation efficiency"
+      ],
+      "explanation": "Cyclic prefix in OFDM helps combat inter-symbol interference and maintains orthogonality between subcarriers.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which component handles authentication in LTE networks?",
+      "options": [
+        "eNodeB",
+        "MME",
+        "SGW",
+        "PGW"
+      ],
+      "explanation": "MME (Mobility Management Entity) handles authentication, authorization, and mobility management in LTE networks.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "What is the key characteristic of visible light communication?",
+      "options": [
+        "Long-range transmission",
+        "High power consumption",
+        "Line-of-sight requirement",
+        "Low data rates"
+      ],
+      "explanation": "Visible light communication requires line-of-sight between transmitter and receiver due to the nature of light propagation.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "Which access technique provides the best spectrum efficiency?",
+      "options": [
+        "FDMA",
+        "TDMA",
+        "CDMA",
+        "OFDMA"
+      ],
+      "explanation": "OFDMA provides excellent spectrum efficiency by allowing flexible allocation of subcarriers to different users.",
+      "correctAnswer": [3]
+    },
+    {
+      "question": "What is carrier aggregation in LTE-Advanced?",
+      "options": [
+        "Combining multiple base stations",
+        "Combining multiple frequency bands",
+        "Combining multiple antennas",
+        "Combining multiple protocols"
+      ],
+      "explanation": "Carrier aggregation combines multiple frequency bands to increase overall bandwidth and data rates in LTE-Advanced.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which parameter is most important for URLLC applications?",
+      "options": [
+        "High data rate",
+        "Low latency",
+        "Wide coverage",
+        "Low cost"
+      ],
+      "explanation": "URLLC (Ultra-Reliable Low-Latency Communication) prioritizes very low latency for mission-critical applications.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "What does edge computing provide in 5G networks?",
+      "options": [
+        "Increased coverage",
+        "Reduced latency",
+        "Higher data rates",
+        "Better security"
+      ],
+      "explanation": "Edge computing brings processing closer to users, significantly reducing latency for time-sensitive applications.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which modulation technique varies only the phase of carrier?",
+      "options": [
+        "AM",
+        "FM",
+        "PSK",
+        "QAM"
+      ],
+      "explanation": "PSK (Phase Shift Keying) varies only the phase of the carrier wave while keeping amplitude and frequency constant.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "What is the main benefit of spatial diversity in MIMO?",
+      "options": [
+        "Increased power",
+        "Reduced interference",
+        "Improved reliability",
+        "Lower cost"
+      ],
+      "explanation": "Spatial diversity in MIMO improves reliability by providing multiple independent signal paths.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "Which technique is used to increase data rates in the same bandwidth?",
+      "options": [
+        "Higher power transmission",
+        "Multiple antennas",
+        "Higher-order modulation",
+        "Frequency hopping"
+      ],
+      "explanation": "Higher-order modulation schemes increase data rates by transmitting more bits per symbol in the same bandwidth.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "What is the primary function of a repeater in communication systems?",
+      "options": [
+        "Filter noise",
+        "Amplify and regenerate signals",
+        "Compress data",
+        "Convert protocols"
+      ],
+      "explanation": "Repeaters amplify and regenerate signals to extend transmission distance and combat signal degradation.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which wireless standard operates in unlicensed spectrum?",
+      "options": [
+        "LTE",
+        "5G NR",
+        "Wi-Fi",
+        "GSM"
+      ],
+      "explanation": "Wi-Fi operates in unlicensed spectrum bands (like 2.4 GHz and 5 GHz ISM bands) that don't require licenses.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "What is the main advantage of full-duplex communication?",
+      "options": [
+        "Higher security",
+        "Simultaneous transmission in both directions",
+        "Lower power consumption",
+        "Simpler implementation"
+      ],
+      "explanation": "Full-duplex communication allows simultaneous transmission and reception, doubling the effective data rate.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which component provides internet connectivity in LTE core network?",
+      "options": [
+        "MME",
+        "SGW",
+        "PGW",
+        "HSS"
+      ],
+      "explanation": "PGW (PDN Gateway) provides connectivity to external packet data networks including the internet in LTE.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "What is adaptive modulation and coding?",
+      "options": [
+        "Fixed modulation scheme",
+        "Changing modulation based on channel conditions",
+        "Using only one type of coding",
+        "Manual modulation adjustment"
+      ],
+      "explanation": "Adaptive modulation and coding dynamically adjusts modulation and coding schemes based on channel quality.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which technology allows multiple users to share the same time and frequency?",
+      "options": [
+        "FDMA",
+        "TDMA",
+        "CDMA",
+        "SDMA"
+      ],
+      "explanation": "CDMA allows multiple users to share the same time and frequency simultaneously using unique spreading codes.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "What is the main characteristic of mm-wave communication?",
+      "options": [
+        "Long range",
+        "High atmospheric absorption",
+        "Low data rates",
+        "Simple antenna design"
+      ],
+      "explanation": "Millimeter wave communication suffers from high atmospheric absorption, requiring short-range communication with high directivity.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which duplexing method is more spectrum efficient?",
+      "options": [
+        "FDD",
+        "TDD",
+        "Both equal",
+        "Neither"
+      ],
+      "explanation": "TDD is generally more spectrum efficient as it can dynamically allocate time for uplink and downlink based on traffic asymmetry.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "What does CoMP stand for in LTE-Advanced?",
+      "options": [
+        "Coordinated Multi-Point",
+        "Combined Multi-Protocol",
+        "Centralized Multi-Processing",
+        "Common Multi-Platform"
+      ],
+      "explanation": "CoMP stands for Coordinated Multi-Point, a technique where multiple cells coordinate to improve performance.",
+      "correctAnswer": [0]
+    },
+    {
+      "question": "Which technique helps combat fast fading in mobile channels?",
+      "options": [
+        "Power control",
+        "Diversity techniques",
+        "Error correction",
+        "Frequency hopping"
+      ],
+      "explanation": "Diversity techniques (time, frequency, spatial) help combat fast fading by providing multiple independent signal paths.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "What is the primary purpose of interleaving in digital communication?",
+      "options": [
+        "Increase data rate",
+        "Reduce bandwidth",
+        "Combat burst errors",
+        "Improve modulation"
+      ],
+      "explanation": "Interleaving rearranges data to spread burst errors over time, making them easier to correct with error correction codes.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "Which 5G deployment scenario provides the highest data rates?",
+      "options": [
+        "Wide area coverage",
+        "Dense urban",
+        "Hot spot",
+        "Rural coverage"
+      ],
+      "explanation": "Hot spot deployment scenarios use high-frequency bands and dense networks to provide the highest data rates in 5G.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "What is the main function of RRC in LTE?",
+      "options": [
+        "Data transmission",
+        "Radio resource control",
+        "Authentication",
+        "Billing"
+      ],
+      "explanation": "RRC (Radio Resource Control) manages radio resources, connection establishment, and mobility in LTE networks.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which antenna configuration provides the highest gain?",
+      "options": [
+        "Omnidirectional",
+        "Directional",
+        "Isotropic",
+        "Loop"
+      ],
+      "explanation": "Directional antennas provide the highest gain by concentrating energy in specific directions rather than radiating uniformly.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "What is massive MIMO?",
+      "options": [
+        "2x2 antenna configuration",
+        "4x4 antenna configuration",
+        "Large number of antenna elements",
+        "Single antenna system"
+      ],
+      "explanation": "Massive MIMO uses a large number of antenna elements (typically 64 or more) to improve spectral efficiency and energy efficiency.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "Which protocol is used for 5G radio interface?",
+      "options": [
+        "LTE",
+        "NR (New Radio)",
+        "UMTS",
+        "GSM"
+      ],
+      "explanation": "5G NR (New Radio) is the radio access technology and air interface standard for 5G networks.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "What is the main advantage of small cells in cellular networks?",
+      "options": [
+        "Wider coverage",
+        "Higher capacity",
+        "Lower cost",
+        "Simpler deployment"
+      ],
+      "explanation": "Small cells increase network capacity by providing additional coverage in high-traffic areas and enabling frequency reuse.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which technique is used to combat multipath fading in OFDM?",
+      "options": [
+        "Power control",
+        "Cyclic prefix",
+        "Frequency hopping",
+        "Time interleaving"
+      ],
+      "explanation": "Cyclic prefix in OFDM helps combat multipath fading and inter-symbol interference by providing a guard time.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "What is the key benefit of software-defined networking (SDN) in 5G?",
+      "options": [
+        "Hardware acceleration",
+        "Network flexibility and programmability",
+        "Reduced latency",
+        "Higher bandwidth"
+      ],
+      "explanation": "SDN provides network flexibility and programmability by separating control plane from data plane, enabling dynamic network management.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which modulation is commonly used in satellite communication?",
+      "options": [
+        "AM",
+        "FM",
+        "PSK",
+        "ASK"
+      ],
+      "explanation": "PSK modulation is commonly used in satellite communication due to its robustness against noise and interference.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "What is link budget in wireless communication?",
+      "options": [
+        "Financial cost calculation",
+        "Power balance calculation",
+        "Bandwidth allocation",
+        "Time scheduling"
+      ],
+      "explanation": "Link budget is a power balance calculation that accounts for all gains and losses in a communication link to ensure adequate signal reception.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which technique allows dynamic spectrum sharing in 5G?",
+      "options": [
+        "Fixed spectrum allocation",
+        "Cognitive radio",
+        "Static frequency planning",
+        "Manual spectrum management"
+      ],
+      "explanation": "Cognitive radio and dynamic spectrum access techniques allow flexible and efficient spectrum sharing in 5G networks.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "What is the main purpose of pilot signals in OFDM?",
+      "options": [
+        "Data transmission",
+        "Channel estimation",
+        "Error correction",
+        "Power control"
+      ],
+      "explanation": "Pilot signals are known reference signals used for channel estimation, synchronization, and equalization in OFDM systems.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which access method provides better interference management?",
+      "options": [
+        "FDMA",
+        "TDMA",
+        "CDMA with interference cancellation",
+        "Random access"
+      ],
+      "explanation": "CDMA with interference cancellation techniques can provide better interference management through signal processing.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "What is network function virtualization (NFV) in 5G?",
+      "options": [
+        "Hardware optimization",
+        "Running network functions on standard hardware",
+        "Physical network expansion",
+        "Frequency virtualization"
+      ],
+      "explanation": "NFV allows network functions to run as software on standard hardware instead of dedicated hardware appliances.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which parameter determines the coverage area of a cell?",
+      "options": [
+        "Antenna gain only",
+        "Transmit power only",
+        "Path loss and sensitivity",
+        "Frequency only"
+      ],
+      "explanation": "Cell coverage is determined by path loss characteristics and receiver sensitivity, which depend on various factors including frequency, power, and environment.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "What is the main benefit of beamforming in 5G?",
+      "options": [
+        "Omnidirectional coverage",
+        "Focused signal transmission",
+        "Reduced antenna size",
+        "Lower frequency operation"
+      ],
+      "explanation": "Beamforming focuses signal transmission in specific directions, improving signal quality and reducing interference.",
+      "correctAnswer": [1]
+    },
+    {
+      "question": "Which duplex mode is preferred for 5G NR?",
+      "options": [
+        "FDD only",
+        "TDD only",
+        "Both FDD and TDD",
+        "Neither"
+      ],
+      "explanation": "5G NR supports both FDD and TDD modes, but TDD is often preferred for its flexibility in handling asymmetric traffic.",
+      "correctAnswer": [2]
+    },
+    {
+      "question": "What enables ultra-high data rates in 5G?",
+      "options": [
+        "Lower frequencies only",
+        "Wider bandwidth and advanced techniques",
+        "Simpler modulation",
+        "Reduced antenna complexity"
+      ],
+      "explanation": "5G achieves ultra-high data rates through wider bandwidth, advanced modulation, massive MIMO, and higher frequency bands.",
+      "correctAnswer": [1]
+    }
+],
+    passage_based_questions: {
+     "passage_1": {
+      "title": "Communication System Fundamentals",
+      "passage": "A communication system is designed to transfer information from a source to a destination. The basic components include a transmitter that converts the information signal into a form suitable for transmission, a communication channel that carries the signal from transmitter to receiver, and a receiver that reconstructs the original information signal. The channel can be either wired (using physical cables like twisted pair, coaxial, or optical fiber) or wireless (using electromagnetic waves). The choice between wired and wireless depends on factors such as mobility requirements, installation costs, bandwidth needs, and security considerations.",
+      "questions": [
+        {
+          "question": "What is the primary function of a transmitter in a communication system?",
+          "options": [
+            "To convert information signal into transmittable form",
+            "To amplify the received signal",
+            "To filter unwanted noise",
+            "To demodulate the carrier wave"
+          ],
+          "explanation": "The transmitter's main role is to convert the information signal into a form suitable for transmission over the communication channel.",
+          "correctAnswer": [0]
+        },
+        {
+          "question": "Which of the following is NOT a basic component of a communication system?",
+          "options": [
+            "Transmitter",
+            "Amplifier",
+            "Channel",
+            "Receiver"
+          ],
+          "explanation": "While amplifiers may be present in communication systems, they are not considered one of the three basic fundamental components: transmitter, channel, and receiver.",
+          "correctAnswer": [1]
+        },
+        {
+          "question": "What type of communication channel uses electromagnetic waves?",
+          "options": [
+            "Wired channel",
+            "Wireless channel",
+            "Optical fiber",
+            "Coaxial cable"
+          ],
+          "explanation": "Wireless channels utilize electromagnetic waves to transmit information without physical connections.",
+          "correctAnswer": [1]
+        },
+        {
+          "question": "Which factor is most important when choosing between wired and wireless communication?",
+          "options": [
+            "Color of the equipment",
+            "Mobility requirements",
+            "Brand of manufacturer",
+            "Time of day"
+          ],
+          "explanation": "Mobility requirements are a crucial factor in determining whether to use wired or wireless communication systems.",
+          "correctAnswer": [1]
+        },
+        {
+          "question": "What does the communication channel do in a communication system?",
+          "options": [
+            "Generates the information signal",
+            "Carries signal from transmitter to receiver",
+            "Converts analog to digital signals",
+            "Provides power to the system"
+          ],
+          "explanation": "The communication channel serves as the medium that carries the signal from the transmitter to the receiver.",
+          "correctAnswer": [1]
+        }
+      ]
+    },
+    "passage_2": {
+      "title": "Electromagnetic Spectrum and Wave Properties",
+      "passage": "The electromagnetic spectrum encompasses all electromagnetic radiation, from extremely low-frequency radio waves to high-energy gamma rays. Electromagnetic waves are characterized by their frequency, wavelength, and energy content. They travel at the speed of light (3×10^8 m/s) in vacuum and do not require a physical medium for propagation. Different regions of the spectrum are utilized for various communication applications: radio waves for broadcasting and mobile communications, microwaves for satellite communications and radar, infrared for remote controls and fiber optics, visible light for optical communications, and higher frequency regions for specialized applications.",
+      "questions": [
+        {
+          "question": "What is the speed of electromagnetic waves in vacuum?",
+          "options": [
+            "3×10^6 m/s",
+            "3×10^8 m/s",
+            "3×10^10 m/s",
+            "3×10^12 m/s"
+          ],
+          "explanation": "Electromagnetic waves travel at the speed of light, which is approximately 3×10^8 meters per second in vacuum.",
+          "correctAnswer": [1]
+        },
+        {
+          "question": "Which electromagnetic waves have the highest energy?",
+          "options": [
+            "Radio waves",
+            "Microwaves",
+            "X-rays",
+            "Gamma rays"
+          ],
+          "explanation": "Gamma rays have the highest frequency and therefore the highest energy in the electromagnetic spectrum.",
+          "correctAnswer": [3]
+        },
+        {
+          "question": "Do electromagnetic waves require a medium for propagation?",
+          "options": [
+            "Yes, they need air",
+            "Yes, they need water",
+            "No, they can travel through vacuum",
+            "Only for long distances"
+          ],
+          "explanation": "Electromagnetic waves do not require a physical medium and can propagate through vacuum, unlike mechanical waves.",
+          "correctAnswer": [2]
+        },
+        {
+          "question": "Which part of the electromagnetic spectrum is used for satellite communications?",
+          "options": [
+            "Radio waves",
+            "Microwaves",
+            "Infrared",
+            "Visible light"
+          ],
+          "explanation": "Microwaves are commonly used for satellite communications due to their ability to penetrate the atmosphere effectively.",
+          "correctAnswer": [1]
+        },
+        {
+          "question": "What characterizes electromagnetic waves?",
+          "options": [
+            "Only frequency",
+            "Only wavelength",
+            "Frequency, wavelength, and energy",
+            "Only energy content"
+          ],
+          "explanation": "Electromagnetic waves are characterized by their frequency, wavelength, and energy content, which are all interrelated.",
+          "correctAnswer": [2]
+        }
+      ]
+    },
+    "passage_3": {
+      "title": "Amplitude Modulation and Frequency Modulation",
+      "passage": "Modulation is the process of varying one or more properties of a high-frequency carrier wave in accordance with a lower-frequency information signal. In Amplitude Modulation (AM), the amplitude of the carrier wave is varied while keeping the frequency constant. AM is simple to implement and provides good long-range propagation, but it is susceptible to noise and interference. Frequency Modulation (FM) varies the frequency of the carrier wave while keeping the amplitude constant. FM provides better sound quality and noise immunity compared to AM, but requires more complex circuitry and has limited range. AM is still used for long-distance broadcasting and aviation communications, while FM is preferred for high-fidelity audio broadcasting and two-way radio communications.",
+      "questions": [
+        {
+          "question": "In Amplitude Modulation, which property of the carrier wave is varied?",
+          "options": [
+            "Frequency",
+            "Phase",
+            "Amplitude",
+            "Wavelength"
+          ],
+          "explanation": "In AM, the amplitude of the carrier wave is varied according to the information signal while frequency remains constant.",
+          "correctAnswer": [2]
+        },
+        {
+          "question": "Why is FM less susceptible to noise compared to AM?",
+          "options": [
+            "FM uses higher power",
+            "Noise typically affects amplitude, not frequency",
+            "FM uses digital signals",
+            "FM has wider bandwidth"
+          ],
+          "explanation": "Most noise affects the amplitude of signals, so FM, which varies frequency rather than amplitude, is less affected by noise.",
+          "correctAnswer": [1]
+        },
+        {
+          "question": "What is a key advantage of AM over FM?",
+          "options": [
+            "Better sound quality",
+            "Noise immunity",
+            "Simpler implementation and long-range coverage",
+            "Wider bandwidth"
+          ],
+          "explanation": "AM is simpler to implement and provides better long-range propagation characteristics compared to FM.",
+          "correctAnswer": [2]
+        },
+        {
+          "question": "Which modulation technique is preferred for high-fidelity audio?",
+          "options": [
+            "AM",
+            "FM",
+            "Both are equal",
+            "Neither"
+          ],
+          "explanation": "FM provides better sound quality and is preferred for high-fidelity audio applications due to its noise immunity.",
+          "correctAnswer": [1]
+        },
+        {
+          "question": "What remains constant in Frequency Modulation?",
+          "options": [
+            "Frequency",
+            "Amplitude",
+            "Phase",
+            "Power"
+          ],
+          "explanation": "In FM, the amplitude of the carrier wave remains constant while the frequency is varied according to the information signal.",
+          "correctAnswer": [1]
+        }
+      ]
+    },
+    "passage_4": {
+      "title": "Digital Modulation Techniques",
+      "passage": "Digital modulation techniques are essential for modern communication systems as they provide better noise immunity, efficient spectrum utilization, and compatibility with digital processing. Phase Shift Keying (PSK) varies the phase of the carrier wave to represent digital bits. Binary PSK (BPSK) uses two phase states to represent 0 and 1, while Quadrature PSK (QPSK) uses four phase states to transmit two bits per symbol. Quadrature Amplitude Modulation (QAM) combines both amplitude and phase variations to encode multiple bits per symbol. Higher-order modulations like 64-QAM and 256-QAM achieve greater spectral efficiency but are more sensitive to noise and require more complex implementation.",
+      "questions": [
+        {
+          "question": "How many phase states are used in BPSK?",
+          "options": [
+            "1",
+            "2",
+            "4",
+            "8"
+          ],
+          "explanation": "Binary PSK (BPSK) uses two phase states to represent the binary digits 0 and 1.",
+          "correctAnswer": [1]
+        },
+        {
+          "question": "Which modulation technique combines both amplitude and phase variations?",
+          "options": [
+            "PSK",
+            "ASK",
+            "QAM",
+            "FSK"
+          ],
+          "explanation": "Quadrature Amplitude Modulation (QAM) varies both the amplitude and phase of the carrier wave to encode data.",
+          "correctAnswer": [2]
+        },
+        {
+          "question": "What is the main advantage of QPSK over BPSK?",
+          "options": [
+            "Lower complexity",
+            "Better noise immunity",
+            "Transmits twice the data rate using same bandwidth",
+            "Uses less power"
+          ],
+          "explanation": "QPSK can transmit 2 bits per symbol compared to BPSK's 1 bit per symbol, effectively doubling the data rate in the same bandwidth.",
+          "correctAnswer": [2]
+        },
+        {
+          "question": "How many bits does each symbol represent in 64-QAM?",
+          "options": [
+            "4",
+            "5",
+            "6",
+            "8"
+          ],
+          "explanation": "64-QAM has 64 possible symbol states, which equals 2^6, so each symbol represents 6 bits.",
+          "correctAnswer": [2]
+        },
+        {
+          "question": "What is a trade-off of using higher-order QAM modulations?",
+          "options": [
+            "Lower data rates",
+            "Simpler implementation",
+            "Greater sensitivity to noise",
+            "Wider bandwidth requirement"
+          ],
+          "explanation": "Higher-order QAM modulations achieve higher data rates but become more sensitive to noise and interference.",
+          "correctAnswer": [2]
+        }
+      ]
+    },
+    "passage_5": {
+      "title": "Multiple Access Techniques in Cellular Systems",
+      "passage": "Multiple access techniques allow multiple users to share communication resources efficiently. Frequency Division Multiple Access (FDMA) assigns different frequency bands to different users. Time Division Multiple Access (TDMA) allows users to share the same frequency by transmitting in different time slots. Code Division Multiple Access (CDMA) enables multiple users to transmit simultaneously on the same frequency using unique spreading codes. Orthogonal Frequency Division Multiple Access (OFDMA) combines OFDM with multiple access, allowing subcarriers to be allocated to different users. Space Division Multiple Access (SDMA) uses directional antennas or beamforming to separate users spatially. Each technique has specific advantages and is suitable for different applications and network requirements.",
+      "questions": [
+        {
+          "question": "Which multiple access technique assigns different frequency bands to users?",
+          "options": [
+            "TDMA",
+            "FDMA",
+            "CDMA",
+            "SDMA"
+          ],
+          "explanation": "Frequency Division Multiple Access (FDMA) separates users by assigning different frequency bands to each user.",
+          "correctAnswer": [1]
+        },
+        {
+          "question": "In TDMA, how are users separated?",
+          "options": [
+            "By frequency",
+            "By time slots",
+            "By codes",
+            "By space"
+          ],
+          "explanation": "Time Division Multiple Access (TDMA) allows users to share the same frequency by transmitting in different time slots.",
+          "correctAnswer": [1]
+        },
+        {
+          "question": "What allows multiple users to transmit simultaneously on the same frequency in CDMA?",
+          "options": [
+            "Time slots",
+            "Frequency bands",
+            "Unique spreading codes",
+            "Power levels"
+          ],
+          "explanation": "CDMA uses unique spreading codes for each user, allowing simultaneous transmission on the same frequency.",
+          "correctAnswer": [2]
+        },
+        {
+          "question": "Which technique uses directional antennas to separate users?",
+          "options": [
+            "FDMA",
+            "TDMA",
+            "CDMA",
+            "SDMA"
+          ],
+          "explanation": "Space Division Multiple Access (SDMA) uses directional antennas or beamforming to separate users spatially.",
+          "correctAnswer": [3]
+        },
+        {
+          "question": "What does OFDMA combine with multiple access?",
+          "options": [
+            "AM modulation",
+            "FM modulation",
+            "OFDM",
+            "PSK modulation"
+          ],
+          "explanation": "OFDMA combines Orthogonal Frequency Division Multiplexing (OFDM) with multiple access capabilities.",
+          "correctAnswer": [2]
+        }
+      ]
+    },
+    "passage_6": {
+      "title": "Cellular System Concepts and Architecture",
+      "passage": "Cellular systems are designed to provide wide-area coverage while efficiently utilizing the available spectrum through frequency reuse. The service area is divided into cells, each served by a base station. Frequency reuse allows the same frequencies to be used in non-adjacent cells without causing interference. Cell splitting is used to increase capacity by dividing large cells into smaller ones. Sectoring involves dividing cells into sectors using directional antennas to increase capacity and reduce interference. Handoff mechanisms ensure seamless connectivity as mobile users move between cells. The cellular concept enables networks to serve a large number of users with limited spectrum resources while maintaining acceptable service quality.",
+      "questions": [
+        {
+          "question": "What is the main purpose of the cellular system concept?",
+          "options": [
+            "To increase transmission power",
+            "To provide wide coverage with efficient spectrum use",
+            "To reduce the number of base stations",
+            "To eliminate the need for handoffs"
+          ],
+          "explanation": "The cellular concept aims to provide wide-area coverage while efficiently utilizing the available radio spectrum through frequency reuse.",
+          "correctAnswer": [1]
+        },
+        {
+          "question": "What is frequency reuse in cellular systems?",
+          "options": [
+            "Using the same frequency in all cells",
+            "Using different frequencies in each cell",
+            "Using the same frequencies in non-adjacent cells",
+            "Never reusing frequencies"
+          ],
+          "explanation": "Frequency reuse allows the same frequencies to be used in non-adjacent cells without causing harmful interference.",
+          "correctAnswer": [2]
+        },
+        {
+          "question": "What is the purpose of cell splitting?",
+          "options": [
+            "To reduce coverage area",
+            "To increase capacity",
+            "To eliminate interference",
+            "To reduce power consumption"
+          ],
+          "explanation": "Cell splitting divides large cells into smaller ones to increase the capacity of the cellular network.",
+          "correctAnswer": [1]
+        },
+        {
+          "question": "How does sectoring help in cellular systems?",
+          "options": [
+            "By increasing cell size",
+            "By using omnidirectional antennas",
+            "By dividing cells into sectors with directional antennas",
+            "By eliminating base stations"
+          ],
+          "explanation": "Sectoring divides cells into sectors using directional antennas to increase capacity and reduce interference.",
+          "correctAnswer": [2]
+        },
+        {
+          "question": "What ensures seamless connectivity as users move between cells?",
+          "options": [
+            "Frequency reuse",
+            "Cell splitting",
+            "Sectoring",
+            "Handoff mechanisms"
+          ],
+          "explanation": "Handoff mechanisms ensure continuous service as mobile users move from one cell to another.",
+          "correctAnswer": [3]
+        }
+      ]
+    },
+    "passage_7": {
+      "title": "Signal Types and Properties",
+      "passage": "Communication systems handle different types of signals, each with distinct characteristics and applications. Analog signals are continuous in both time and amplitude, representing information through smooth variations. They are susceptible to noise and degradation during transmission and processing. Digital signals are discrete in nature, representing information using distinct levels or states (typically binary). Digital signals offer better noise immunity, easier processing, and more efficient storage compared to analog signals. Optical signals use light as the carrier medium, typically in fiber optic communications. They provide very high bandwidth, low loss over long distances, and immunity to electromagnetic interference. The choice of signal type depends on the application requirements, including bandwidth needs, noise environment, and system complexity.",
+      "questions": [
+        {
+          "question": "What characterizes analog signals?",
+          "options": [
+            "Discrete time and amplitude",
+            "Continuous time and amplitude",
+            "Digital representation",
+            "Binary states only"
+          ],
+          "explanation": "Analog signals are continuous in both time and amplitude, representing information through smooth variations.",
+          "correctAnswer": [1]
+        },
+        {
+          "question": "What is a major advantage of digital signals over analog signals?",
+          "options": [
+            "Larger size",
+            "Higher power consumption",
+            "Better noise immunity",
+            "More complex processing"
+          ],
+          "explanation": "Digital signals offer better noise immunity compared to analog signals, making them more reliable for communication.",
+          "correctAnswer": [2]
+        },
+        {
+          "question": "What medium do optical signals use as a carrier?",
+          "options": [
+            "Radio waves",
+            "Sound waves",
+            "Light",
+            "Microwaves"
+          ],
+          "explanation": "Optical signals use light as the carrier medium, typically employed in fiber optic communications.",
+          "correctAnswer": [2]
+        },
+        {
+          "question": "What is a key advantage of optical signals?",
+          "options": [
+            "Low bandwidth",
+            "High loss over long distances",
+            "Immunity to electromagnetic interference",
+            "Simple equipment"
+          ],
+          "explanation": "Optical signals provide immunity to electromagnetic interference, along with high bandwidth and low loss characteristics.",
+          "correctAnswer": [2]
+        },
+        {
+          "question": "How do digital signals typically represent information?",
+          "options": [
+            "Through continuous variations",
+            "Using distinct levels or states",
+            "With analog waveforms",
+            "Through frequency changes only"
+          ],
+          "explanation": "Digital signals represent information using distinct, discrete levels or states, typically in binary form.",
+          "correctAnswer": [1]
+        }
+      ]
+    },
+    "passage_8": {
+      "title": "Wired vs Wireless Communication Comparison",
+      "passage": "The choice between wired and wireless communication depends on various factors and trade-offs. Wired communication offers high reliability, better security, higher bandwidth capabilities, and consistent performance. However, it requires physical infrastructure installation, has limited mobility, and involves higher installation costs. Wireless communication provides excellent mobility, flexible deployment, easier installation in difficult terrains, and supports a wide range of mobile devices. The disadvantages include susceptibility to interference, generally lower bandwidth compared to wired systems, security vulnerabilities, and variable performance depending on environmental conditions. Modern communication networks often employ hybrid approaches, combining wired backbone networks with wireless access points to leverage the advantages of both technologies.",
+      "questions": [
+        {
+          "question": "What is a key advantage of wired communication?",
+          "options": [
+            "Easy mobility",
+            "High reliability and security",
+            "No installation required",
+            "Works without power"
+          ],
+          "explanation": "Wired communication systems typically offer high reliability and better security compared to wireless systems.",
+          "correctAnswer": [1]
+        },
+        {
+          "question": "What is the main advantage of wireless communication?",
+          "options": [
+            "Higher bandwidth",
+            "Better security",
+            "Mobility and flexibility",
+            "Lower cost"
+          ],
+          "explanation": "The primary advantage of wireless communication is the mobility and flexibility it provides to users.",
+          "correctAnswer": [2]
+        },
+        {
+          "question": "What is a typical disadvantage of wireless systems?",
+          "options": [
+            "High installation costs",
+            "Limited mobility",
+            "Susceptibility to interference",
+            "Requires physical cables"
+          ],
+          "explanation": "Wireless systems are generally more susceptible to interference from various sources compared to wired systems.",
+          "correctAnswer": [2]
+        },
+        {
+          "question": "How do modern networks often address the limitations of both wired and wireless?",
+          "options": [
+            "Use only wired connections",
+            "Use only wireless connections",
+            "Employ hybrid approaches combining both",
+            "Avoid using either technology"
+          ],
+          "explanation": "Modern networks often use hybrid approaches that combine wired backbone infrastructure with wireless access to get benefits of both.",
+          "correctAnswer": [2]
+        },
+        {
+          "question": "Which factor affects wireless performance but not wired performance?",
+          "options": [
+            "Data rate",
+            "Environmental conditions",
+            "Power consumption",
+            "Equipment cost"
+          ],
+          "explanation": "Environmental conditions such as weather, obstacles, and interference significantly affect wireless performance but have minimal impact on wired systems.",
+          "correctAnswer": [1]
+        }
+      ]
+    },
+    "passage_9": {
+      "title": "5G Technology and Applications",
+      "passage": "5G represents the fifth generation of cellular network technology, designed to support three main use cases: Enhanced Mobile Broadband (eMBB), Ultra-Reliable Low-Latency Communication (URLLC), and Massive Machine-Type Communication (mMTC). eMBB focuses on providing extremely high data rates and improved user experience for applications like 4K/8K video streaming and virtual reality. URLLC enables applications requiring very low latency and high reliability, such as autonomous vehicles and industrial automation. mMTC supports massive numbers of connected devices with extended battery life for IoT applications. 5G networks utilize advanced technologies including massive MIMO, beamforming, network slicing, and edge computing to achieve these diverse requirements simultaneously.",
+      "questions": [
+        {
+          "question": "What does eMBB stand for in 5G technology?",
+          "options": [
+            "Enhanced Mobile Broadcasting",
+            "Enhanced Mobile Broadband",
+            "Extended Mobile Broadband",
+            "Efficient Mobile Broadcasting"
+          ],
+          "explanation": "eMBB stands for Enhanced Mobile Broadband, one of the three main 5G use cases focused on high data rates.",
+          "correctAnswer": [1]
+        },
+        {
+          "question": "Which 5G use case is most suitable for autonomous vehicles?",
+          "options": [
+            "eMBB",
+            "URLLC",
+            "mMTC",
+            "None of the above"
+          ],
+          "explanation": "URLLC (Ultra-Reliable Low-Latency Communication) is designed for applications requiring very low latency and high reliability like autonomous vehicles.",
+          "correctAnswer": [1]
+        },
+        {
+          "question": "What does mMTC focus on?",
+          "options": [
+            "High data rates",
+            "Low latency",
+            "Massive number of connected devices",
+            "High mobility"
+          ],
+          "explanation": "mMTC (Massive Machine-Type Communication) supports massive numbers of connected devices, particularly for IoT applications.",
+          "correctAnswer": [2]
+        },
+        {
+          "question": "Which technology is NOT mentioned as being utilized by 5G networks?",
+          "options": [
+            "Massive MIMO",
+            "Beamforming",
+            "Analog modulation",
+            "Network slicing"
+          ],
+          "explanation": "5G networks use advanced digital technologies; analog modulation is not a key 5G technology mentioned in modern cellular systems.",
+          "correctAnswer": [2]
+        },
+        {
+          "question": "What type of applications benefit most from eMBB?",
+          "options": [
+            "Industrial automation",
+            "4K/8K video streaming and VR",
+            "IoT sensor networks",
+            "Basic voice calls"
+          ],
+          "explanation": "eMBB is designed for applications requiring very high data rates like 4K/8K video streaming and virtual reality.",
+          "correctAnswer": [1]
+        }
+      ]
+    },
+    "passage_10": {
+      "title": "Network Architecture Evolution and Core Components",
+      "passage": "The evolution from 4G LTE to 5G involves significant changes in network architecture. 4G networks use eNodeB (evolved NodeB) as base stations connected to the Evolved Packet Core (EPC), which includes components like MME (Mobility Management Entity), SGW (Serving Gateway), and PGW (PDN Gateway). 5G introduces gNodeB as the new base station and implements a Service-Based Architecture (SBA) in the core network. The 5G core includes functions like AMF (Access and Mobility Management Function), SMF (Session Management Function), and UPF (User Plane Function). 5G deployment can be implemented in Non-Standalone (NSA) mode, leveraging existing 4G infrastructure, or Standalone (SA) mode with a fully independent 5G core network. This architectural evolution enables better flexibility, scalability, and support for diverse service requirements.",
+      "questions": [
+        {
+          "question": "What is the base station called in 4G LTE networks?",
+          "options": [
+            "NodeB",
+            "eNodeB",
+            "gNodeB",
+            "Base Station"
+          ],
+          "explanation": "4G LTE networks use eNodeB (evolved NodeB) as their base stations.",
+          "correctAnswer": [1]
+        },
+        {
+          "question": "What does AMF stand for in 5G core networks?",
+          "options": [
+            "Advanced Mobility Function",
+            "Access and Mobility Management Function",
+            "Automatic Management Function",
+            "Access Management Framework"
+          ],
+          "explanation": "AMF stands for Access and Mobility Management Function, one of the key components in 5G core networks.",
+          "correctAnswer": [1]
+        },
+        {
+          "question": "What is the difference between NSA and SA deployment modes?",
+          "options": [
+            "NSA uses 4G infrastructure, SA is fully independent 5G",
+            "NSA is faster than SA",
+            "SA uses 4G infrastructure, NSA is independent",
+            "There is no difference"
+          ],
+          "explanation": "NSA (Non-Standalone) leverages existing 4G infrastructure, while SA (Standalone) uses fully independent 5G core network.",
+          "correctAnswer": [0]
+        },
+        {
+          "question": "What type of architecture does 5G core implement?",
+          "options": [
+            "Hierarchical Architecture",
+            "Service-Based Architecture",
+            "Centralized Architecture",
+            "Distributed Architecture"
+          ],
+          "explanation": "5G core implements a Service-Based Architecture (SBA) which provides better flexibility and scalability.",
+          "correctAnswer": [1]
+        },
+        {
+          "question": "Which component is NOT part of the 4G EPC?",
+          "options": [
+            "MME",
+            "SGW",
+            "AMF",
+            "PGW"
+          ],
+          "explanation": "AMF (Access and Mobility Management Function) is a 5G core component, not part of the 4G EPC (Evolved Packet Core).",
+          "correctAnswer": [2]
+        }
+      ]
+    }
   }
-]
+};
 
-
-      
-    
+// Debug function to check data structure
+export function debugQuestionsData() {
+  console.log('=== DEBUG QUESTIONS DATA ===');
+  console.log('allQuestionsData keys:', Object.keys(allQuestionsData));
+  console.log('passage_based_questions exists:', 'passage_based_questions' in allQuestionsData);
+  
+  const passageData = (allQuestionsData as any).passage_based_questions;
+  if (passageData) {
+    console.log('passage_based_questions keys:', Object.keys(passageData));
+    console.log('First passage:', passageData.passage_1);
+  } else {
+    console.log('passage_based_questions is undefined');
   }
+  console.log('=== END DEBUG ===');
+}
+
+// Function to get all passage questions
+export function getAllPassageQuestions(): PassageQuestion[] {
+  // Access the passage data directly from the raw data structure
+  const passageData = (allQuestionsData as any).passage_based_questions;
+  
+  if (!passageData) {
+    console.error('passage_based_questions not found in allQuestionsData');
+    return [];
+  }
+  
+  const result = Object.values(passageData) as PassageQuestion[];
+  return result;
+}
+
+// Function to get passage questions without shuffling (sequential order)
+export function getPassageQuestions(): Question[] {
+  const passageQuestions: Question[] = [];
+  const passageData = (allQuestionsData as any).passage_based_questions;
+  
+  if (!passageData) {
+    return [];
+  }
+  
+  const passages = Object.values(passageData) as PassageQuestion[];
+  
+  passages.forEach((passage: PassageQuestion) => {
+    // Add passage title as a context question (optional, for display purposes)
+    passageQuestions.push(...passage.questions);
+  });
+  
+  // Return questions in sequential order without shuffling
+  return passageQuestions;
+}
 
   // For the "all" mode, combine questions from all weeks
   const shuffleArray = <T>(array: T[]): T[] => {
@@ -1366,34 +2994,42 @@ export function getAllQuestions(mode: PracticeMode): Question[] {
   };
   
   // Function to get questions based on mode
-  const getQuestionsByMode = (mode: PracticeMode, weekQuestions: WeekQuestions): Question[] => {
-    // For the "ultimate" challenge mode, combine and randomize questions from all weeks
+  export function getAllQuestions(mode: PracticeMode): Question[] {
+    const weekQuestions = allQuestionsData as WeekQuestions;
+    // For the "assignment" mode, combine and randomize questions from all weeks
    if (mode === "assignment") {
     let allQuestions: Question[] = [];
     // Gather questions from all weeks (excluding assignment)
     for (const week in weekQuestions) {
-      if (week !== "assignment") {
-        allQuestions = [...allQuestions, ...weekQuestions[week]];
+      if (week !== "assignment" && week !== "passage_based_questions") {
+        allQuestions = [...allQuestions, ...(weekQuestions[week] as Question[])];
       }
     }
     // Shuffle all questions and their options
     return shuffleArray(allQuestions).map((q) => shuffleOptions(q));
+  }
+
+  // For the "passage" mode, return passage questions in sequential order (no shuffling)
+  if (mode === "passage") {
+    return getPassageQuestions();
   }
   
     // For the "all" mode, combine questions from all weeks
     if (mode === "all") {
       let allQuestions: Question[] = [];
       for (const week in weekQuestions) {
-        allQuestions = [...allQuestions, ...weekQuestions[week]];
+        if (week !== "passage_based_questions") {
+          allQuestions = [...allQuestions, ...(weekQuestions[week] as Question[])];
+        }
       }
       // Shuffle all questions and their options
       return shuffleArray(allQuestions).map(q => shuffleOptions(q));
     }
   
     // Handle specific week or assignment mode
-    if (weekQuestions[mode] && weekQuestions[mode].length > 0) {
+    if (weekQuestions[mode] && Array.isArray(weekQuestions[mode]) && (weekQuestions[mode] as Question[]).length > 0) {
       // Return shuffled questions with shuffled options for the specific mode
-      return shuffleArray(weekQuestions[mode]).map(q => shuffleOptions(q));
+      return shuffleArray(weekQuestions[mode] as Question[]).map(q => shuffleOptions(q));
     }
   
     // Fallback - if mode doesn't exist or has no questions
@@ -1401,7 +3037,7 @@ export function getAllQuestions(mode: PracticeMode): Question[] {
   
     // Return default questions instead of empty array
     return shuffleArray(
-      weekQuestions.week1 || [
+      (weekQuestions.module1 as Question[]) || [
         {
           question: "Default question when no questions are found",
           options: ["Option A", "Option B", "Option C", "Option D"],
@@ -1411,6 +3047,4 @@ export function getAllQuestions(mode: PracticeMode): Question[] {
         },
       ]
       ).map(q => shuffleOptions(q));
-    }
-    return getQuestionsByMode(mode, weekQuestions);
-  }
+}

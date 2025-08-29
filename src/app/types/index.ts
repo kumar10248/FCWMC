@@ -13,11 +13,26 @@ export interface Question {
   imageSize?: 'small' | 'medium' | 'large' | 'full'; // Optional image size control
 }
 
+export interface PassageQuestion {
+  title: string;
+  passage: string;
+  questions: Question[];
+}
+
 export interface WeekQuestions {
   [key: string]: Question[];
 }
 
-export type PracticeMode = 'module1' | 'module2' | 'module3' | 'module4' | 'module5' | 'module6' | 'all' | 'assignment';
+export interface AllQuestionsData {
+  [key: string]: Question[] | PassageQuestions;
+  passage_based_questions: PassageQuestions;
+}
+
+export interface PassageQuestions {
+  [key: string]: PassageQuestion;
+}
+
+export type PracticeMode = 'module1' | 'module2' | 'module3' | 'module4' | 'module5' | 'module6' | 'all' | 'assignment' | 'passage';
 
 export interface PracticeOption {
   id: PracticeMode;

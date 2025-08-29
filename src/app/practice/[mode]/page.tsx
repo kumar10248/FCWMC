@@ -6,15 +6,18 @@ import Image from 'next/image';
 import { FaArrowLeft, FaArrowRight, FaClock, FaTimes, FaBars, FaCheck, 
   FaTrophy, FaExclamationCircle, FaLightbulb, 
   FaChevronRight, FaBrain, FaCheckCircle, FaTimesCircle, FaHistory,
-  FaInfoCircle, FaSquare, FaCheckSquare } from 'react-icons/fa';
-import { getAllQuestions } from '../../lib/questions';
-import { Question, PracticeMode, OptionItem } from '../../types';
+  FaInfoCircle, FaSquare, FaCheckSquare, FaBook } from 'react-icons/fa';
+import { getAllQuestions, getAllPassageQuestions, debugQuestionsData } from '../../lib/questions';
+import { Question, PracticeMode, OptionItem, PassageQuestion } from '../../types';
 import { formatTime, calculateSessionTime, validateImagePath, getImageDisplayName } from '@/app/lib/utils';
 
 export default function QuestionPracticePage() {
   const router = useRouter();
   const { mode } = useParams() as { mode: PracticeMode };
   const [questions, setQuestions] = useState<Question[]>([]);
+  const [passageQuestions, setPassageQuestions] = useState<PassageQuestion[]>([]);
+  const [currentPassageIndex, setCurrentPassageIndex] = useState(0);
+  const [currentQuestionInPassage, setCurrentQuestionInPassage] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState<number[][]>([]);
   const [answeredQuestions, setAnsweredQuestions] = useState<boolean[]>([]);
@@ -54,32 +57,66 @@ export default function QuestionPracticePage() {
       try {
         setIsLoading(true);
         console.log(`Attempting to load questions for mode: ${mode}`);
+        console.log('Mode type:', typeof mode);
+        console.log('Mode === "passage":', mode === 'passage');
         
         // Simulate a network request to make loader visible (remove in production)
         await new Promise(resolve => setTimeout(resolve, 800));
         
         // Get questions for the selected mode
-        const loadedQuestions = getAllQuestions(mode);
-        console.log(`Loaded ${loadedQuestions.length} questions`);
-        
-        if (loadedQuestions.length === 0) {
-          throw new Error(`No questions found for ${mode} mode`);
+        if (mode === 'passage') {
+          // Debug call
+          debugQuestionsData();
+          
+          // Handle passage-based questions
+          const loadedPassages = getAllPassageQuestions();
+          console.log(`Loaded ${loadedPassages.length} passages`);
+          
+          if (loadedPassages.length === 0) {
+            throw new Error(`No passage questions found for ${mode} mode. Debug: getAllPassageQuestions returned ${loadedPassages.length} passages`);
+          }
+          
+          setPassageQuestions(loadedPassages);
+          
+          // Calculate total questions across all passages
+          const totalQuestions = loadedPassages.reduce((total, passage) => total + passage.questions.length, 0);
+          
+          // Initialize arrays for tracking selected options and answered status for each question
+          setSelectedOptions(new Array(totalQuestions).fill(null).map(() => []));
+          setAnsweredQuestions(new Array(totalQuestions).fill(false));
+          
+          // Calculate total session time (2 minutes per question)
+          const totalTime = calculateSessionTime(totalQuestions);
+          setTimeRemaining(totalTime);
+          
+          // Reset passage-specific state
+          setCurrentPassageIndex(0);
+          setCurrentQuestionInPassage(0);
+          setCurrentQuestionIndex(0);
+          setScore(0);
+        } else {
+          // Handle regular questions
+          const loadedQuestions = getAllQuestions(mode);
+          console.log(`Loaded ${loadedQuestions.length} questions`);
+          
+          if (loadedQuestions.length === 0) {
+            throw new Error(`No questions found for ${mode} mode`);
+          }
+          
+          setQuestions(loadedQuestions);
+          
+          // Initialize arrays for tracking selected options and answered status for each question
+          setSelectedOptions(new Array(loadedQuestions.length).fill(null).map(() => []));
+          setAnsweredQuestions(new Array(loadedQuestions.length).fill(false));
+          
+          // Calculate total session time (2 minutes per question)
+          const totalTime = calculateSessionTime(loadedQuestions.length);
+          setTimeRemaining(totalTime);
+          
+          // Reset other state
+          setCurrentQuestionIndex(0);
+          setScore(0);
         }
-        
-        setQuestions(loadedQuestions);
-        
-        // Initialize arrays for tracking selected options and answered status for each question
-        // Each question has an array of selected options (empty initially)
-        setSelectedOptions(new Array(loadedQuestions.length).fill(null).map(() => []));
-        setAnsweredQuestions(new Array(loadedQuestions.length).fill(false));
-        
-        // Calculate total session time (2 minutes per question)
-        const totalTime = calculateSessionTime(loadedQuestions.length);
-        setTimeRemaining(totalTime);
-        
-        // Reset other state
-        setCurrentQuestionIndex(0);
-        setScore(0);
         
         // Start the timer only after questions are loaded
         if (timerRef.current) {
@@ -92,7 +129,10 @@ export default function QuestionPracticePage() {
               if (timerRef.current) {
                 clearInterval(timerRef.current);
               }
-              router.push(`/results?score=${scoreRef.current}&total=${loadedQuestions.length}&mode=${mode}&timeUp=true`);
+              const totalCount = mode === 'passage' 
+                ? passageQuestions.reduce((total, passage) => total + passage.questions.length, 0)
+                : questions.length;
+              router.push(`/results?score=${scoreRef.current}&total=${totalCount}&mode=${mode}&timeUp=true`);
               return 0;
             }
             return prevTime - 1;
@@ -117,21 +157,60 @@ export default function QuestionPracticePage() {
     };
   }, [mode, router]);
   
+  // Helper functions for passage mode
+  const getCurrentQuestion = (): Question | null => {
+    if (mode === 'passage') {
+      if (passageQuestions[currentPassageIndex]?.questions[currentQuestionInPassage]) {
+        return passageQuestions[currentPassageIndex].questions[currentQuestionInPassage];
+      }
+      return null;
+    } else {
+      return questions[currentQuestionIndex] || null;
+    }
+  };
+  
+  const getCurrentPassage = (): PassageQuestion | null => {
+    if (mode === 'passage' && passageQuestions[currentPassageIndex]) {
+      return passageQuestions[currentPassageIndex];
+    }
+    return null;
+  };
+  
+  const getTotalQuestions = (): number => {
+    if (mode === 'passage') {
+      return passageQuestions.reduce((total, passage) => total + passage.questions.length, 0);
+    }
+    return questions.length;
+  };
+  
+  const getGlobalQuestionIndex = (): number => {
+    if (mode === 'passage') {
+      let globalIndex = 0;
+      for (let i = 0; i < currentPassageIndex; i++) {
+        globalIndex += passageQuestions[i].questions.length;
+      }
+      return globalIndex + currentQuestionInPassage;
+    }
+    return currentQuestionIndex;
+  };
+  
   // Check if current question requires multiple answers
-  const isMultipleAnswerQuestion = (questionIndex: number): boolean => {
-    if (!questions[questionIndex]) return false;
-    return Array.isArray(questions[questionIndex].correctAnswer) && 
-           questions[questionIndex].correctAnswer.length > 1;
+  const isMultipleAnswerQuestion = (): boolean => {
+    const currentQuestion = getCurrentQuestion();
+    if (!currentQuestion) return false;
+    return Array.isArray(currentQuestion.correctAnswer) && 
+           currentQuestion.correctAnswer.length > 1;
   };
   
   // Toggle option selection for multiple choice questions
   const toggleOptionSelection = (optionIndex: number) => {
+    const globalIndex = getGlobalQuestionIndex();
     // Don't do anything if the question is already submitted
-    if (answeredQuestions[currentQuestionIndex]) return;
+    if (answeredQuestions[globalIndex]) return;
     
     setSelectedOptions(prevSelectedOptions => {
       const newSelectedOptions = [...prevSelectedOptions];
-      const currentSelections = [...(newSelectedOptions[currentQuestionIndex] || [])];
+      const currentSelections = [...(newSelectedOptions[globalIndex] || [])];
       
       // Toggle the selection
       const optionPosition = currentSelections.indexOf(optionIndex);
@@ -142,33 +221,35 @@ export default function QuestionPracticePage() {
       }
       
       // Update the array
-      newSelectedOptions[currentQuestionIndex] = currentSelections;
+      newSelectedOptions[globalIndex] = currentSelections;
       return newSelectedOptions;
     });
   };
   
   // Handle single option selection (for single-answer questions)
- // Handle single option selection (for single-answer questions)
 const handleSingleOptionSelect = (optionIndex: number) => {
+  const globalIndex = getGlobalQuestionIndex();
   // Don't do anything if the question is already submitted
-  if (answeredQuestions[currentQuestionIndex]) return;
+  if (answeredQuestions[globalIndex]) return;
   
   // Create a new array with just this option
   setSelectedOptions(prevSelectedOptions => {
     const newSelectedOptions = [...prevSelectedOptions];
-    newSelectedOptions[currentQuestionIndex] = [optionIndex];
+    newSelectedOptions[globalIndex] = [optionIndex];
     return newSelectedOptions;
   });
   
   // Mark question as answered immediately
   setAnsweredQuestions(prevAnswered => {
     const newAnsweredQuestions = [...prevAnswered];
-    newAnsweredQuestions[currentQuestionIndex] = true;
+    newAnsweredQuestions[globalIndex] = true;
     return newAnsweredQuestions;
   });
   
   // Check if answer is correct
-  const currentQuestion = questions[currentQuestionIndex];
+  const currentQuestion = getCurrentQuestion();
+  if (!currentQuestion) return;
+  
   const isCorrect = currentQuestion.correctAnswer.includes(optionIndex);
   
   if (isCorrect) {
@@ -179,23 +260,27 @@ const handleSingleOptionSelect = (optionIndex: number) => {
 };
   // Submit the answer for evaluation
   const submitAnswer = () => {
+    const globalIndex = getGlobalQuestionIndex();
+    
     // Don't do anything if already answered or no options selected
-    if (answeredQuestions[currentQuestionIndex] || 
-        !selectedOptions[currentQuestionIndex] ||
-        selectedOptions[currentQuestionIndex].length === 0) {
+    if (answeredQuestions[globalIndex] || 
+        !selectedOptions[globalIndex] ||
+        selectedOptions[globalIndex].length === 0) {
       return;
     }
     
     // Mark question as answered
     setAnsweredQuestions(prevAnswered => {
       const newAnsweredQuestions = [...prevAnswered];
-      newAnsweredQuestions[currentQuestionIndex] = true;
+      newAnsweredQuestions[globalIndex] = true;
       return newAnsweredQuestions;
     });
     
     // Check if answer is correct
-    const currentQuestion = questions[currentQuestionIndex];
-    const currentSelections = selectedOptions[currentQuestionIndex];
+    const currentQuestion = getCurrentQuestion();
+    if (!currentQuestion) return;
+    
+    const currentSelections = selectedOptions[globalIndex];
     
     // Sort both arrays to ensure order doesn't matter in comparison
     const sortedSelections = [...currentSelections].sort((a, b) => a - b);
@@ -214,22 +299,63 @@ const handleSingleOptionSelect = (optionIndex: number) => {
   };
   
   const handleNextQuestion = () => {
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setIsExplanationExpanded(true);
-    } else {
-      // End of questions - navigate to results
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
+    if (mode === 'passage') {
+      // Handle passage mode navigation
+      const currentPassage = passageQuestions[currentPassageIndex];
+      if (currentQuestionInPassage < currentPassage.questions.length - 1) {
+        // Move to next question in current passage
+        setCurrentQuestionInPassage(currentQuestionInPassage + 1);
+        setIsExplanationExpanded(true);
+      } else if (currentPassageIndex < passageQuestions.length - 1) {
+        // Move to first question of next passage
+        setCurrentPassageIndex(currentPassageIndex + 1);
+        setCurrentQuestionInPassage(0);
+        setIsExplanationExpanded(true);
+      } else {
+        // End of all questions - navigate to results
+        if (timerRef.current) {
+          clearInterval(timerRef.current);
+        }
+        const totalQuestions = getTotalQuestions();
+        router.push(`/results?score=${score}&total=${totalQuestions}&mode=${mode}&timeRemaining=${timeRemaining}`);
       }
-      router.push(`/results?score=${score}&total=${questions.length}&mode=${mode}&timeRemaining=${timeRemaining}`);
+    } else {
+      // Handle regular mode navigation
+      if (currentQuestionIndex < questions.length - 1) {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+        setIsExplanationExpanded(true);
+      } else {
+        // End of questions - navigate to results
+        if (timerRef.current) {
+          clearInterval(timerRef.current);
+        }
+        router.push(`/results?score=${score}&total=${questions.length}&mode=${mode}&timeRemaining=${timeRemaining}`);
+      }
     }
   };
   
-  const goToQuestion = (index: number) => {
-    if (index !== currentQuestionIndex) {
-      setCurrentQuestionIndex(index);
-      setShowSidebar(false);
+  const goToQuestion = (globalIndex: number) => {
+    if (mode === 'passage') {
+      // Convert global index to passage and question indices
+      let currentGlobalIndex = 0;
+      for (let passageIndex = 0; passageIndex < passageQuestions.length; passageIndex++) {
+        const passage = passageQuestions[passageIndex];
+        for (let questionIndex = 0; questionIndex < passage.questions.length; questionIndex++) {
+          if (currentGlobalIndex === globalIndex) {
+            setCurrentPassageIndex(passageIndex);
+            setCurrentQuestionInPassage(questionIndex);
+            setShowSidebar(false);
+            return;
+          }
+          currentGlobalIndex++;
+        }
+      }
+    } else {
+      // Handle regular mode navigation
+      if (globalIndex !== currentQuestionIndex) {
+        setCurrentQuestionIndex(globalIndex);
+        setShowSidebar(false);
+      }
     }
   };
 
@@ -293,7 +419,7 @@ const handleSingleOptionSelect = (optionIndex: number) => {
   }
   
   // No questions state
-  if (questions.length === 0) {
+  if ((mode === 'passage' && passageQuestions.length === 0) || (mode !== 'passage' && questions.length === 0)) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white flex items-center justify-center p-4">
         <div className="text-center max-w-md mx-auto p-8 bg-gray-800/80 rounded-xl backdrop-blur-md border-l-4 border-amber-500 shadow-2xl">
@@ -313,18 +439,21 @@ const handleSingleOptionSelect = (optionIndex: number) => {
     );
   }
   
-  const currentQuestion = questions[currentQuestionIndex];
-  const totalQuestions = questions.length;
-  const progressPercentage = ((currentQuestionIndex) / (totalQuestions - 1)) * 100;
+  const currentQuestion = getCurrentQuestion();
+  const currentPassage = getCurrentPassage();
+  const totalQuestions = getTotalQuestions();
+  const globalQuestionIndex = getGlobalQuestionIndex();
+  const progressPercentage = totalQuestions > 1 ? (globalQuestionIndex / (totalQuestions - 1)) * 100 : 0;
   const isLowTime = timeRemaining < totalQuestions * 20;
   
   // Get current question state
-  const currentSelectedOption = selectedOptions[currentQuestionIndex] || [];
-  const isCurrentQuestionAnswered = answeredQuestions[currentQuestionIndex];
-  const currentQuestionIsMultipleChoice = isMultipleAnswerQuestion(currentQuestionIndex);
+  const currentSelectedOption = selectedOptions[globalQuestionIndex] || [];
+  const isCurrentQuestionAnswered = answeredQuestions[globalQuestionIndex];
+  const currentQuestionIsMultipleChoice = currentQuestion ? isMultipleAnswerQuestion() : false;
   
   // Check if current answer is correct - needed for UI feedback
   const isCurrentQuestionCorrect = isCurrentQuestionAnswered && 
+    currentQuestion &&
     currentSelectedOption.length === currentQuestion.correctAnswer.length &&
     currentSelectedOption.sort().every((val, idx) => val === [...currentQuestion.correctAnswer].sort()[idx]);
 
@@ -422,7 +551,10 @@ const handleSingleOptionSelect = (optionIndex: number) => {
           </h4>
           
           <div className="grid grid-cols-5 gap-2 mb-8">
-            {questions.map((_, index) => {
+            {(mode === 'passage' ? 
+              Array.from({length: totalQuestions}, (_, index) => index) :
+              questions
+            ).map((_, index) => {
               // Define button states
               let bgColor = "bg-gray-800 hover:bg-gray-700";
               let textColor = "text-gray-300";
@@ -430,30 +562,53 @@ const handleSingleOptionSelect = (optionIndex: number) => {
               let icon = null;
               
               // Current question
-              if (index === currentQuestionIndex) {
+              if (index === globalQuestionIndex) {
                 bgColor = "bg-gradient-to-br from-amber-500 to-amber-600";
                 textColor = "text-black";
                 borderStyle = "ring-2 ring-amber-300 ring-offset-1 ring-offset-gray-900";
               } 
               // Answered questions
               else if (answeredQuestions[index]) {
-                // Sort both arrays for comparison
-                const selectedSorted = [...(selectedOptions[index] || [])].sort();
-                const correctSorted = [...(questions[index].correctAnswer || [])].sort();
-                
-                // Check if arrays match
-                const isCorrect = 
-                  selectedSorted.length === correctSorted.length &&
-                  selectedSorted.every((val, idx) => val === correctSorted[idx]);
-                
-                if (isCorrect) {
-                  bgColor = "bg-gradient-to-br from-green-600 to-green-700 hover:from-green-500 hover:to-green-600";
-                  textColor = "text-white";
-                  icon = <FaCheckCircle className="text-xs absolute bottom-0.5 right-0.5 text-green-300" />;
+                // For passage mode, we need to get the correct answer differently
+                let correctAnswer;
+                if (mode === 'passage') {
+                  // Find which passage and question this global index corresponds to
+                  let globalIdx = 0;
+                  let found = false;
+                  for (const passage of passageQuestions) {
+                    for (const question of passage.questions) {
+                      if (globalIdx === index) {
+                        correctAnswer = question.correctAnswer;
+                        found = true;
+                        break;
+                      }
+                      globalIdx++;
+                    }
+                    if (found) break;
+                  }
                 } else {
-                  bgColor = "bg-gradient-to-br from-red-600 to-red-700 hover:from-red-500 hover:to-red-600";
-                  textColor = "text-white";
-                  icon = <FaTimesCircle className="text-xs absolute bottom-0.5 right-0.5 text-red-300" />;
+                  correctAnswer = questions[index].correctAnswer;
+                }
+                
+                if (correctAnswer) {
+                  // Sort both arrays for comparison
+                  const selectedSorted = [...(selectedOptions[index] || [])].sort();
+                  const correctSorted = [...correctAnswer].sort();
+                  
+                  // Check if arrays match
+                  const isCorrect = 
+                    selectedSorted.length === correctSorted.length &&
+                    selectedSorted.every((val, idx) => val === correctSorted[idx]);
+                  
+                  if (isCorrect) {
+                    bgColor = "bg-gradient-to-br from-green-600 to-green-700 hover:from-green-500 hover:to-green-600";
+                    textColor = "text-white";
+                    icon = <FaCheckCircle className="text-xs absolute bottom-0.5 right-0.5 text-green-300" />;
+                  } else {
+                    bgColor = "bg-gradient-to-br from-red-600 to-red-700 hover:from-red-500 hover:to-red-600";
+                    textColor = "text-white";
+                    icon = <FaTimesCircle className="text-xs absolute bottom-0.5 right-0.5 text-red-300" />;
+                  }
                 }
               }
               
@@ -484,7 +639,7 @@ const handleSingleOptionSelect = (optionIndex: number) => {
             <div className="flex justify-between items-center text-xs text-gray-400">
               <div className="flex items-center">
                 <FaBrain className="mr-1 text-amber-400" /> 
-                <span>Q{currentQuestionIndex + 1}</span>
+                <span>Q{globalQuestionIndex + 1}</span>
               </div>
               <div className="flex items-center">
                 <span>Total: {totalQuestions}</span>
@@ -525,7 +680,7 @@ const handleSingleOptionSelect = (optionIndex: number) => {
             <div className="md:hidden flex justify-between items-center mb-6 bg-gray-800/80 p-4 rounded-lg backdrop-blur-md shadow-lg">
               <div className="text-sm flex items-center">
                 <FaBrain className="mr-2 text-amber-400" />
-                <span className="font-medium">Q{currentQuestionIndex + 1}/{questions.length}</span>
+                <span className="font-medium">Q{globalQuestionIndex + 1}/{totalQuestions}</span>
               </div>
               <div className={`flex items-center font-mono ${isLowTime ? 'text-red-400' : 'text-amber-400'}`}>
                 <FaClock className={`mr-1 ${isLowTime ? 'animate-pulse' : ''}`} />
@@ -536,7 +691,7 @@ const handleSingleOptionSelect = (optionIndex: number) => {
             {/* Desktop header */}
             <div className="hidden md:flex justify-between items-center mb-8">
               <div className="text-xl font-medium">
-                <span className="text-amber-400">Question {currentQuestionIndex + 1}</span> of {questions.length}
+                <span className="text-amber-400">Question {globalQuestionIndex + 1}</span> of {totalQuestions}
               </div>
               <div className={`flex items-center bg-gray-800/90 backdrop-blur-md px-6 py-3 rounded-lg shadow-lg ${
                 isLowTime ? 'border border-red-500/50' : ''
@@ -552,7 +707,7 @@ const handleSingleOptionSelect = (optionIndex: number) => {
             <div className="w-full h-3 bg-gray-800/80 rounded-full mb-8 overflow-hidden shadow-inner">
               <div 
                 className="h-full bg-gradient-to-r from-green-600 to-green-400 rounded-full transition-all duration-700 ease-out relative"
-                style={{ width: `${(currentQuestionIndex / (totalQuestions - 1)) * 100}%` }}
+                style={{ width: `${progressPercentage}%` }}
               >
                 <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-r from-transparent to-green-300/30 blur-sm"></div>
               </div>
@@ -560,6 +715,27 @@ const handleSingleOptionSelect = (optionIndex: number) => {
             
             {/* Question card */}
             <div className="bg-gradient-to-br from-gray-900/90 to-gray-800/90 rounded-xl p-8 mb-8 border border-gray-700/50 shadow-xl backdrop-blur-md">
+              
+              {/* Passage content for passage mode */}
+              {mode === 'passage' && currentPassage && (
+                <div className="mb-8 p-6 bg-gradient-to-br from-blue-900/20 to-blue-800/20 rounded-lg border border-blue-500/30">
+                  <div className="flex items-center mb-4">
+                    <div className="bg-blue-500/20 p-2 rounded-lg mr-3">
+                      <FaBook className="text-blue-400" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-blue-300">{currentPassage.title}</h3>
+                  </div>
+                  <div className="prose prose-invert max-w-none">
+                    <p className="text-gray-300 leading-relaxed whitespace-pre-wrap">
+                      {currentPassage.passage}
+                    </p>
+                  </div>
+                  <div className="mt-4 text-sm text-blue-400 border-t border-blue-500/20 pt-3">
+                    Question {currentQuestionInPassage + 1} of {currentPassage.questions.length} for this passage
+                  </div>
+                </div>
+              )}
+              
               {/* Question type indicator */}
               <div className="flex items-center mb-4 text-sm">
                 <div className={`px-3 py-1 rounded-full ${currentQuestionIsMultipleChoice ? 'bg-purple-600/30 text-purple-300' : 'bg-amber-600/30 text-amber-300'} flex items-center`}>
@@ -793,12 +969,12 @@ const handleSingleOptionSelect = (optionIndex: number) => {
                     <div className="mb-5">
                       <div className="flex items-center mb-2">
                         <div className="w-2 h-2 bg-amber-400 rounded-full mr-2"></div>
-                        <h4 className="font-medium text-amber-300">Correct Answer{currentQuestion.correctAnswer.length > 1 ? 's' : ''}:</h4>
+                        <h4 className="font-medium text-amber-300">Correct Answer{(currentQuestion?.correctAnswer?.length || 0) > 1 ? 's' : ''}:</h4>
                       </div>
                       <ul className="list-disc list-inside pl-4 text-gray-300 space-y-1">
-                        {currentQuestion.correctAnswer.map((index) => (
+                        {currentQuestion?.correctAnswer.map((index) => (
                           <li key={index} className="text-green-300">
-                            {getOptionText(currentQuestion.options[index])}
+                            {currentQuestion && getOptionText(currentQuestion.options[index])}
                           </li>
                         ))}
                       </ul>
@@ -810,7 +986,7 @@ const handleSingleOptionSelect = (optionIndex: number) => {
                         <h4 className="font-medium text-amber-300">Explanation:</h4>
                       </div>
                       <div className="bg-gray-800/50 p-4 rounded-lg text-gray-300 leading-relaxed">
-                        {currentQuestion.explanation}
+                        {currentQuestion?.explanation || "No explanation available"}
                       </div>
                     </div>
                   </div>
@@ -822,26 +998,30 @@ const handleSingleOptionSelect = (optionIndex: number) => {
             <div className="flex justify-between mt-10">
               <button
                 className={`px-6 py-3 rounded-lg flex items-center transition duration-300 ${
-                  currentQuestionIndex > 0
+                  globalQuestionIndex > 0
                     ? "bg-gray-800 hover:bg-gray-700 text-white"
                     : "bg-gray-800/50 text-gray-500 cursor-not-allowed"
                 }`}
-                onClick={() => currentQuestionIndex > 0 && setCurrentQuestionIndex(currentQuestionIndex - 1)}
-                disabled={currentQuestionIndex === 0}
+                onClick={() => {
+                  if (globalQuestionIndex > 0) {
+                    goToQuestion(globalQuestionIndex - 1);
+                  }
+                }}
+                disabled={globalQuestionIndex === 0}
               >
                 <FaArrowLeft className="mr-2" /> Previous
               </button>
               
               <button
                 className={`px-6 py-3 rounded-lg flex items-center ${
-                  answeredQuestions[currentQuestionIndex]
+                  answeredQuestions[globalQuestionIndex]
                     ? "bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black transform hover:scale-105 transition duration-300"
                     : "bg-gray-800/50 text-gray-500 cursor-not-allowed"
                 }`}
                 onClick={handleNextQuestion}
-                disabled={!answeredQuestions[currentQuestionIndex]}
+                disabled={!answeredQuestions[globalQuestionIndex]}
               >
-                {currentQuestionIndex < questions.length - 1 ? (
+                {globalQuestionIndex < totalQuestions - 1 ? (
                   <>Next <FaArrowRight className="ml-2" /></>
                 ) : (
                   <>Finish <FaTrophy className="ml-2" /></>
