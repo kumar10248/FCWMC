@@ -2914,7 +2914,7 @@ export function debugQuestionsData() {
   console.log('allQuestionsData keys:', Object.keys(allQuestionsData));
   console.log('passage_based_questions exists:', 'passage_based_questions' in allQuestionsData);
   
-  const passageData = (allQuestionsData as any).passage_based_questions;
+  const passageData = (allQuestionsData as AllQuestionsData).passage_based_questions;
   if (passageData) {
     console.log('passage_based_questions keys:', Object.keys(passageData));
     console.log('First passage:', passageData.passage_1);
@@ -2927,7 +2927,7 @@ export function debugQuestionsData() {
 // Function to get all passage questions
 export function getAllPassageQuestions(): PassageQuestion[] {
   // Access the passage data directly from the raw data structure
-  const passageData = (allQuestionsData as any).passage_based_questions;
+  const passageData = (allQuestionsData as AllQuestionsData).passage_based_questions;
   
   if (!passageData) {
     console.error('passage_based_questions not found in allQuestionsData');
@@ -2941,7 +2941,7 @@ export function getAllPassageQuestions(): PassageQuestion[] {
 // Function to get passage questions without shuffling (sequential order)
 export function getPassageQuestions(): Question[] {
   const passageQuestions: Question[] = [];
-  const passageData = (allQuestionsData as any).passage_based_questions;
+  const passageData = (allQuestionsData as AllQuestionsData).passage_based_questions;
   
   if (!passageData) {
     return [];

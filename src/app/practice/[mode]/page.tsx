@@ -23,6 +23,7 @@ export default function QuestionPracticePage() {
   const [answeredQuestions, setAnsweredQuestions] = useState<boolean[]>([]);
   const [score, setScore] = useState(0);
   const scoreRef = useRef<number>(score);
+  const totalQuestionsRef = useRef<number>(0);
   const [isExplanationExpanded, setIsExplanationExpanded] = useState(true);
   const [showConfetti, setShowConfetti] = useState(false);
   
@@ -80,6 +81,7 @@ export default function QuestionPracticePage() {
           
           // Calculate total questions across all passages
           const totalQuestions = loadedPassages.reduce((total, passage) => total + passage.questions.length, 0);
+          totalQuestionsRef.current = totalQuestions;
           
           // Initialize arrays for tracking selected options and answered status for each question
           setSelectedOptions(new Array(totalQuestions).fill(null).map(() => []));
@@ -104,6 +106,7 @@ export default function QuestionPracticePage() {
           }
           
           setQuestions(loadedQuestions);
+          totalQuestionsRef.current = loadedQuestions.length;
           
           // Initialize arrays for tracking selected options and answered status for each question
           setSelectedOptions(new Array(loadedQuestions.length).fill(null).map(() => []));
@@ -129,10 +132,7 @@ export default function QuestionPracticePage() {
               if (timerRef.current) {
                 clearInterval(timerRef.current);
               }
-              const totalCount = mode === 'passage' 
-                ? passageQuestions.reduce((total, passage) => total + passage.questions.length, 0)
-                : questions.length;
-              router.push(`/results?score=${scoreRef.current}&total=${totalCount}&mode=${mode}&timeUp=true`);
+              router.push(`/results?score=${scoreRef.current}&total=${totalQuestionsRef.current}&mode=${mode}&timeUp=true`);
               return 0;
             }
             return prevTime - 1;
@@ -766,13 +766,14 @@ const handleSingleOptionSelect = (optionIndex: number) => {
                       </span>
                     </div>
                     {currentQuestion.image.endsWith('.svg') ? (
-                      <img 
+                      <Image
                         src={currentQuestion.image} 
                         alt={`Diagram: ${getImageDisplayName(currentQuestion.image)}`}
+                        width={800}
+                        height={600}
                         className="w-full h-auto rounded"
-                        onError={(e) => {
+                        onError={() => {
                           console.error('Failed to load image:', currentQuestion.image);
-                          (e.target as HTMLImageElement).style.display = 'none';
                         }}
                       />
                     ) : (
@@ -882,13 +883,14 @@ const handleSingleOptionSelect = (optionIndex: number) => {
                           }`}>
                             <div className="bg-white p-2 rounded shadow-md">
                               {optionImage.endsWith('.svg') ? (
-                                <img 
+                                <Image
                                   src={optionImage} 
                                   alt={`Option ${String.fromCharCode(65 + index)} image`}
+                                  width={400}
+                                  height={300}
                                   className="w-full h-auto rounded"
-                                  onError={(e) => {
+                                  onError={() => {
                                     console.error('Failed to load option image:', optionImage);
-                                    (e.target as HTMLImageElement).style.display = 'none';
                                   }}
                                 />
                               ) : (
