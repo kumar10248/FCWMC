@@ -66,7 +66,7 @@ export default function PracticeSelectionPage() {
               <span className="bg-amber-400 text-black rounded-full p-1 mr-2 text-xs flex items-center justify-center w-6 h-6 font-bold">S</span> 
               Special Practice
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <button
                 className={`p-6 rounded-lg transition duration-300 transform hover:scale-105 ${
                   selectedMode === 'assignment'
