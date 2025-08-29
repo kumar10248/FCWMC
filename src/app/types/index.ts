@@ -37,7 +37,7 @@ export interface DemoExamData {
   passageQuestions: PassageQuestion[];
 }
 
-export type PracticeMode = 'module1' | 'module2' | 'module3' | 'module4' | 'module5' | 'module6' | 'all' | 'assignment' | 'passage' | 'demo-exam';
+export type PracticeMode = 'module1' | 'module2' | 'module3' | 'module4' | 'module5' | 'module6' |'module7'| 'all' | 'assignment' | 'passage' | 'demo-exam';
 
 export interface PracticeOption {
   id: PracticeMode;

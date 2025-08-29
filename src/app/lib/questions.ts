@@ -663,6 +663,674 @@ const allQuestionsData: AllQuestionsData = {
     "correctAnswer": [0]
   }
 ],
+module7:[
+  {
+    "question": "Which of the following is a guided transmission medium?",
+    "options": ["Radio Waves", "Optical Fiber", "Infrared", "Satellite"],
+    "explanation": "Optical Fiber is a guided transmission medium that uses light signals to transmit data through a physical cable with a specific path.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which of the following is NOT wireless communication?",
+    "options": ["Bluetooth", "Satellite TV", "Ethernet LAN", "Wi-Fi"],
+    "explanation": "Ethernet LAN uses physical cables for data transmission, making it a wired communication method, not wireless.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Frequency is measured in:",
+    "options": ["Seconds", "Hertz", "Meters", "Volts"],
+    "explanation": "Frequency is the number of cycles per second and is measured in Hertz (Hz), named after Heinrich Hertz.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Bandwidth of AM is equal to:",
+    "options": ["fm", "2fm", "3fm", "4fm"],
+    "explanation": "The bandwidth of Amplitude Modulation (AM) is twice the maximum frequency of the modulating signal (2fm).",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which modulation provides the best noise immunity?",
+    "options": ["AM", "FM", "ASK", "PAM"],
+    "explanation": "Frequency Modulation (FM) provides better noise immunity compared to AM because noise primarily affects amplitude, not frequency.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "In Phase Shift Keying (PSK), the parameter varied is:",
+    "options": ["Amplitude", "Frequency", "Phase", "Bandwidth"],
+    "explanation": "In Phase Shift Keying (PSK), the phase of the carrier signal is varied to represent different data bits.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "QAM is a combination of:",
+    "options": ["AM + FM", "ASK + FSK", "ASK + PSK", "AM + PCM"],
+    "explanation": "Quadrature Amplitude Modulation (QAM) combines Amplitude Shift Keying (ASK) and Phase Shift Keying (PSK).",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which modulation technique is used in FM radio?",
+    "options": ["AM", "FM", "PSK", "QAM"],
+    "explanation": "FM radio uses Frequency Modulation (FM) technique where the frequency of the carrier is varied according to the audio signal.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "GSM mobile systems mainly use:",
+    "options": ["FDMA", "TDMA", "CDMA", "OFDMA"],
+    "explanation": "GSM (Global System for Mobile Communications) primarily uses Time Division Multiple Access (TDMA) for separating users.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "3G mobile systems mainly use:",
+    "options": ["FDMA", "TDMA", "CDMA", "OFDMA"],
+    "explanation": "3G mobile systems primarily use Code Division Multiple Access (CDMA) technology for user separation.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which multiple access technique uses orthogonal subcarriers?",
+    "options": ["FDMA", "TDMA", "CDMA", "OFDMA"],
+    "explanation": "Orthogonal Frequency Division Multiple Access (OFDMA) uses orthogonal subcarriers to separate users efficiently.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "Soft Handover is used in:",
+    "options": ["GSM", "CDMA", "FDMA", "LTE"],
+    "explanation": "Soft handover is a characteristic feature of CDMA systems where a mobile can be connected to multiple base stations simultaneously.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which of the following is NOT a digital modulation scheme?",
+    "options": ["ASK", "FSK", "PSK", "FM"],
+    "explanation": "FM (Frequency Modulation) is an analog modulation technique, while ASK, FSK, and PSK are digital modulation schemes.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "Which of the following is used in Wi-Fi and 4G LTE?",
+    "options": ["QAM", "AM", "FM", "PCM"],
+    "explanation": "Quadrature Amplitude Modulation (QAM) is widely used in modern communication systems like Wi-Fi and 4G LTE for high data rates.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Pulse Code Modulation (PCM) is:",
+    "options": ["Analog Modulation", "Digital Pulse Modulation", "Frequency Modulation", "Phase Modulation"],
+    "explanation": "PCM is a digital pulse modulation technique that converts analog signals into digital form through sampling, quantization, and encoding.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which is NOT an advantage of digital signals?",
+    "options": ["High noise immunity", "Easy storage", "Costlier than analog", "Reliable processing"],
+    "explanation": "Digital signals being costlier than analog is actually a disadvantage, not an advantage of digital systems.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which frequency band is used for microwave communication?",
+    "options": ["3 Hz – 30 Hz", "1 GHz – 300 GHz", "3 MHz – 30 MHz", "30 Hz – 300 Hz"],
+    "explanation": "Microwave communication uses frequencies in the range of 1 GHz to 300 GHz for point-to-point communication.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Frequency reuse in cellular networks improves:",
+    "options": ["Antenna size", "Noise level", "Spectrum efficiency", "Modulation index"],
+    "explanation": "Frequency reuse allows the same frequencies to be used in different cells, significantly improving spectrum efficiency.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which of the following is NOT a pulse modulation technique?",
+    "options": ["PAM", "PWM", "PPM", "FM"],
+    "explanation": "FM (Frequency Modulation) is not a pulse modulation technique. PAM, PWM, and PPM are all pulse modulation methods.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "Which of the following devices is part of a Mobile Station (MS)?",
+    "options": ["BTS", "BSC", "SIM Card", "MSC"],
+    "explanation": "A Mobile Station (MS) consists of Mobile Equipment (ME) and SIM card. BTS, BSC, and MSC are network infrastructure components.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Twisted Pair Cable consists of:",
+    "options": ["One copper wire", "Two copper wires twisted together", "Coaxial conductor", "Optical core"],
+    "explanation": "Twisted pair cable consists of two copper wires twisted together to reduce electromagnetic interference and crosstalk.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "UTP cable is mostly used in:",
+    "options": ["LAN", "WAN", "Satellite", "Wi-Fi"],
+    "explanation": "Unshielded Twisted Pair (UTP) cable is primarily used in Local Area Networks (LAN) for Ethernet connections.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Which cable provides highest data transfer speed?",
+    "options": ["Twisted Pair", "Coaxial", "Optical Fiber", "Radio Wave"],
+    "explanation": "Optical fiber provides the highest data transfer speed among guided media due to its use of light signals.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Optical fiber core is made of:",
+    "options": ["Copper", "Plastic or glass", "Aluminum", "Steel"],
+    "explanation": "The core of optical fiber is made of high-quality glass or plastic that allows light to travel through with minimal loss.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which unguided medium requires line-of-sight?",
+    "options": ["Radio Wave", "Microwave", "Infrared", "Satellite"],
+    "explanation": "Microwave communication requires a clear line-of-sight path between transmitter and receiver due to its high frequency characteristics.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Infrared waves cannot:",
+    "options": ["Pass through walls", "Be used in remotes", "Work at short range", "Transmit in free space"],
+    "explanation": "Infrared waves cannot pass through solid objects like walls, which limits their use to line-of-sight applications.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Frequency of FM radio lies in:",
+    "options": ["30–300 KHz", "535–1605 KHz", "88–108 MHz", "1–300 GHz"],
+    "explanation": "FM radio broadcasts in the VHF band, specifically in the frequency range of 88-108 MHz.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Bandwidth of AM =",
+    "options": ["fm", "2fm", "4fm", "fm/2"],
+    "explanation": "The bandwidth of Amplitude Modulation is twice the maximum frequency of the modulating signal (2fm).",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Carson's Rule is used to calculate bandwidth in:",
+    "options": ["AM", "FM", "PM", "ASK"],
+    "explanation": "Carson's Rule is specifically used to estimate the bandwidth required for Frequency Modulation (FM) signals.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Digital modulation technique used in Bluetooth:",
+    "options": ["ASK", "FSK", "PSK", "QAM"],
+    "explanation": "Bluetooth uses Frequency Shift Keying (FSK) as its digital modulation technique for data transmission.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "QAM uses:",
+    "options": ["One carrier", "Two carriers 90° out of phase", "Multiple antennas", "Optical fiber"],
+    "explanation": "QAM uses two carrier signals that are 90° out of phase (quadrature) to carry information in both amplitude and phase.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "16-QAM carries:",
+    "options": ["2 bits/symbol", "4 bits/symbol", "6 bits/symbol", "8 bits/symbol"],
+    "explanation": "16-QAM has 16 different symbol states, which can represent 4 bits per symbol (2^4 = 16).",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which pulse modulation is the first step in PCM?",
+    "options": ["PPM", "PAM", "PWM", "PSK"],
+    "explanation": "Pulse Amplitude Modulation (PAM) is the first step in PCM, where the analog signal is sampled at regular intervals.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "PCM consists of steps:",
+    "options": ["Sampling, Quantization, Encoding", "Modulation, Amplification, Decoding", "Mixing, Transmission, Reception", "None"],
+    "explanation": "Pulse Code Modulation (PCM) involves three main steps: sampling the analog signal, quantization of samples, and encoding into binary.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "FDMA assigns:",
+    "options": ["Separate frequency bands", "Separate time slots", "Separate codes", "Separate antennas"],
+    "explanation": "Frequency Division Multiple Access (FDMA) assigns separate frequency bands to different users for simultaneous communication.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "TDMA is mainly used in:",
+    "options": ["1G", "2G GSM", "3G", "5G"],
+    "explanation": "Time Division Multiple Access (TDMA) is the primary multiple access technique used in 2G GSM systems.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "CDMA separates users by:",
+    "options": ["Frequency", "Time", "Code", "Bandwidth"],
+    "explanation": "Code Division Multiple Access (CDMA) separates users by assigning unique codes to each user for identification.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "OFDMA is used in:",
+    "options": ["AM Radio", "Wi-Fi 6 & 4G LTE", "GSM", "Bluetooth"],
+    "explanation": "Orthogonal Frequency Division Multiple Access (OFDMA) is used in modern systems like Wi-Fi 6 and 4G LTE for efficient spectrum utilization.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Frequency reuse in cellular system helps in:",
+    "options": ["Increasing bandwidth", "Efficient spectrum use", "Reducing antenna height", "Noise reduction"],
+    "explanation": "Frequency reuse allows the same frequencies to be used in non-adjacent cells, leading to efficient spectrum utilization.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Hard handover follows:",
+    "options": ["Make before Break", "Break before Make", "Both", "None"],
+    "explanation": "Hard handover follows 'Break before Make' principle where the old connection is terminated before establishing the new one.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which of the following is considered the fastest data-transferring guided medium?",
+    "options": ["Unshielded Twisted Pair (UTP)", "Coaxial Cable", "Optical Fiber Cable", "Shielded Twisted Pair (STP)"],
+    "explanation": "Optical Fiber Cable provides the highest data transfer speeds due to its use of light signals and immunity to electromagnetic interference.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "What is the primary difference between UTP and STP cables?",
+    "options": ["UTP is used for telephones, while STP is used for Ethernet.", "UTP uses copper wires, while STP uses glass fibers.", "STP includes an additional shield to reduce noise, while UTP does not.", "STP is cheaper than UTP."],
+    "explanation": "Shielded Twisted Pair (STP) includes additional shielding to reduce electromagnetic interference and noise, while UTP does not have this shielding.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Coaxial cables are commonly used in which of the following applications?",
+    "options": ["Telephone lines", "TV networks and broadband internet", "Backbone networks for ISPs", "Local Area Networks (LANs)"],
+    "explanation": "Coaxial cables are primarily used in TV networks and broadband internet applications due to their good shielding and bandwidth characteristics.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Why is optical fiber immune to electromagnetic interference?",
+    "options": ["It has a strong outer plastic jacket.", "It uses light signals instead of electrical signals to transmit data.", "It is made of pure silica glass.", "It has multiple layers of insulation."],
+    "explanation": "Optical fiber is immune to electromagnetic interference because it uses light signals rather than electrical signals for data transmission.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Guided media is also known as bounded media because:",
+    "options": ["It is very secure.", "It uses electromagnetic waves.", "It has a specific physical limit or path.", "It is used for short-distance transmission."],
+    "explanation": "Guided media is called bounded media because it provides a specific physical path or boundary for signal transmission.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which type of unguided media requires a clear line-of-sight for proper signal transmission?",
+    "options": ["Radio Waves", "Microwaves", "Infrared Waves", "Satellite Waves"],
+    "explanation": "Microwaves require a clear line-of-sight path between transmitter and receiver due to their high frequency and directional nature.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "A key limitation of Infrared (IR) waves is that they:",
+    "options": ["Are very expensive to generate.", "Require a very large antenna.", "Cannot pass through walls.", "Only work for very long distances."],
+    "explanation": "Infrared waves cannot penetrate solid objects like walls, limiting their use to line-of-sight applications within the same room.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which of the following statements about Radio waves is true?",
+    "options": ["They are uni-directional.", "They are omni-directional.", "They require a direct line-of-sight.", "They are used for short-range communication only."],
+    "explanation": "Radio waves are omni-directional, meaning they can propagate in all directions from the transmitting antenna.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Wi-Fi and Bluetooth technologies primarily use which type of electromagnetic waves?",
+    "options": ["Radio Waves", "Infrared Waves", "Microwaves", "X-rays"],
+    "explanation": "Both Wi-Fi and Bluetooth operate in the radio frequency spectrum, using radio waves for wireless communication.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "What is the primary application of satellite communication?",
+    "options": ["TV remotes and wireless mice", "Covering very large areas for services like GPS and global broadcasting", "Short-distance data transfer between two devices", "Local FM radio transmission"],
+    "explanation": "Satellite communication is primarily used for covering vast geographical areas, providing services like GPS, global broadcasting, and long-distance communication.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What is the definition of bandwidth?",
+    "options": ["The number of cycles a signal completes per second.", "The speed of light in a vacuum.", "The range of frequencies a channel can transmit.", "The time period of one cycle of a signal."],
+    "explanation": "Bandwidth is defined as the range of frequencies that a communication channel can effectively transmit.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "If a signal completes 50 cycles in one second, what is its frequency?",
+    "options": ["100 Hz", "25 Hz", "50 Hz", "0.02 Hz"],
+    "explanation": "Frequency is the number of cycles per second. If a signal completes 50 cycles in one second, its frequency is 50 Hz.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "An audio channel can transmit frequencies between 300 Hz and 3300 Hz. What is its bandwidth?",
+    "options": ["3600 Hz", "3300 Hz", "3000 Hz", "300 Hz"],
+    "explanation": "Bandwidth is calculated as the difference between the highest and lowest frequencies: 3300 Hz - 300 Hz = 3000 Hz.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "A higher bandwidth in a communication channel generally implies:",
+    "options": ["Lower data transfer rate.", "Longer transmission distance.", "Higher data transfer rate.", "Lower noise immunity."],
+    "explanation": "Higher bandwidth allows more information to be transmitted per unit time, resulting in higher data transfer rates.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "How is frequency related to the time period (T) of a signal?",
+    "options": ["f = T", "f = T²", "f = 1/T", "f = T + 1"],
+    "explanation": "Frequency (f) is the reciprocal of time period (T). If T is the time for one cycle, then f = 1/T cycles per second.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "What are the two states of a digital signal?",
+    "options": ["High and Medium", "Positive and Negative", "0 (Low) and 1 (High)", "Analog and Continuous"],
+    "explanation": "Digital signals have two discrete states: 0 (representing low voltage) and 1 (representing high voltage).",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which logic gate will have an output of 1 only when all of its inputs are 1?",
+    "options": ["OR Gate", "AND Gate", "NOT Gate", "XOR Gate"],
+    "explanation": "An AND gate produces an output of 1 only when all of its inputs are 1. If any input is 0, the output is 0.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "NAND and NOR gates are called \"universal gates\" because:",
+    "options": ["They are used in all digital devices.", "They are the simplest gates to manufacture.", "Any logical circuit can be built using only these gates.", "They were the first logic gates invented."],
+    "explanation": "NAND and NOR gates are called universal gates because any Boolean function can be implemented using only NAND gates or only NOR gates.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "The output of which type of circuit depends on both present inputs and past history?",
+    "options": ["Analog Circuit", "Combinational Circuit", "Sequential Circuit", "Logic Gate Circuit"],
+    "explanation": "Sequential circuits have memory elements and their output depends on both current inputs and previous state (past history).",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "A circuit whose output depends only on the current inputs is known as a:",
+    "options": ["Combinational Circuit", "Sequential Circuit", "Flip-Flop", "Register"],
+    "explanation": "Combinational circuits have outputs that depend only on the current input values, with no memory of previous states.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "What is the primary purpose of modulation?",
+    "options": ["To decrease the bandwidth of a signal.", "To enable long-distance transmission and reduce required antenna size.", "To convert a digital signal to an analog signal.", "To encrypt data for security."],
+    "explanation": "Modulation enables efficient long-distance transmission by shifting signal frequency to higher bands and reducing required antenna size.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "In Frequency Modulation (FM), which property of the carrier signal is varied?",
+    "options": ["Amplitude", "Frequency", "Phase", "Both Amplitude and Phase"],
+    "explanation": "In Frequency Modulation, the frequency of the carrier signal is varied according to the modulating signal while amplitude remains constant.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which digital modulation technique changes the frequency of the carrier signal to represent binary 0s and 1s?",
+    "options": ["Amplitude Shift Keying (ASK)", "Phase Shift Keying (PSK)", "Frequency Shift Keying (FSK)", "Quadrature Amplitude Modulation (QAM)"],
+    "explanation": "Frequency Shift Keying (FSK) uses different frequencies to represent binary 0s and 1s in digital communication.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "What remains constant in Amplitude Modulation (AM)?",
+    "options": ["Amplitude and Frequency", "Frequency and Phase", "Amplitude and Phase", "Only the Amplitude"],
+    "explanation": "In Amplitude Modulation, the frequency and phase of the carrier remain constant while only the amplitude varies with the modulating signal.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which of these modulation techniques is widely used in modern Wi-Fi and 4G/5G systems?",
+    "options": ["AM", "FSK", "ASK", "PSK"],
+    "explanation": "Phase Shift Keying (PSK) and its variants like QAM (which combines PSK and ASK) are widely used in modern Wi-Fi and cellular systems.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "Which pulse modulation technique is digital?",
+    "options": ["Pulse Amplitude Modulation (PAM)", "Pulse Width Modulation (PWM)", "Pulse Code Modulation (PCM)", "Pulse Position Modulation (PPM)"],
+    "explanation": "Pulse Code Modulation (PCM) is a digital technique that converts analog signals into binary digital form through sampling, quantization, and encoding.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "In PWM, what property of the pulse is varied according to the modulating signal?",
+    "options": ["Amplitude", "Position", "Width (Duration)", "Frequency"],
+    "explanation": "In Pulse Width Modulation (PWM), the width or duration of the pulses is varied according to the amplitude of the modulating signal.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "The process of converting an analog signal into a binary stream using sampling, quantization, and encoding is called:",
+    "options": ["PAM", "PWM", "PPM", "PCM"],
+    "explanation": "Pulse Code Modulation (PCM) is the complete process of converting analog signals to digital form through sampling, quantization, and binary encoding.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "Which technique varies the amplitude of pulses while keeping their width and position constant?",
+    "options": ["Pulse Amplitude Modulation (PAM)", "Pulse Width Modulation (PWM)", "Pulse Position Modulation (PPM)", "Pulse Code Modulation (PCM)"],
+    "explanation": "Pulse Amplitude Modulation (PAM) varies only the amplitude of pulses while keeping their width and timing position constant.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "If the amplitude and width of pulses remain constant, but their time of occurrence changes, the technique is known as:",
+    "options": ["PAM", "PWM", "Pulse Position Modulation (PPM)", "PCM"],
+    "explanation": "Pulse Position Modulation (PPM) keeps pulse amplitude and width constant but varies the time position of pulses according to the modulating signal.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "In which multiple access technique are users separated by being assigned different time slots on the same frequency?",
+    "options": ["FDMA", "TDMA", "CDMA", "SDMA"],
+    "explanation": "Time Division Multiple Access (TDMA) separates users by assigning different time slots to each user on the same frequency channel.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What is the basis of separation for users in CDMA?",
+    "options": ["Different frequencies", "Different time slots", "Unique codes", "Different spatial locations"],
+    "explanation": "Code Division Multiple Access (CDMA) separates users by assigning unique spreading codes to each user, allowing simultaneous transmission.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "4G LTE and Wi-Fi 6 networks primarily use which multiple access technique for its high efficiency?",
+    "options": ["TDMA", "CDMA", "FDMA", "OFDMA"],
+    "explanation": "Orthogonal Frequency Division Multiple Access (OFDMA) is used in 4G LTE and Wi-Fi 6 for its high spectral efficiency and flexibility.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "Which technique assigns a separate frequency band to each user?",
+    "options": ["FDMA", "TDMA", "CDMA", "OFDMA"],
+    "explanation": "Frequency Division Multiple Access (FDMA) assigns separate frequency bands to different users for simultaneous communication.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "The use of multiple antennas to create separate spatial channels for different users is a characteristic of:",
+    "options": ["FDMA", "TDMA", "OFDMA", "SDMA"],
+    "explanation": "Space Division Multiple Access (SDMA) uses multiple antennas and spatial processing to create separate channels for different users based on their location.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "What are the two main components of a Mobile Station (MS)?",
+    "options": ["Antenna and Battery", "Mobile Equipment (ME) and SIM card", "Base Transceiver Station (BTS) and Base Station Controller (BSC)", "Mobile Switching Center (MSC) and VLR"],
+    "explanation": "A Mobile Station consists of Mobile Equipment (the physical device) and SIM card (subscriber identity module for authentication).",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "The process of reusing the same frequencies in different cells that are sufficiently far apart is known as:",
+    "options": ["Handover", "Modulation", "Frequency Reuse", "Multiplexing"],
+    "explanation": "Frequency Reuse allows the same frequencies to be used in non-adjacent cells, maximizing spectrum efficiency in cellular networks.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "What is a handover in a cellular network?",
+    "options": ["The initial connection of a call.", "The process of switching the phone off and on.", "The process of transferring an active call from one base station to another.", "The allocation of a frequency channel to a user."],
+    "explanation": "Handover is the process of transferring an ongoing call or data session from one base station to another as the mobile user moves.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "A \"break before make\" handover, where the old connection is dropped before the new one is established, is called:",
+    "options": ["Soft Handover", "Hard Handover", "Fast Handover", "Seamless Handover"],
+    "explanation": "Hard Handover follows 'break before make' principle where the old connection is terminated before establishing the new connection.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which component of the Base Station is responsible for managing multiple BTSs and handovers?",
+    "options": ["Mobile Station (MS)", "Mobile Switching Center (MSC)", "Base Transceiver Station (BTS)", "Base Station Controller (BSC)"],
+    "explanation": "Base Station Controller (BSC) manages multiple Base Transceiver Stations (BTS) and handles handover decisions and radio resource management.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "Which of the following is a guided/bounded transmission medium?",
+    "options": ["Radio waves", "Satellite communication", "Coaxial cable", "Infrared"],
+    "explanation": "Coaxial cable is a guided transmission medium that provides a physical path for signal transmission with good shielding properties.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "What is the main advantage of optical fiber cable?",
+    "options": ["Cheapest", "Highest data transfer speed", "Uses electric signals", "Susceptible to noise"],
+    "explanation": "Optical fiber's main advantage is its highest data transfer speed among all transmission media, along with immunity to electromagnetic interference.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which wireless medium requires line-of-sight?",
+    "options": ["Optical fiber", "UTP cable", "Microwave", "Coaxial cable"],
+    "explanation": "Microwave communication requires line-of-sight transmission due to its high frequency and directional propagation characteristics.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which of the following is true about Infrared Waves?",
+    "options": ["Can be used for long-distance communication", "Cannot pass through walls", "Used in TV broadcasting", "Used in fiber optics"],
+    "explanation": "Infrared waves cannot penetrate solid objects like walls, limiting their application to line-of-sight communication within enclosed spaces.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What is the typical frequency range of radio waves used in communication?",
+    "options": ["1 Hz – 300 Hz", "3 kHz – GHz", "300 GHz – 400 THz", "88 MHz – 108 MHz"],
+    "explanation": "Radio waves used in communication typically range from 3 kHz to several GHz, covering various applications from AM radio to cellular communication.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which logic gate outputs 1 only if all its inputs are 1?",
+    "options": ["OR", "NOT", "AND", "NAND"],
+    "explanation": "The AND gate produces an output of 1 only when all of its inputs are 1. If any input is 0, the output becomes 0.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which is a universal gate?",
+    "options": ["AND", "NAND", "OR", "XOR"],
+    "explanation": "NAND is a universal gate because any Boolean logic function can be implemented using only NAND gates.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What is the output of a NOT gate if the input is 0?",
+    "options": ["0", "1", "undefined", "doesn't change"],
+    "explanation": "A NOT gate inverts its input. If the input is 0, the output is 1, and if the input is 1, the output is 0.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which application does NOT commonly use digital electronics?",
+    "options": ["Robots", "Typewriters", "Mobile phones", "Computers"],
+    "explanation": "Traditional typewriters are mechanical devices that do not commonly use digital electronics, unlike robots, mobile phones, and computers.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What is the value of binary 1011 in decimal?",
+    "options": ["10", "11", "8", "15"],
+    "explanation": "Binary 1011 = 1×2³ + 0×2² + 1×2¹ + 1×2⁰ = 8 + 0 + 2 + 1 = 11 in decimal.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "The unit of frequency is:",
+    "options": ["Newton", "Hertz", "Meter", "Tesla"],
+    "explanation": "Frequency is measured in Hertz (Hz), which represents the number of cycles per second, named after Heinrich Hertz.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "If a channel passes frequencies between 500 Hz and 2500 Hz, what is its bandwidth?",
+    "options": ["2000 Hz", "2500 Hz", "500 Hz", "3000 Hz"],
+    "explanation": "Bandwidth is the difference between the highest and lowest frequencies: 2500 Hz - 500 Hz = 2000 Hz.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Higher bandwidth results in:",
+    "options": ["Lower data transfer rate", "Higher data transfer rate", "More noise only", "None of the above"],
+    "explanation": "Higher bandwidth allows more information to be transmitted simultaneously, resulting in higher data transfer rates.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Modulation is needed to:",
+    "options": ["Increase antenna size", "Enable long-distance transmission", "Convert analog to digital", "Reduce bandwidth"],
+    "explanation": "Modulation enables efficient long-distance transmission by shifting signals to higher frequencies and reducing antenna size requirements.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "In Amplitude Modulation (AM), which property of the carrier changes?",
+    "options": ["Frequency", "Amplitude", "Phase", "Bandwidth"],
+    "explanation": "In Amplitude Modulation, the amplitude of the carrier signal varies according to the modulating signal while frequency and phase remain constant.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Frequency Modulation (FM) is widely used for:",
+    "options": ["TV video", "FM Radio", "Satellite communication", "Wi-Fi only"],
+    "explanation": "Frequency Modulation (FM) is widely used for FM radio broadcasting due to its better noise immunity compared to AM.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which digital modulation changes the frequency of the carrier according to data?",
+    "options": ["ASK", "FSK", "PSK", "QAM"],
+    "explanation": "Frequency Shift Keying (FSK) changes the frequency of the carrier signal to represent different binary data values.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Pulse Amplitude Modulation (PAM) is:",
+    "options": ["Analog pulse modulation", "Digital pulse modulation", "Frequency domain", "Space domain"],
+    "explanation": "PAM is an analog pulse modulation technique where the amplitude of pulses varies with the analog signal amplitude.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Which step is NOT part of PCM?",
+    "options": ["Sampling", "Quantization", "Encoding", "Multiplexing"],
+    "explanation": "PCM consists of sampling, quantization, and encoding. Multiplexing is a separate technique for combining multiple signals.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "Where are PWM techniques commonly used?",
+    "options": ["Wi-Fi", "Motor control", "TV broadcasting", "GPS"],
+    "explanation": "Pulse Width Modulation (PWM) is commonly used in motor control applications to vary motor speed by controlling the duty cycle.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which multiple access technique uses time slots for different users?",
+    "options": ["FDMA", "TDMA", "CDMA", "SDMA"],
+    "explanation": "Time Division Multiple Access (TDMA) assigns different time slots to different users on the same frequency channel.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which technique separates users by code?",
+    "options": ["FDMA", "TDMA", "CDMA", "SDMA"],
+    "explanation": "Code Division Multiple Access (CDMA) separates users by assigning unique spreading codes to each user for identification.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "OFDMA is an advanced version of:",
+    "options": ["FDMA", "TDMA", "SDMA", "CDMA"],
+    "explanation": "Orthogonal Frequency Division Multiple Access (OFDMA) is an advanced version of FDMA that uses orthogonal subcarriers for efficient spectrum utilization.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "SDMA primarily relies on:",
+    "options": ["Frequency bands", "Time division", "Multiple antennas/spatial separation", "Codes"],
+    "explanation": "Space Division Multiple Access (SDMA) primarily relies on multiple antennas and spatial separation to create different channels for users based on their physical location.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "QAM combines:",
+    "options": ["Amplitude and frequency modulation", "Amplitude and phase modulation", "Frequency and phase modulation", "None of these"],
+    "explanation": "Quadrature Amplitude Modulation (QAM) combines both amplitude and phase modulation to achieve higher data rates.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "64-QAM can represent how many bits per symbol?",
+    "options": ["4 bits", "6 bits", "2 bits", "8 bits"],
+    "explanation": "64-QAM has 64 different symbol states, which can represent 6 bits per symbol (2^6 = 64).",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which is a key advantage of higher-order QAM?",
+    "options": ["Lower data rates", "High noise immunity always", "Higher data rates with better SNR", "Simple receiver"],
+    "explanation": "Higher-order QAM provides higher data rates when signal-to-noise ratio (SNR) is sufficient, allowing more bits per symbol transmission.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "QAM is NOT commonly used in:",
+    "options": ["Wi-Fi", "4G LTE", "Cable TV", "Analog telephone lines"],
+    "explanation": "QAM is a digital modulation technique and is not used in traditional analog telephone lines, which use analog signaling.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "What does the Mobile Station (MS) consist of?",
+    "options": ["Only the SIM card", "Base Station equipment", "Mobile Equipment (ME) and SIM card", "MSC"],
+    "explanation": "A Mobile Station (MS) consists of two main components: Mobile Equipment (the physical device) and SIM card (subscriber identity).",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "The central controller in a mobile network is:",
+    "options": ["BTS", "BSC", "MSC", "SIM"],
+    "explanation": "Mobile Switching Center (MSC) is the central controller in a mobile network that handles call switching, routing, and network management.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "What is Frequency Reuse used for?",
+    "options": ["Saving electrical power", "Encrypting data", "Maximizing spectrum efficiency and capacity", "Downlink communication only"],
+    "explanation": "Frequency Reuse is used to maximize spectrum efficiency and network capacity by reusing the same frequencies in non-adjacent cells.",
+    "correctAnswer": [2]
+  }
+],
     assignment:[
   {
     "question": "Which technology is primarily used for wireless local area networks?",
