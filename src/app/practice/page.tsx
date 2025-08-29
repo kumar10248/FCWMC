@@ -115,6 +115,29 @@ export default function PracticeSelectionPage() {
 
               <button
                 className={`p-6 rounded-lg transition duration-300 transform hover:scale-105 ${
+                  selectedMode === 'demo-exam'
+                    ? 'bg-gradient-to-br from-red-500 to-red-600 text-white shadow-lg ring-2 ring-red-300'
+                    : 'bg-gray-800/80 hover:bg-gray-700 border border-gray-700'
+                }`}
+                onClick={() => setSelectedMode('demo-exam')}
+              >
+                <div className="flex flex-col items-center md:items-start md:flex-row md:space-x-4">
+                  <div className="flex-shrink-0 mb-4 md:mb-0">
+                    <div className="bg-red-800/60 p-3 rounded-lg">
+                      <FaClipboardCheck className="text-3xl text-red-300" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2">Demo Exam</h3>
+                    <p className="text-sm opacity-80">
+                      40 questions: 20 MCQ + 4 complete passages
+                    </p>
+                  </div>
+                </div>
+              </button>
+
+              <button
+                className={`p-6 rounded-lg transition duration-300 transform hover:scale-105 ${
                   selectedMode === 'all'
                     ? 'bg-gradient-to-br from-amber-500 to-amber-600 text-black shadow-lg ring-2 ring-amber-300'
                     : 'bg-gray-800/80 hover:bg-gray-700 border border-gray-700'

@@ -7,8 +7,8 @@ import { FaArrowLeft, FaArrowRight, FaClock, FaTimes, FaBars, FaCheck,
   FaTrophy, FaExclamationCircle, FaLightbulb, 
   FaChevronRight, FaBrain, FaCheckCircle, FaTimesCircle, FaHistory,
   FaInfoCircle, FaSquare, FaCheckSquare, FaBook } from 'react-icons/fa';
-import { getAllQuestions, getAllPassageQuestions, debugQuestionsData } from '../../lib/questions';
-import { Question, PracticeMode, OptionItem, PassageQuestion } from '../../types';
+import { getAllQuestions, getAllPassageQuestions, debugQuestionsData, getDemoExamQuestions } from '../../lib/questions';
+import { Question, PracticeMode, OptionItem, PassageQuestion, DemoExamData } from '../../types';
 import { formatTime, calculateSessionTime, validateImagePath, getImageDisplayName } from '@/app/lib/utils';
 
 export default function QuestionPracticePage() {
@@ -16,6 +16,7 @@ export default function QuestionPracticePage() {
   const { mode } = useParams() as { mode: PracticeMode };
   const [questions, setQuestions] = useState<Question[]>([]);
   const [passageQuestions, setPassageQuestions] = useState<PassageQuestion[]>([]);
+  const [demoExamData, setDemoExamData] = useState<DemoExamData | null>(null);
   const [currentPassageIndex, setCurrentPassageIndex] = useState(0);
   const [currentQuestionInPassage, setCurrentQuestionInPassage] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -96,6 +97,35 @@ export default function QuestionPracticePage() {
           setCurrentQuestionInPassage(0);
           setCurrentQuestionIndex(0);
           setScore(0);
+        } else if (mode === 'demo-exam') {
+          // Handle demo exam (20 MCQ + 20 from 4 passages)
+          const demoData = getDemoExamQuestions();
+          console.log(`Loaded demo exam: ${demoData.mcqQuestions.length} MCQ + ${demoData.passageQuestions.length} passages`);
+          
+          if (demoData.mcqQuestions.length === 0 && demoData.passageQuestions.length === 0) {
+            throw new Error(`No demo exam questions found for ${mode} mode`);
+          }
+          
+          setDemoExamData(demoData);
+          
+          // Calculate total questions (20 MCQ + 20 from passages)
+          const totalPassageQuestions = demoData.passageQuestions.reduce((total, passage) => total + passage.questions.length, 0);
+          const totalQuestions = demoData.mcqQuestions.length + totalPassageQuestions;
+          totalQuestionsRef.current = totalQuestions;
+          
+          // Initialize arrays for tracking selected options and answered status for each question
+          setSelectedOptions(new Array(totalQuestions).fill(null).map(() => []));
+          setAnsweredQuestions(new Array(totalQuestions).fill(false));
+          
+          // Calculate total session time (2 minutes per question)
+          const totalTime = calculateSessionTime(totalQuestions);
+          setTimeRemaining(totalTime);
+          
+          // Reset state
+          setCurrentPassageIndex(0);
+          setCurrentQuestionInPassage(0);
+          setCurrentQuestionIndex(0);
+          setScore(0);
         } else {
           // Handle regular questions
           const loadedQuestions = getAllQuestions(mode);
@@ -164,6 +194,23 @@ export default function QuestionPracticePage() {
         return passageQuestions[currentPassageIndex].questions[currentQuestionInPassage];
       }
       return null;
+    } else if (mode === 'demo-exam' && demoExamData) {
+      const globalIndex = getGlobalQuestionIndex();
+      // First 20 questions are MCQ
+      if (globalIndex < demoExamData.mcqQuestions.length) {
+        return demoExamData.mcqQuestions[globalIndex];
+      } else {
+        // Remaining questions are from passages
+        const passageIndex = globalIndex - demoExamData.mcqQuestions.length;
+        let currentPassageQuestionIndex = 0;
+        for (const passage of demoExamData.passageQuestions) {
+          if (currentPassageQuestionIndex + passage.questions.length > passageIndex) {
+            return passage.questions[passageIndex - currentPassageQuestionIndex];
+          }
+          currentPassageQuestionIndex += passage.questions.length;
+        }
+      }
+      return null;
     } else {
       return questions[currentQuestionIndex] || null;
     }
@@ -172,6 +219,19 @@ export default function QuestionPracticePage() {
   const getCurrentPassage = (): PassageQuestion | null => {
     if (mode === 'passage' && passageQuestions[currentPassageIndex]) {
       return passageQuestions[currentPassageIndex];
+    } else if (mode === 'demo-exam' && demoExamData) {
+      const globalIndex = getGlobalQuestionIndex();
+      // Only return passage if we're in the passage questions section
+      if (globalIndex >= demoExamData.mcqQuestions.length) {
+        const passageIndex = globalIndex - demoExamData.mcqQuestions.length;
+        let currentPassageQuestionIndex = 0;
+        for (const passage of demoExamData.passageQuestions) {
+          if (currentPassageQuestionIndex + passage.questions.length > passageIndex) {
+            return passage;
+          }
+          currentPassageQuestionIndex += passage.questions.length;
+        }
+      }
     }
     return null;
   };
@@ -179,6 +239,9 @@ export default function QuestionPracticePage() {
   const getTotalQuestions = (): number => {
     if (mode === 'passage') {
       return passageQuestions.reduce((total, passage) => total + passage.questions.length, 0);
+    } else if (mode === 'demo-exam' && demoExamData) {
+      const passageQuestionCount = demoExamData.passageQuestions.reduce((total, passage) => total + passage.questions.length, 0);
+      return demoExamData.mcqQuestions.length + passageQuestionCount;
     }
     return questions.length;
   };
@@ -320,8 +383,9 @@ const handleSingleOptionSelect = (optionIndex: number) => {
         router.push(`/results?score=${score}&total=${totalQuestions}&mode=${mode}&timeRemaining=${timeRemaining}`);
       }
     } else {
-      // Handle regular mode navigation
-      if (currentQuestionIndex < questions.length - 1) {
+      // Handle regular mode navigation (including demo-exam)
+      const totalQuestions = getTotalQuestions();
+      if (currentQuestionIndex < totalQuestions - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
         setIsExplanationExpanded(true);
       } else {
@@ -329,7 +393,7 @@ const handleSingleOptionSelect = (optionIndex: number) => {
         if (timerRef.current) {
           clearInterval(timerRef.current);
         }
-        router.push(`/results?score=${score}&total=${questions.length}&mode=${mode}&timeRemaining=${timeRemaining}`);
+        router.push(`/results?score=${score}&total=${totalQuestions}&mode=${mode}&timeRemaining=${timeRemaining}`);
       }
     }
   };
@@ -363,6 +427,9 @@ const handleSingleOptionSelect = (optionIndex: number) => {
   const formatModeLabel = (mode: string) => {
     if (mode.startsWith('week')) {
       return `Week ${mode.replace('week', '')}`;
+    }
+    if (mode === 'demo-exam') {
+      return 'Demo Exam';
     }
     return mode.charAt(0).toUpperCase() + mode.slice(1);
   };
@@ -419,7 +486,9 @@ const handleSingleOptionSelect = (optionIndex: number) => {
   }
   
   // No questions state
-  if ((mode === 'passage' && passageQuestions.length === 0) || (mode !== 'passage' && questions.length === 0)) {
+  if ((mode === 'passage' && passageQuestions.length === 0) || 
+      (mode === 'demo-exam' && (!demoExamData || (demoExamData.mcqQuestions.length === 0 && demoExamData.passageQuestions.length === 0))) ||
+      (mode !== 'passage' && mode !== 'demo-exam' && questions.length === 0)) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white flex items-center justify-center p-4">
         <div className="text-center max-w-md mx-auto p-8 bg-gray-800/80 rounded-xl backdrop-blur-md border-l-4 border-amber-500 shadow-2xl">
@@ -540,7 +609,7 @@ const handleSingleOptionSelect = (optionIndex: number) => {
             <div className="flex items-center justify-between">
               <span className="text-gray-300">Completion:</span>
               <div className="flex items-center font-medium text-purple-400">
-                <FaHistory className="mr-2" /> {Math.round((answeredCount / totalQuestions) * 100)}%
+                <FaHistory className="mr-2" /> {Math.round((answeredCount / totalQuestionsRef.current) * 100)}%
               </div>
             </div>
           </div>
@@ -551,10 +620,7 @@ const handleSingleOptionSelect = (optionIndex: number) => {
           </h4>
           
           <div className="grid grid-cols-5 gap-2 mb-8">
-            {(mode === 'passage' ? 
-              Array.from({length: totalQuestions}, (_, index) => index) :
-              questions
-            ).map((_, index) => {
+            {Array.from({length: totalQuestionsRef.current}, (_, index) => index).map((_, index) => {
               // Define button states
               let bgColor = "bg-gray-800 hover:bg-gray-700";
               let textColor = "text-gray-300";
@@ -716,22 +782,28 @@ const handleSingleOptionSelect = (optionIndex: number) => {
             {/* Question card */}
             <div className="bg-gradient-to-br from-gray-900/90 to-gray-800/90 rounded-xl p-8 mb-8 border border-gray-700/50 shadow-xl backdrop-blur-md">
               
-              {/* Passage content for passage mode */}
-              {mode === 'passage' && currentPassage && (
+              {/* Passage content for passage mode and demo exam mode */}
+              {((mode === 'passage' && currentPassage) || (mode === 'demo-exam' && getCurrentPassage())) && (
                 <div className="mb-8 p-6 bg-gradient-to-br from-blue-900/20 to-blue-800/20 rounded-lg border border-blue-500/30">
                   <div className="flex items-center mb-4">
                     <div className="bg-blue-500/20 p-2 rounded-lg mr-3">
                       <FaBook className="text-blue-400" />
                     </div>
-                    <h3 className="text-lg font-semibold text-blue-300">{currentPassage.title}</h3>
+                    <h3 className="text-lg font-semibold text-blue-300">
+                      {mode === 'passage' ? currentPassage?.title : getCurrentPassage()?.title}
+                    </h3>
                   </div>
                   <div className="prose prose-invert max-w-none">
                     <p className="text-gray-300 leading-relaxed whitespace-pre-wrap">
-                      {currentPassage.passage}
+                      {mode === 'passage' ? currentPassage?.passage : getCurrentPassage()?.passage}
                     </p>
                   </div>
                   <div className="mt-4 text-sm text-blue-400 border-t border-blue-500/20 pt-3">
-                    Question {currentQuestionInPassage + 1} of {currentPassage.questions.length} for this passage
+                    {mode === 'passage' ? (
+                      <>Question {currentQuestionInPassage + 1} of {currentPassage?.questions.length} for this passage</>
+                    ) : (
+                      <>Passage-based question in Demo Exam</>
+                    )}
                   </div>
                 </div>
               )}
@@ -1023,7 +1095,7 @@ const handleSingleOptionSelect = (optionIndex: number) => {
                 onClick={handleNextQuestion}
                 disabled={!answeredQuestions[globalQuestionIndex]}
               >
-                {globalQuestionIndex < totalQuestions - 1 ? (
+                {globalQuestionIndex < totalQuestionsRef.current - 1 ? (
                   <>Next <FaArrowRight className="ml-2" /></>
                 ) : (
                   <>Finish <FaTrophy className="ml-2" /></>

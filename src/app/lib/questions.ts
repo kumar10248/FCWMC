@@ -3013,6 +3013,11 @@ export function getPassageQuestions(): Question[] {
   if (mode === "passage") {
     return getPassageQuestions();
   }
+
+  // For the "demo-exam" mode, return combined MCQ and passage questions
+  if (mode === "demo-exam") {
+    return getAllDemoExamQuestions();
+  }
   
     // For the "all" mode, combine questions from all weeks
     if (mode === "all") {
@@ -3047,4 +3052,65 @@ export function getPassageQuestions(): Question[] {
         },
       ]
       ).map(q => shuffleOptions(q));
+}
+
+// Function to get demo exam questions (20 MCQ + 20 from 4 passages)
+export function getDemoExamQuestions(): { mcqQuestions: Question[], passageQuestions: PassageQuestion[] } {
+  const weekQuestions = allQuestionsData as WeekQuestions;
+  
+  // Get 20 random MCQ questions from all modules and assignment
+  let allMcqQuestions: Question[] = [];
+  for (const week in weekQuestions) {
+    if (week !== "passage_based_questions") {
+      allMcqQuestions = [...allMcqQuestions, ...(weekQuestions[week] as Question[])];
+    }
+  }
+  
+  console.log('Total MCQ questions available:', allMcqQuestions.length);
+  
+  // Shuffle and pick 20 MCQ questions
+  const shuffledMcq = [...allMcqQuestions].sort(() => 0.5 - Math.random());
+  const selectedMcq = shuffledMcq.slice(0, 20).map(q => shuffleOptions(q));
+  
+  console.log('Selected MCQ questions:', selectedMcq.length);
+  
+  // Get 4 random passages
+  const passageData = (allQuestionsData as AllQuestionsData).passage_based_questions;
+  if (!passageData) {
+    console.error('No passage data found!');
+    return { mcqQuestions: selectedMcq, passageQuestions: [] };
+  }
+  
+  const allPassages = Object.values(passageData) as PassageQuestion[];
+  console.log('Total passages available:', allPassages.length);
+  
+  const shuffledPassages = [...allPassages].sort(() => 0.5 - Math.random());
+  const selectedPassages = shuffledPassages.slice(0, 4);
+  
+  console.log('Selected passages:', selectedPassages.length);
+  console.log('Selected passage titles:', selectedPassages.map(p => p.title));
+  
+  // Use all questions from each selected passage (not just first 5)
+  const finalPassages = selectedPassages.map(passage => ({
+    ...passage,
+    questions: passage.questions // Use all questions from each passage
+  }));
+  
+  const totalPassageQuestions = finalPassages.reduce((total, passage) => total + passage.questions.length, 0);
+  console.log('Total passage questions:', totalPassageQuestions);
+  
+  return {
+    mcqQuestions: selectedMcq,
+    passageQuestions: finalPassages
+  };
+}
+
+// Function to get all demo exam questions as a single flattened array
+export function getAllDemoExamQuestions(): Question[] {
+  const { mcqQuestions, passageQuestions } = getDemoExamQuestions();
+  
+  // Combine MCQ questions and passage questions
+  const allPassageQuestions = passageQuestions.flatMap(passage => passage.questions);
+  
+  return [...mcqQuestions, ...allPassageQuestions];
 }
