@@ -15,7 +15,7 @@ export default function PracticeSelectionPage() {
     }
   };
 
-  const weekNumbers = Array.from({ length: 6 }, (_, i) => i+1 );
+  const weekNumbers = Array.from({ length: 7 }, (_, i) => i+1 );
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex flex-col">
