@@ -4133,7 +4133,619 @@ module7:[
           "correctAnswer": [2]
         }
       ]
-    }
+    },
+
+  "passage_11": {
+    "title": "Guided Media in Communication Systems",
+    "passage": "Guided media refers to transmission that takes place through a physical path such as wires or cables. Examples include twisted pair cable, coaxial cable, and optical fiber. Twisted pair consists of two copper wires twisted together, available as UTP (Unshielded) and STP (Shielded). Coaxial cable has a central copper conductor, insulation, shielding, and outer cover. Optical fiber, made of glass or plastic, is the fastest medium, transmitting data as light.",
+    "questions": [
+      {
+        "question": "Guided media is also called:",
+        "options": [
+          "Wireless media",
+          "Bounded media",
+          "Satellite channel",
+          "Frequency band"
+        ],
+        "explanation": "Guided media is also known as bounded media because it uses physical boundaries (cables/wires) to contain and direct the transmission signal.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Twisted pair consists of:",
+        "options": [
+          "Two copper wires twisted together",
+          "A single copper wire",
+          "Glass fiber",
+          "Aluminum strip"
+        ],
+        "explanation": "Twisted pair cable is constructed using two copper wires that are twisted together to reduce electromagnetic interference.",
+        "correctAnswer": [0]
+      },
+      {
+        "question": "Which guided medium is fastest?",
+        "options": [
+          "Twisted pair",
+          "Coaxial cable",
+          "Optical fiber",
+          "Copper wire"
+        ],
+        "explanation": "Optical fiber is the fastest guided medium as it transmits data using light signals, achieving much higher speeds than electrical signals in copper-based media.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "UTP cable is commonly used in:",
+        "options": [
+          "LAN",
+          "Satellite communication",
+          "Wi-Fi",
+          "GPS"
+        ],
+        "explanation": "Unshielded Twisted Pair (UTP) cables are commonly used in Local Area Networks (LANs) for connecting devices within buildings.",
+        "correctAnswer": [0]
+      },
+      {
+        "question": "Coaxial cable is mainly used in:",
+        "options": [
+          "TV networks and broadband",
+          "LAN only",
+          "Wi-Fi",
+          "Bluetooth"
+        ],
+        "explanation": "Coaxial cables are primarily used for television networks and broadband internet connections due to their good shielding and bandwidth characteristics.",
+        "correctAnswer": [0]
+      }
+    ]
+  },
+  "passage_12": {
+    "title": "Unguided Media in Communication Systems",
+    "passage": "In unguided media, data is transmitted without any physical medium, using electromagnetic waves. Examples include radio waves, microwaves, infrared, and satellite communication. Radio waves are omnidirectional and used in FM radio, TV, and mobiles. Microwaves need line-of-sight and are used in Wi-Fi, Bluetooth, and satellites. Infrared is short-range, used in remotes and printers, but cannot pass through walls. Satellites cover large areas and support GPS, weather forecasting, and broadcasting.",
+    "questions": [
+      {
+        "question": "Unguided media is also called:",
+        "options": [
+          "Wired media",
+          "Bounded media",
+          "Wireless media",
+          "Digital media"
+        ],
+        "explanation": "Unguided media is also called wireless media because it transmits data without physical connections, using electromagnetic waves through air or space.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "Which wave is omni-directional?",
+        "options": [
+          "Microwave",
+          "Radio wave",
+          "Infrared",
+          "Optical wave"
+        ],
+        "explanation": "Radio waves are omnidirectional, meaning they can propagate in all directions from the transmitter, making them suitable for broadcasting applications.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Infrared waves are used in:",
+        "options": [
+          "Mobile phones",
+          "Printers and remotes",
+          "Satellites",
+          "Wi-Fi towers"
+        ],
+        "explanation": "Infrared waves are commonly used in short-range applications like TV remotes and some printer connections due to their limited range and inability to pass through obstacles.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which requires line-of-sight?",
+        "options": [
+          "Radio waves",
+          "Microwaves",
+          "Infrared",
+          "Optical fiber"
+        ],
+        "explanation": "Microwaves require line-of-sight communication, meaning there should be no physical obstructions between the transmitter and receiver for effective transmission.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Satellite communication is used in:",
+        "options": [
+          "LAN",
+          "GPS & international broadcasting",
+          "Bluetooth",
+          "Ethernet"
+        ],
+        "explanation": "Satellite communication provides wide area coverage and is extensively used for GPS navigation systems and international broadcasting services.",
+        "correctAnswer": [1]
+      }
+    ]
+  },
+  "passage_13": {
+    "title": "Modulation in Communication Systems",
+    "passage": "Modulation is the process of varying a carrier signal in accordance with the information signal. It is necessary because low-frequency signals cannot travel long distances effectively. In Amplitude Modulation (AM), the amplitude of the carrier varies. In Frequency Modulation (FM), the frequency varies, and in Phase Modulation (PM), the phase varies. Digital modulation techniques include ASK, FSK, PSK, and QAM, which are widely used in Wi-Fi, 4G, and 5G.",
+    "questions": [
+      {
+        "question": "Modulation is used to:",
+        "options": [
+          "Reduce bandwidth",
+          "Transmit signals over long distances",
+          "Increase antenna size",
+          "Eliminate carriers"
+        ],
+        "explanation": "Modulation is primarily used to enable effective transmission of signals over long distances by converting low-frequency information signals to high-frequency carrier signals.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "In AM, which parameter of carrier changes?",
+        "options": [
+          "Frequency",
+          "Amplitude",
+          "Phase",
+          "Wavelength"
+        ],
+        "explanation": "In Amplitude Modulation (AM), the amplitude of the carrier signal is varied in accordance with the information signal while frequency and phase remain constant.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "In FM, which parameter of carrier varies?",
+        "options": [
+          "Amplitude",
+          "Frequency",
+          "Phase",
+          "Bandwidth"
+        ],
+        "explanation": "In Frequency Modulation (FM), the frequency of the carrier signal is varied according to the information signal while amplitude remains constant.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which is NOT a digital modulation technique?",
+        "options": [
+          "ASK",
+          "PSK",
+          "AM",
+          "QAM"
+        ],
+        "explanation": "AM (Amplitude Modulation) is an analog modulation technique, while ASK, PSK, and QAM are digital modulation techniques used for transmitting digital data.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "QAM is a combination of:",
+        "options": [
+          "AM + FM",
+          "ASK + PSK",
+          "FSK + PSK",
+          "AM + PCM"
+        ],
+        "explanation": "QAM (Quadrature Amplitude Modulation) combines both Amplitude Shift Keying (ASK) and Phase Shift Keying (PSK) to achieve higher data rates.",
+        "correctAnswer": [1]
+      }
+    ]
+  },
+  "passage_14": {
+    "title": "Pulse Modulation Techniques",
+    "passage": "Pulse modulation transmits signals in the form of pulses instead of continuous waves. In Pulse Amplitude Modulation (PAM), the pulse height varies. In Pulse Width Modulation (PWM), the duration of pulses varies. In Pulse Position Modulation (PPM), the time position of pulses shifts. In Pulse Code Modulation (PCM), the signal is sampled, quantized, and encoded into binary digits, and is used in digital telephony, CDs, and computer audio.",
+    "questions": [
+      {
+        "question": "In PAM, which property varies?",
+        "options": [
+          "Width",
+          "Position",
+          "Amplitude",
+          "Frequency"
+        ],
+        "explanation": "In Pulse Amplitude Modulation (PAM), the amplitude or height of the pulses varies according to the information signal while other parameters remain constant.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "In PWM, which property varies?",
+        "options": [
+          "Width of pulses",
+          "Amplitude",
+          "Phase",
+          "Frequency"
+        ],
+        "explanation": "In Pulse Width Modulation (PWM), the width or duration of the pulses varies according to the information signal while amplitude remains constant.",
+        "correctAnswer": [0]
+      },
+      {
+        "question": "PPM changes:",
+        "options": [
+          "Pulse width",
+          "Pulse amplitude",
+          "Pulse time position",
+          "Frequency"
+        ],
+        "explanation": "In Pulse Position Modulation (PPM), the time position of the pulses shifts according to the information signal while amplitude and width remain constant.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "Which modulation is digital?",
+        "options": [
+          "PAM",
+          "PCM",
+          "PWM",
+          "PPM"
+        ],
+        "explanation": "PCM (Pulse Code Modulation) is a digital modulation technique that converts analog signals to digital form through sampling, quantization, and encoding.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "PCM involves:",
+        "options": [
+          "Filtering and modulation",
+          "Sampling, Quantization, Encoding",
+          "Frequency division",
+          "None"
+        ],
+        "explanation": "PCM involves three main steps: sampling the analog signal, quantizing the sampled values, and encoding them into binary digits.",
+        "correctAnswer": [1]
+      }
+    ]
+  },
+  "passage_15": {
+    "title": "Mobile Communication System Architecture",
+    "passage": "A mobile communication system consists of Mobile Station (MS), Base Station (BS), and Mobile Switching Center (MSC). MS includes mobile equipment and SIM card. The BS handles radio communication and is controlled by a Base Station Controller (BSC). MSC manages switching, roaming, and billing. Cellular networks use frequency reuse to maximize spectrum. Handover transfers active calls between cells. GSM uses hard handover ('break before make'), while CDMA uses soft handover ('make before break').",
+    "questions": [
+      {
+        "question": "Mobile Station consists of:",
+        "options": [
+          "Antenna + BTS",
+          "SIM + Mobile Equipment",
+          "MSC + BSC",
+          "Only SIM"
+        ],
+        "explanation": "A Mobile Station (MS) consists of two main components: the SIM card (which contains subscriber information) and the mobile equipment (the actual phone hardware).",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which manages switching and roaming?",
+        "options": [
+          "MS",
+          "BS",
+          "MSC",
+          "BSC"
+        ],
+        "explanation": "The Mobile Switching Center (MSC) is responsible for managing call switching, roaming services, and billing functions in a mobile network.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "Frequency reuse is used for:",
+        "options": [
+          "Increasing antenna size",
+          "Maximizing spectrum efficiency",
+          "Reducing frequency",
+          "Increasing cost"
+        ],
+        "explanation": "Frequency reuse is a technique used in cellular networks to maximize spectrum efficiency by reusing the same frequencies in non-adjacent cells.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "GSM uses which type of handover?",
+        "options": [
+          "Soft",
+          "Hard",
+          "Both",
+          "None"
+        ],
+        "explanation": "GSM (Global System for Mobile Communications) uses hard handover, which follows a 'break before make' approach where the old connection is terminated before establishing a new one.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Soft handover means:",
+        "options": [
+          "Break before make",
+          "Make before break",
+          "Frequency hopping",
+          "None"
+        ],
+        "explanation": "Soft handover uses a 'make before break' approach where a new connection is established before terminating the old one, providing seamless connectivity.",
+        "correctAnswer": [1]
+      }
+    ]
+  },
+  "passage_16": {
+    "title": "Advanced Guided Media Technologies",
+    "passage": "Guided media are physical channels such as cables/wires through which data is transmitted in a network. Types include twisted pair cable (UTP and STP), coaxial cable, and optical fiber. UTP is common in LANs, while STP provides extra shielding. Coaxial cable, used in TV and broadband, offers better shielding and bandwidth. Optical fiber, made from silica glass, transmits data with light at very high speeds and with immunity to electromagnetic interference. There are single-mode (long distance) and multimode (short distance) fiber types.",
+    "questions": [
+      {
+        "question": "Which of the following is a feature of Unshielded Twisted Pair (UTP) cable?",
+        "options": [
+          "It is used only for satellite communication",
+          "It includes a metallic shield",
+          "It typically supports data rates up to 10 Gbps over 100 meters",
+          "It is more expensive than coaxial cable"
+        ],
+        "explanation": "Modern UTP cables (like Cat 6A) can support data rates up to 10 Gbps over distances of 100 meters, making them suitable for high-speed LAN applications.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "What is the main function of the cladding in an optical fiber cable?",
+        "options": [
+          "To transmit radio waves",
+          "To increase data encryption",
+          "To reflect light back into the core",
+          "To provide power to devices"
+        ],
+        "explanation": "The cladding in optical fiber has a lower refractive index than the core, causing total internal reflection that keeps light signals within the core.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "Which medium is considered immune to electromagnetic interference?",
+        "options": [
+          "UTP",
+          "STP",
+          "Coaxial cable",
+          "Optical fiber"
+        ],
+        "explanation": "Optical fiber is immune to electromagnetic interference because it uses light signals instead of electrical signals for data transmission.",
+        "correctAnswer": [3]
+      },
+      {
+        "question": "In which application is coaxial cable most commonly used?",
+        "options": [
+          "Bluetooth peripherals",
+          "TV networks and broadband internet",
+          "WAN backbone",
+          "Satellite communication"
+        ],
+        "explanation": "Coaxial cable is widely used in television networks and broadband internet connections due to its excellent shielding properties and bandwidth capabilities.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "What is the primary material used in the core of an optical fiber?",
+        "options": [
+          "Copper",
+          "Aluminium",
+          "Pure silica glass",
+          "Steel"
+        ],
+        "explanation": "The core of optical fiber is made from pure silica glass, which provides excellent optical properties for light transmission with minimal loss.",
+        "correctAnswer": [2]
+      }
+    ]
+  },
+  "passage_17": {
+    "title": "Advanced Unguided Media Technologies",
+    "passage": "Unguided or wireless media transmit data through electromagnetic waves without physical media. Types include radio waves (used in mobile phones and radio), microwaves (used in satellite and Wi-Fi, requiring line-of-sight), infrared (for short-range like TV remotes), and satellite communication, which covers wide areas for GPS and weather forecasting.",
+    "questions": [
+      {
+        "question": "Which wireless medium requires line-of-sight between transmitter and receiver?",
+        "options": [
+          "Radio Waves",
+          "Microwave",
+          "Infrared",
+          "Satellite"
+        ],
+        "explanation": "Microwave communication requires line-of-sight between transmitter and receiver because microwaves travel in straight lines and cannot penetrate obstacles effectively.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which device commonly uses infrared transmission?",
+        "options": [
+          "Mobile phones",
+          "Wi-Fi routers",
+          "TV remote controls",
+          "Satellite dishes"
+        ],
+        "explanation": "TV remote controls commonly use infrared transmission for short-range communication with televisions and other home entertainment devices.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "Which medium provides global coverage for communication?",
+        "options": [
+          "Coaxial Cable",
+          "Satellite Communication",
+          "STP",
+          "Infrared"
+        ],
+        "explanation": "Satellite communication provides global coverage by using satellites positioned in orbit to relay signals across vast distances worldwide.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "What is a common real-world use of radio waves?",
+        "options": [
+          "Fiber-optic networking",
+          "TV broadcasting",
+          "Digital video disc players",
+          "Wired LANs"
+        ],
+        "explanation": "Radio waves are extensively used for TV broadcasting, allowing television signals to be transmitted over long distances to reach wide audiences.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which statement about wireless media is true?",
+        "options": [
+          "Signals cannot be sent over long distances",
+          "It is also known as bounded media",
+          "It is less secure than guided media",
+          "It uses only visible light"
+        ],
+        "explanation": "Wireless media is generally less secure than guided media because wireless signals can be intercepted more easily as they propagate through open air.",
+        "correctAnswer": [2]
+      }
+    ]
+  },
+  "passage_18": {
+    "title": "Digital Electronics Fundamentals",
+    "passage": "Digital electronics processes signals as discrete binary values (0s and 1s), using logic gates such as AND, OR, and NOT. Advantages over analog include high noise immunity, ease of storing/processing information, and flexibility. Common number systems include binary, decimal, octal, and hexadecimal. Circuits are classified as combinational (output depends on current input) or sequential (depends on input and memory). Applications include computers, communication, and embedded systems.",
+    "questions": [
+      {
+        "question": "Which logic gate produces an output of 1 only if all its inputs are 1?",
+        "options": [
+          "OR",
+          "NAND",
+          "AND",
+          "XOR"
+        ],
+        "explanation": "The AND gate produces an output of 1 only when all of its inputs are 1. If any input is 0, the output will be 0.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "Which of the following is a universal gate?",
+        "options": [
+          "XOR",
+          "NAND",
+          "XNOR",
+          "OR"
+        ],
+        "explanation": "NAND gate is a universal gate because any Boolean function can be implemented using only NAND gates, making it functionally complete.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which number system uses digits 0-7?",
+        "options": [
+          "Binary",
+          "Octal",
+          "Hexadecimal",
+          "Decimal"
+        ],
+        "explanation": "The octal number system uses base 8 and employs digits from 0 to 7, making it useful for representing binary data in a more compact form.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "What type of circuit is a counter?",
+        "options": [
+          "Combinational",
+          "Sequential",
+          "Analog",
+          "Modulator"
+        ],
+        "explanation": "A counter is a sequential circuit because its output depends on both current input and its internal memory (previous states), allowing it to count sequences.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which is NOT an advantage of digital electronics?",
+        "options": [
+          "Easy to process information",
+          "Prone to high noise",
+          "Reliable and flexible",
+          "Data can be encrypted"
+        ],
+        "explanation": "Being prone to high noise is actually a disadvantage. Digital electronics has high noise immunity, meaning it is resistant to noise, not prone to it.",
+        "correctAnswer": [1]
+      }
+    ]
+  },
+  "passage_19": {
+    "title": "Advanced Modulation Techniques",
+    "passage": "Modulation involves varying a property of a high-frequency carrier signal according to an information signal. Analog modulation includes AM (amplitude varies), FM (frequency varies), and PM (phase varies). Digital modulation includes ASK, FSK, PSK, QAM. Modulation reduces antenna size, improves signal quality, enables multiplexing, and allows long-distance communication.",
+    "questions": [
+      {
+        "question": "Which property changes in Amplitude Modulation (AM)?",
+        "options": [
+          "Carrier frequency",
+          "Carrier amplitude",
+          "Carrier phase",
+          "Message frequency"
+        ],
+        "explanation": "In Amplitude Modulation (AM), the amplitude of the high-frequency carrier signal is varied in proportion to the information signal while frequency and phase remain constant.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "What is the main advantage of Frequency Modulation (FM) over AM?",
+        "options": [
+          "Simpler receiver",
+          "Greater noise immunity",
+          "Lower bandwidth",
+          "Works only at low frequencies"
+        ],
+        "explanation": "FM has greater noise immunity than AM because noise primarily affects amplitude, and FM information is contained in frequency variations rather than amplitude changes.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which digital modulation technique changes the carrier frequency with data?",
+        "options": [
+          "ASK",
+          "PSK",
+          "FSK",
+          "QAM"
+        ],
+        "explanation": "FSK (Frequency Shift Keying) changes the carrier frequency according to the digital data, using different frequencies to represent different binary states.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "Why is modulation necessary in communication?",
+        "options": [
+          "To increase antenna size",
+          "To transmit baseband signals over long distances",
+          "Only for voice signals",
+          "To slow down data rate"
+        ],
+        "explanation": "Modulation is necessary to transmit baseband (low-frequency) signals over long distances by converting them to high-frequency signals that can propagate effectively.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which modulation scheme is widely used in Wi-Fi and LTE systems?",
+        "options": [
+          "AM",
+          "FSK",
+          "QAM",
+          "PWM"
+        ],
+        "explanation": "QAM (Quadrature Amplitude Modulation) is widely used in modern Wi-Fi and LTE systems because it can achieve high data rates by combining both amplitude and phase modulation.",
+        "correctAnswer": [2]
+      }
+    ]
+  },
+  "passage_20": {
+    "title": "Advanced Pulse Modulation Techniques",
+    "passage": "Pulse modulation transmits signals using pulses. Analog pulse techniques include PAM, PWM, and PPM. Pulse Code Modulation (PCM) is a digital technique involving sampling, quantization, and encoding. Applications include Ethernet, audio/video, and communication systems.",
+    "questions": [
+      {
+        "question": "In which technique does the pulse amplitude represent the signal?",
+        "options": [
+          "PWM",
+          "PCM",
+          "PAM",
+          "ASK"
+        ],
+        "explanation": "In PAM (Pulse Amplitude Modulation), the amplitude or height of the pulses directly represents the analog signal values at sampling instants.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "Which modulation is the first step in PCM?",
+        "options": [
+          "PWM",
+          "PAM",
+          "FSK",
+          "QAM"
+        ],
+        "explanation": "PAM (Pulse Amplitude Modulation) is the first step in PCM, where the analog signal is sampled to produce amplitude-modulated pulses before quantization and encoding.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which pulse modulation method is digital?",
+        "options": [
+          "PAM",
+          "PWM",
+          "PCM",
+          "PPM"
+        ],
+        "explanation": "PCM (Pulse Code Modulation) is a digital modulation method that converts analog signals to digital form through sampling, quantization, and binary encoding.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "What changes in Pulse Width Modulation (PWM)?",
+        "options": [
+          "Amplitude",
+          "Width",
+          "Position",
+          "Phase"
+        ],
+        "explanation": "In PWM (Pulse Width Modulation), the width or duration of the pulses varies according to the signal amplitude while the amplitude of pulses remains constant.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Where is Pulse Position Modulation (PPM) commonly used?",
+        "options": [
+          "TV remotes",
+          "Optical communication",
+          "Ethernet",
+          "Motor control"
+        ],
+        "explanation": "PPM (Pulse Position Modulation) is commonly used in optical communication systems because it's efficient for transmitting digital data using light pulses.",
+        "correctAnswer": [1]
+      }
+    ]
+  }
+
   }
 };
 
