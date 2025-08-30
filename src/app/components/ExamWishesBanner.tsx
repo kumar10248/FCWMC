@@ -81,7 +81,7 @@ export const ExamWishesBanner: React.FC = () => {
     {
       icon: <FaStar className="text-yellow-400 text-xl" />,
       title: "Special Tips",
-      description: "Tick that option that is big in length. It is often the correct answer. It is a common pattern in FCWMC Question that I have observed it.",
+      description: "Tick that option that is small in length. It is often the correct answer. It is a common pattern in FCWMC Question that I have observed it.",
       color: "bg-yellow-400/10"
     }
   ];
@@ -120,7 +120,7 @@ export const ExamWishesBanner: React.FC = () => {
         <div className="flex items-center justify-center mb-4">
           <FaGraduationCap className="text-amber-400 text-3xl mr-3" />
           <h2 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500">
-            GOOD LUCK ON YOUR FCWMC
+            GOOD LUCK ON YOUR FCWMC EXAM TODAY!
           </h2>
           <FaGraduationCap className="text-amber-400 text-3xl ml-3" />
         </div>
