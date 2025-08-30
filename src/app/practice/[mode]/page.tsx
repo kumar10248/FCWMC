@@ -20,6 +20,7 @@ export default function QuestionPracticePage() {
   const [currentPassageIndex, setCurrentPassageIndex] = useState(0);
   const [currentQuestionInPassage, setCurrentQuestionInPassage] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [demoExamQuestionIndex, setDemoExamQuestionIndex] = useState(0); // For demo exam mode
   const [selectedOptions, setSelectedOptions] = useState<number[][]>([]);
   const [answeredQuestions, setAnsweredQuestions] = useState<boolean[]>([]);
   const [score, setScore] = useState(0);
@@ -125,6 +126,7 @@ export default function QuestionPracticePage() {
           setCurrentPassageIndex(0);
           setCurrentQuestionInPassage(0);
           setCurrentQuestionIndex(0);
+          setDemoExamQuestionIndex(0); // Initialize global question index for demo exam
           setScore(0);
         } else {
           // Handle regular questions
@@ -253,6 +255,8 @@ export default function QuestionPracticePage() {
         globalIndex += passageQuestions[i].questions.length;
       }
       return globalIndex + currentQuestionInPassage;
+    } else if (mode === 'demo-exam') {
+      return demoExamQuestionIndex;
     }
     return currentQuestionIndex;
   };
@@ -382,8 +386,21 @@ const handleSingleOptionSelect = (optionIndex: number) => {
         const totalQuestions = getTotalQuestions();
         router.push(`/results?score=${score}&total=${totalQuestions}&mode=${mode}&timeRemaining=${timeRemaining}`);
       }
+    } else if (mode === 'demo-exam') {
+      // Handle demo exam mode navigation using global index
+      const totalQuestions = getTotalQuestions();
+      if (demoExamQuestionIndex < totalQuestions - 1) {
+        setDemoExamQuestionIndex(demoExamQuestionIndex + 1);
+        setIsExplanationExpanded(true);
+      } else {
+        // End of questions - navigate to results
+        if (timerRef.current) {
+          clearInterval(timerRef.current);
+        }
+        router.push(`/results?score=${score}&total=${totalQuestions}&mode=${mode}&timeRemaining=${timeRemaining}`);
+      }
     } else {
-      // Handle regular mode navigation (including demo-exam)
+      // Handle regular mode navigation
       const totalQuestions = getTotalQuestions();
       if (currentQuestionIndex < totalQuestions - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -413,6 +430,12 @@ const handleSingleOptionSelect = (optionIndex: number) => {
           }
           currentGlobalIndex++;
         }
+      }
+    } else if (mode === 'demo-exam') {
+      // Handle demo exam mode navigation
+      if (globalIndex !== demoExamQuestionIndex) {
+        setDemoExamQuestionIndex(globalIndex);
+        setShowSidebar(false);
       }
     } else {
       // Handle regular mode navigation
@@ -635,7 +658,7 @@ const handleSingleOptionSelect = (optionIndex: number) => {
               } 
               // Answered questions
               else if (answeredQuestions[index]) {
-                // For passage mode, we need to get the correct answer differently
+                // Get the correct answer based on mode
                 let correctAnswer;
                 if (mode === 'passage') {
                   // Find which passage and question this global index corresponds to
@@ -652,7 +675,25 @@ const handleSingleOptionSelect = (optionIndex: number) => {
                     }
                     if (found) break;
                   }
+                } else if (mode === 'demo-exam' && demoExamData) {
+                  // For demo exam, get correct answer from the appropriate source
+                  if (index < demoExamData.mcqQuestions.length) {
+                    // MCQ question
+                    correctAnswer = demoExamData.mcqQuestions[index].correctAnswer;
+                  } else {
+                    // Passage question
+                    const passageIndex = index - demoExamData.mcqQuestions.length;
+                    let currentPassageQuestionIndex = 0;
+                    for (const passage of demoExamData.passageQuestions) {
+                      if (currentPassageQuestionIndex + passage.questions.length > passageIndex) {
+                        correctAnswer = passage.questions[passageIndex - currentPassageQuestionIndex].correctAnswer;
+                        break;
+                      }
+                      currentPassageQuestionIndex += passage.questions.length;
+                    }
+                  }
                 } else {
+                  // Regular mode
                   correctAnswer = questions[index].correctAnswer;
                 }
                 
