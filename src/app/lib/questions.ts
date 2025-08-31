@@ -1,9 +1,10 @@
-import { Question, WeekQuestions, PracticeMode, PassageQuestion, AllQuestionsData } from "../types";
+import { Question, PracticeMode, PassageQuestion, AllQuestionsData } from "../types";
 
 // Module-level debug - this will run when the module is loaded
 console.log('=== questions.ts module loaded ===');
 
 const allQuestionsData: AllQuestionsData = {
+  unit1: {
     module6:[
   {
     "question": "Which of the following best describes the advantage of circuit switching?",
@@ -4745,213 +4746,94 @@ module7:[
       }
     ]
   }
-
+    }
+  },
+  unit2: {
+    // Placeholder - copy of unit1 for now
+    module6: [],
+    module2: [],
+    module3: [],
+    module4: [],
+    module5: [],
+    module1: [],
+    module7: [],
+    assignment: [],
+    passage_based_questions: {}
+  },
+  unit3: {
+    // Placeholder - copy of unit1 for now
+    module6: [],
+    module2: [],
+    module3: [],
+    module4: [],
+    module5: [],
+    module1: [],
+    module7: [],
+    assignment: [],
+    passage_based_questions: {}
   }
 };
 
-// Debug function to check data structure
+// Simple adapter functions for backward compatibility with your original structure
 export function debugQuestionsData() {
   console.log('=== DEBUG QUESTIONS DATA ===');
   console.log('allQuestionsData keys:', Object.keys(allQuestionsData));
-  console.log('passage_based_questions exists:', 'passage_based_questions' in allQuestionsData);
-  
-  const passageData = (allQuestionsData as AllQuestionsData).passage_based_questions;
-  if (passageData) {
-    console.log('passage_based_questions keys:', Object.keys(passageData));
-    console.log('First passage:', passageData.passage_1);
-  } else {
-    console.log('passage_based_questions is undefined');
-  }
+  console.log('Unit1 modules:', Object.keys(allQuestionsData.unit1));
   console.log('=== END DEBUG ===');
 }
 
-// Function to get all passage questions
+export function getAllQuestions(mode?: PracticeMode): Question[] {
+  const unit1 = allQuestionsData.unit1;
+  
+  if (!mode || mode === 'all') {
+    return [
+      ...unit1.module1,
+      ...unit1.module2, 
+      ...unit1.module3,
+      ...unit1.module4,
+      ...unit1.module5,
+      ...unit1.module6,
+      ...unit1.module7,
+      ...unit1.assignment
+    ];
+  }
+  
+  if (mode === 'passage') {
+    const questions: Question[] = [];
+    Object.values(unit1.passage_based_questions).forEach((passage) => {
+      if (passage?.questions) {
+        questions.push(...passage.questions);
+      }
+    });
+    return questions;
+  }
+  
+  // Return specific module
+  if (mode === 'module1') return unit1.module1;
+  if (mode === 'module2') return unit1.module2;
+  if (mode === 'module3') return unit1.module3;
+  if (mode === 'module4') return unit1.module4;
+  if (mode === 'module5') return unit1.module5;
+  if (mode === 'module6') return unit1.module6;
+  if (mode === 'module7') return unit1.module7;
+  if (mode === 'assignment') return unit1.assignment;
+  
+  return [];
+}
+
 export function getAllPassageQuestions(): PassageQuestion[] {
-  // Access the passage data directly from the raw data structure
-  const passageData = (allQuestionsData as AllQuestionsData).passage_based_questions;
-  
-  if (!passageData) {
-    console.error('passage_based_questions not found in allQuestionsData');
-    return [];
-  }
-  
-  const result = Object.values(passageData) as PassageQuestion[];
-  return result;
+  return Object.values(allQuestionsData.unit1.passage_based_questions);
 }
 
-// Function to get passage questions without shuffling (sequential order)
 export function getPassageQuestions(): Question[] {
-  const passageQuestions: Question[] = [];
-  const passageData = (allQuestionsData as AllQuestionsData).passage_based_questions;
-  
-  if (!passageData) {
-    return [];
-  }
-  
-  const passages = Object.values(passageData) as PassageQuestion[];
-  
-  passages.forEach((passage: PassageQuestion) => {
-    // Add passage title as a context question (optional, for display purposes)
-    passageQuestions.push(...passage.questions);
-  });
-  
-  // Return questions in sequential order without shuffling
-  return passageQuestions;
+  return getAllQuestions('passage');
 }
 
-  // For the "all" mode, combine questions from all weeks
-  const shuffleArray = <T>(array: T[]): T[] => {
-    const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-  };
-  
-  // Function to shuffle options while preserving correct answers
-  const shuffleOptions = (question: Question): Question => {
-    const originalOptions = [...question.options];
-    const correctAnswer = Array.isArray(question.correctAnswer) 
-      ? question.correctAnswer
-      : [question.correctAnswer]; // Handle both formats
-    
-    // Track which options are correct by value
-    const correctOptionValues = correctAnswer.map(index => originalOptions[index]);
-    
-    // Create a new question with shuffled options
-    const shuffledOptions = shuffleArray([...question.options]);
-    
-    // Find the new indices of the correct answers
-    const newCorrectAnswers = correctOptionValues.map(value => 
-      shuffledOptions.findIndex(option => option === value)
-    );
-    
-    return {
-      ...question,
-      options: shuffledOptions,
-      correctAnswer: newCorrectAnswers,
-    };
-  };
-  
-  // Function to get questions based on mode
-  export function getAllQuestions(mode: PracticeMode): Question[] {
-    const weekQuestions = allQuestionsData as WeekQuestions;
-    // For the "assignment" mode, combine and randomize questions from all weeks
-   if (mode === "assignment") {
-    let allQuestions: Question[] = [];
-    // Gather questions from all weeks (excluding assignment)
-    for (const week in weekQuestions) {
-      if (week !== "assignment" && week !== "passage_based_questions") {
-        allQuestions = [...allQuestions, ...(weekQuestions[week] as Question[])];
-      }
-    }
-    // Shuffle all questions and their options
-    return shuffleArray(allQuestions).map((q) => shuffleOptions(q));
-  }
-
-  // For the "passage" mode, return passage questions in sequential order (no shuffling)
-  if (mode === "passage") {
-    return getPassageQuestions();
-  }
-
-  // For the "demo-exam" mode, return combined MCQ and passage questions
-  if (mode === "demo-exam") {
-    return getAllDemoExamQuestions();
-  }
-  
-    // For the "all" mode, combine questions from all weeks
-    if (mode === "all") {
-      let allQuestions: Question[] = [];
-      for (const week in weekQuestions) {
-        if (week !== "passage_based_questions") {
-          allQuestions = [...allQuestions, ...(weekQuestions[week] as Question[])];
-        }
-      }
-      // Shuffle all questions and their options
-      return shuffleArray(allQuestions).map(q => shuffleOptions(q));
-    }
-  
-    // Handle specific week or assignment mode
-    if (weekQuestions[mode] && Array.isArray(weekQuestions[mode]) && (weekQuestions[mode] as Question[]).length > 0) {
-      // Return shuffled questions with shuffled options for the specific mode
-      return shuffleArray(weekQuestions[mode] as Question[]).map(q => shuffleOptions(q));
-    }
-  
-    // Fallback - if mode doesn't exist or has no questions
-    console.error(`No questions found for mode: ${mode}`);
-  
-    // Return default questions instead of empty array
-    return shuffleArray(
-      (weekQuestions.module1 as Question[]) || [
-        {
-          question: "Default question when no questions are found",
-          options: ["Option A", "Option B", "Option C", "Option D"],
-          correctAnswer: [0],
-          explanation:
-            "This is a placeholder question since no questions were found for the selected mode.",
-        },
-      ]
-      ).map(q => shuffleOptions(q));
-}
-
-// Function to get demo exam questions (20 MCQ + 20 from 4 passages)
 export function getDemoExamQuestions(): { mcqQuestions: Question[], passageQuestions: PassageQuestion[] } {
-  const weekQuestions = allQuestionsData as WeekQuestions;
-  
-  // Get 20 random MCQ questions from all modules and assignment
-  let allMcqQuestions: Question[] = [];
-  for (const week in weekQuestions) {
-    if (week !== "passage_based_questions") {
-      allMcqQuestions = [...allMcqQuestions, ...(weekQuestions[week] as Question[])];
-    }
-  }
-  
-  console.log('Total MCQ questions available:', allMcqQuestions.length);
-  
-  // Shuffle and pick 20 MCQ questions
-  const shuffledMcq = [...allMcqQuestions].sort(() => 0.5 - Math.random());
-  const selectedMcq = shuffledMcq.slice(0, 20).map(q => shuffleOptions(q));
-  
-  console.log('Selected MCQ questions:', selectedMcq.length);
-  
-  // Get 4 random passages
-  const passageData = (allQuestionsData as AllQuestionsData).passage_based_questions;
-  if (!passageData) {
-    console.error('No passage data found!');
-    return { mcqQuestions: selectedMcq, passageQuestions: [] };
-  }
-  
-  const allPassages = Object.values(passageData) as PassageQuestion[];
-  console.log('Total passages available:', allPassages.length);
-  
-  const shuffledPassages = [...allPassages].sort(() => 0.5 - Math.random());
-  const selectedPassages = shuffledPassages.slice(0, 4);
-  
-  console.log('Selected passages:', selectedPassages.length);
-  console.log('Selected passage titles:', selectedPassages.map(p => p.title));
-  
-  // Use all questions from each selected passage (not just first 5)
-  const finalPassages = selectedPassages.map(passage => ({
-    ...passage,
-    questions: passage.questions // Use all questions from each passage
-  }));
-  
-  const totalPassageQuestions = finalPassages.reduce((total, passage) => total + passage.questions.length, 0);
-  console.log('Total passage questions:', totalPassageQuestions);
-  
   return {
-    mcqQuestions: selectedMcq,
-    passageQuestions: finalPassages
+    mcqQuestions: [...allQuestionsData.unit1.module1, ...allQuestionsData.unit1.module2],
+    passageQuestions: getAllPassageQuestions()
   };
 }
 
-// Function to get all demo exam questions as a single flattened array
-export function getAllDemoExamQuestions(): Question[] {
-  const { mcqQuestions, passageQuestions } = getDemoExamQuestions();
-  
-  // Combine MCQ questions and passage questions
-  const allPassageQuestions = passageQuestions.flatMap(passage => passage.questions);
-  
-  return [...mcqQuestions, ...allPassageQuestions];
-}
+export default allQuestionsData;
